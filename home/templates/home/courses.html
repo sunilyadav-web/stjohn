@@ -4,7 +4,7 @@
 {% block body %}
 
 {% load static %}
-        <div class="hero-container hide-on-print">
+        {% comment %} <div class="hero-container hide-on-print">
           <section role="article" about="/academics/programs"
             class="hero hero--parallax hero--landing section--global-spacing hero--short">
             <div class="main-slider">
@@ -47,9 +47,9 @@
               <div aria-hidden="true" class="hero__overlay--mobile"></div>
             </div>
           </section>
-        </div>
+        </div> {% endcomment %}
 
-        <div class="parallax-overlay">
+        {% comment %} <div class="parallax-overlay">
           <div class="system-region">
             <div class="padded-row">
               <div data-drupal-messages-fallback class="hidden"></div>
@@ -114,5 +114,5 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> {% endcomment %}
         {% endblock body %}
