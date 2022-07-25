@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %} Register {% endblock title %}
+{% block body %}
+           <div style="margin: 180px;margin-top: 140px;">
+            <center><h1>Register</h1></center>
+            <form method="POST">
+              {% csrf_token %}
+              <div class="inputs">
+                    <label for="username">Name</label>
+                    <input type="text" name="username" id="" style="margin-bottom: 20px;">
+                </div>
+                <div class="inputs">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" id="" style="margin-bottom: 20px;">
+                </div>
+                <div class="inputs">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" id="" style="margin-bottom: 20px;">
+                </div>
+                <div class="inputs">
+                    <label for="confirm_password">Confirm Password</label>
+                    <input type="password" name="confirm_password" id="" style="margin-bottom: 20px;">
+                </div>
+                <div  style="margin-bottom: 20px;">
+                <input type="submit" class="btn-contact" value="Register" style="background-color: #bd081d; color: white; cursor: pointer;padding: 10px;">
+                </div>
+                <center>Already have an account? <a href="{% url 'users:login' %}">Login</a></center>
+            </form>
+        </div>
+{% endblock body %}
