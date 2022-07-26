@@ -83,20 +83,17 @@
                 </div>
                 <div class="col-md-4 col-12 order-3 ">
                     <div class="social-link d-flex justify-content-center align-items-center ">
-                        <a href="#" class="border px-1">
+                        <a href="https://www.facebook.com/stjohnsu/" target="_blank" class="border px-1">
                             <i class='bx bxl-facebook text-white'></i>
                         </a>
-                        <a href="#" class="border px-1 ms-2">
+                        <a href="https://www.youtube.com/user/stjohnsedu" target="_blank" class="border px-1 ms-2">
                             <i class='bx bxl-youtube text-white'></i>
                         </a>
-                        <a href="#" class="border px-1 ms-2">
+                        <a href="https://twitter.com/StJohnsU" target="_blank" class="border px-1 ms-2">
                             <i class='bx bxl-twitter text-white'></i>
                         </a>
-                        <a href="#" class="border px-1 ms-2">
-                            <i class='bx bx-link text-white'></i>
-                        </a>
-                        <a href="#" class="border px-1 ms-2">
-                            <i class='bx bxl-google-plus text-white'></i>
+                        <a href="https://www.instagram.com/stjohnsu/" class="border px-1 ms-2">
+                            <i class='bx bxl-instagram text-white'></i>
                         </a>
                     </div>
                 </div>
@@ -153,7 +150,8 @@
 
                                 
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
-                                    <a class="nav-link" href="{% url 'index:admitcard' %}">ADMIT CARD</a>
+                                    
+                                    <a class="nav-link" href="{% url 'index:result' %}">RESULT</a>
                                 </li>
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
                                     <a class="nav-link" href="{% url 'index:about' %}">ABOUT US</a>
@@ -172,7 +170,9 @@
                                         <li >
                                             <a class="dropdown-item" href="#">CERTIFICATE</a>
                                         </li>
-                                        <li><a class="dropdown-item" href="{% url 'index:result' %}">RESULT</a></li>
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'index:admitcard' %}">ADMIT CARD</a>
+                                        </li>
                                         <li><a class="dropdown-item" href="{% url 'users:login' %}">LOGIN</a></li>
                                     </ul>
                                 </li>
@@ -194,12 +194,11 @@
 
     {% endblock body %}
 
-    <div class="container-fluid bg-white">
-        <footer class="row mt-5 gx-3 px-5 d-flex justify-content-center">
+    <div class="container-fluid bg-white p-0 overflow-hidden"  >
+        <footer class="row mt-5 px-5 d-flex justify-content-center gx-3">
 
-
-            <div class="col-lg-4 col-md-6 col-12 py-5">
-                <h5>Contact us</h5>
+            <div class="col-lg-4 col-md-6 col-12 py-md-5 py-3" >
+                <h5 class="text-md-start text-center title fw-bold">CONTACT US</h5>
                 <h6>Admissions: 718-990-2000</h6>
                 <p>160, Chelekere Main Road Banaswadi Outer Ring <br> Road, Kalyan Nagar Post, Behind BTS Bus Depot,
                     <br> Bengaluru, Karnataka 560043
@@ -212,16 +211,24 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6 col-12 py-5">
-                <h5>Connect With us</h5>
-                <div class="social-links fs-4">
-                    <a href="#"><i class='bx bxl-facebook-circle'></i></a>
-                    <a href="#"><i class='bx bxl-youtube'></i></i></a>
-                    <a href="#"><i class='bx bxl-twitter'></i></a>
-                    <a href="#"><i class='bx bxl-linkedin-square'></i></a>
+            <div class="col-lg-4 col-md-6 col-12 py-md-5 py-3">
+                <h5 class="text-center title fw-bold">QUICK LINKS</h5>
+                <div class="d-flex justify-content-center mb-3 ">
+                    <a class="text-decoration-none  text-dark fw-semibold" href="{% url 'index:about' %}">About</a>
+                    <a class="text-decoration-none  text-dark fw-semibold ps-lg-3 ps-md-2 ps-2" href="{% url 'index:contact' %}">Contact us</a>
+                    <a class="text-decoration-none  text-dark fw-semibold ps-lg-3 ps-md-2 ps-2" href="{% url 'index:result' %}">Result</a>
+                    <a class="text-decoration-none text-dark  fw-semibold ps-lg-3 ps-md-2 ps-2" href="{% url 'index:courses' %}">Programs</a>
+                </div>
+                <h5 class="text-center title fw-bold">CONNECT WITH US</h5>
+                <div class="social-links d-flex justify-content-center pt-2">
+                    <a  class="" href="https://www.facebook.com/stjohnsu/" target="_blank"><i class='fs-3 bx bxl-facebook-circle'></i></a>
+                    <a  class="ps-3" href="https://www.youtube.com/user/stjohnsedu?feature=watch" target="_blank"><i class='fs-3 bx bxl-youtube'></i></a>
+                    <a class="ps-3"  href="https://twitter.com/StJohnsU" target="_blank"><i class='fs-3 bx bxl-twitter'></i></a>
+                    <a  class="ps-3" href="https://www.instagram.com/stjohnsu/" target="_blank"><i class='fs-3 bx bxl-instagram'></i></a>
                 </div>
             </div>
         </footer>
+        <p class=" text-center text-white py-3 mb-0" style="background-color:#1d1f3f;">Copyright © 2022 St-John.in All Rights Reserved.</p>
     </div>
 
     <!-- ========BOOTSTRAP SCRIPT CDN LINK========== -->
