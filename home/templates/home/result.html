@@ -126,26 +126,31 @@
       </form>
     </div>
   </div>
+
+
+  <!-- Displaying Result -->
+
   <div class="row">
     <div class="col">
       {% if semesters %}
-  <h3>Alumni Details</h3>
-  <div>
-    <input type="submit" class="btn-contact" value="Print"
-      style="background-color: darkblue; color: white; cursor: pointer;width:20%;padding: 10px;"
-      onclick="myfunc('divthree')">
-  </div>
-
-  <center style="margin: 20px;">
-    <div id="block-main-logo" class="site-header__logo"><a href="index.html"><span class="show-for-sr">Return
-          to St. John University homepage</span><img class="medium-up" src="{% static 'logos/stjohn.png' %}"
-          alt="St. John University Logo"><img class="small-only" src="{% static 'logos/stjohn.png' %}"
-          alt="St. John University Logo"></a>
+      <div class="d-flex flex-column justify-content-center align-items-center my-2">
+        <div>
+            <h3 class="title d-inline">Alumni Details</h3>
+            <a href="#" target="_blank"><input
+                    type="submit" class="btn bg-primary text-white mb-1" value="Print Result">
+            </a>
+        </div>
+        <div class="card-logo d-flex justify-content-center">
+          <img style="height:25vh;" class="img-responsive d-block text-center"
+              src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
+          </div>
     </div>
-  </center>
-  <div style="display:  flex;" id="divthree">
-    <img src="{{profile.profile_pic.url}}" alt="" width="290" height="250">
-    <div style="margin:15px;">
+
+  <div class="d-flex flex-column flex-md-row" id="divthree">
+    <div class="profile-image">
+      <img class="img-fluid" src="{{profile.profile_pic.url}}" alt="">
+    </div>
+    <div class="ms-4 mb-2">
       <p> <b> Enrollment No:</b> {{profile.enrollment_no}}</p>
       <p> <b> Name : </b> {{profile.name}}</p>
       <p> <b> Father's Name : </b> {{profile.father_name}} </p>
@@ -156,9 +161,9 @@
     </div>
 
   </div>
-  <center style="margin-top: 60px;">
+  <div class="mt-3">
     <table class="table table-bordered border-secondary " style="margin-top: 20px;">
-      <b> Statement of Marks </b>
+      <h5 class="text-center title"> Statement of Marks </h5>
       <thead>
         <tr>
           <th scope="row">Particulars</th>
@@ -215,7 +220,7 @@
     document.body.innerHTML = backup;
   }
 </script> 
-{% endif %}-->
+{% endif %}
     </div>
   </div>
 </div>

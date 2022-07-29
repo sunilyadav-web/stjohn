@@ -1,3 +1,4 @@
+from io import BytesIO
 from time import time
 from django.shortcuts import render,get_object_or_404
 from .models import *
@@ -128,25 +129,35 @@ def admit_render_pdf_view(request,en_no):
     queryset=get_object_or_404(AdmitCard,enrollment_no=en_no)
     context = {'myvar': queryset}
     # Create a Django response object, and specify content_type as pdf
-    response = HttpResponse(content_type='application/pdf')
+    # response = HttpResponse(content_type='application/pdf')
     
     #if directly download
     #response['Content-Disposition'] = 'attachment; filename="report.pdf"'
 
     #if u want to open a proper pdf format
-    response['Content-Disposition'] = 'filename="report.pdf"'
+    # response['Content-Disposition'] = 'filename="report.pdf"'
 
     # find the template and render it.
     template = get_template(template_path)
     html = template.render(context)
 
     # create a pdf
-    pisa_status = pisa.CreatePDF(
-       html, dest=response)
+    # pisa_status = pisa.CreatePDF(
+    #    html, dest=response)
+    
+    response = BytesIO()
+    # response['Content-Disposition'] = 'filename="report.pdf"'
+    
+    pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), response)
+
     # if error then show some funny view
-    if pisa_status.err:
-       return HttpResponse('We had some errors <pre>' + html + '</pre>')
-    return response
+    # if pisa_status.err:
+    #    return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    # return response
+    if not pdf.err:
+            return HttpResponse(response.getvalue(), content_type='application/pdf')
+    else:
+            return HttpResponse("Error Rendering PDF", status=400) 
 
 
 def idcard(request):

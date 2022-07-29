@@ -113,6 +113,25 @@ box-shadow: none!important;
 border: 2px solid black !important;
 outline: none!important;;
 }
+/* =========ADMIT CARD PAGE=========== */
+.admit-card{
+    width: fit-content;
+    margin: 0 auto;
+    border: 3px solid rgb(4 4 103);
+    border-radius: 4px;
+    background-color: white;
+    padding: 0rem 5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+.admit-card-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+}
 
 /* ==========COURSES PAGE============ */
 
@@ -133,6 +152,15 @@ outline: none!important;;
 .course-img img{
     width: 100%;
    height: 50vh;
+}
+
+/* ==========RESULT PAGE========== */
+.profile-image{
+    height: 250px;
+}
+.profile-image img{
+    width: 100% !important;
+    height: 100%!important;
 }
 
 @media screen and (max-width:960px) {
