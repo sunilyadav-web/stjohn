@@ -153,6 +153,16 @@ class QuizQuestion(models.Model):
     def __str__(self):
         return self.question_statement
 
+class QuizResult(models.Model):
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    total_right=models.CharField(max_length=10)
+    total_wrong=models.CharField(max_length=10)
+    total_attempt=models.CharField(max_length=10)
+    time=models.CharField(max_length=10)
+    datetime=models.DateTimeField(auto_created=True)
+
+    def __str__(self):
+        return self.user
 
 
 class AddNotice(models.Model):
