@@ -1,4 +1,5 @@
 from io import BytesIO
+import random
 from time import time
 from django.shortcuts import render,get_object_or_404
 from .models import *
@@ -200,52 +201,90 @@ def idcard_render_pdf_view(request,en_no):
        return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
 
-def all_quiz(request):
-    all_quizes=QuizPost.objects.all()
-    return render(request,'home/all_quiz.html',{'all_quizes':all_quizes})
+@login_required
+def quiz(request):
+    try:
+        questions_pool=list(QuizQuestion.objects.all())
+        random.shuffle(questions_pool)
+
+        questions=questions_pool[0:5]
+        if request.method == 'POST':
+            qid=list()
+            answer=list()
+            quizTime=request.POST['time']
+            
+            total_right=0
+            total_attempt=0
+            total_wrong=0
+            
+            for i in range(1,6):
+                qid.append(request.POST['qid'+str(i)])
+                answer.append(request.POST['answer'+str(i)])
+            a=0   
+            for id in qid:
+                question=QuizQuestion.objects.get(id=id)
+                if question.answer == answer[a]:
+                    total_right+=1
+                    total_attempt+=1
+                elif answer[a] == 'default':
+                    pass
+                else:
+                    total_attempt+=1            
+                    total_wrong+=1
+                a+=1
+                score=(total_right/5)*100
+            param={'total_attempt':total_attempt,'total_right':total_right,'total_wrong':total_wrong,'score':score,'quizTime':quizTime}
+            return render(request,'home/result_quiz.html',param)
+
+                
+    except Exception as e:
+        print("Quiz Excption : ",e)
+
+    return render(request,'home/start_quiz.html',{'questions':questions})
 
 
 @login_required
-def quiz(request,title):
-    queryset=QuizPost.objects.get(title=title)
-    if request.method == 'POST':
-        #print(request.POST)
-        questions=QuesModel.objects.filter(ques_post=queryset)
-        score=0
-        wrong=0
-        correct=0
-        total=0
-        for q in questions:
-            total+=1
-            print(request.POST.get(q.question))
-            print(q.ans)
-            print()
-            if q.ans ==  request.POST.get(q.question):
-                score+=10
-                correct+=1
-            else:
-                wrong+=1
-        percent = score/(total*10) *100
-        context = {
-            'score':score,
-            'time': request.POST.get('timer'),
-            'correct':correct,
-            'wrong':wrong,
-            'percent':percent,
-            'total':total,
-            'queryset':queryset,
-        }
-        entry=QuizResult(post=queryset,score=context['score'],time=context['time'],correct=context['correct'],wrong=context['wrong'],percent=context['wrong'],total=context['total'],result_of=request.user)
-        entry.save()
-        return render(request,'home/result_quiz.html',context)
-    else:
-        questions=QuesModel.objects.filter(ques_post=queryset)
-        context = {
-            'questions':questions,
-            'queryset':queryset
-        }
+def quizresult(request):
+    # queryset=QuizQuestion.objects.get(title=title)
+    # if request.method == 'POST':
+    #     #print(request.POST)
+    #     questions=QuesModel.objects.filter(ques_post=queryset)
+    #     score=0
+    #     wrong=0
+    #     correct=0
+    #     total=0
+    #     for q in questions:
+    #         total+=1
+    #         print(request.POST.get(q.question))
+    #         print(q.ans)
+    #         print()
+    #         if q.ans ==  request.POST.get(q.question):
+    #             score+=10
+    #             correct+=1
+    #         else:
+    #             wrong+=1
+    #     percent = score/(total*10) *100
+    #     context = {
+    #         'score':score,
+    #         'time': request.POST.get('timer'),
+    #         'correct':correct,
+    #         'wrong':wrong,
+    #         'percent':percent,
+    #         'total':total,
+    #         'queryset':queryset,
+    #     }
+    #     entry=QuizResult(post=queryset,score=context['score'],time=context['time'],correct=context['correct'],wrong=context['wrong'],percent=context['wrong'],total=context['total'],result_of=request.user)
+    #     entry.save()
+    #     return render(request,'home/result_quiz.html',context)
+    # else:
+    #     questions=QuesModel.objects.filter(ques_post=queryset)
+    #     context = {
+    #         'questions':questions,
+    #         'queryset':queryset
+    #     }
+    context={}
         
-        return render(request,'home/quiz.html',context)
+    return render(request,'home/quiz.html',context)
 
 def result_quiz(request):
     return render(request,'home/result_quiz.html')

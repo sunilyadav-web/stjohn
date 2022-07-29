@@ -4,9 +4,9 @@ from .models import *
 # Register your models here.
 admin.site.register(AddNotice)
 admin.site.register(Contact)
-admin.site.register(QuizPost)
-admin.site.register(QuesModel)
-admin.site.register(QuizResult)
+admin.site.register(QuizQuestion)
+# admin.site.register(QuesModel)
+# admin.site.register(QuizResult)
 
 from django.contrib import admin
 

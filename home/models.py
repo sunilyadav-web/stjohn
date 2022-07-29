@@ -135,52 +135,25 @@ class IdCard(models.Model):
     class Meta:
         ordering=['-id']
 
-class QuizPost(models.Model):
-    title=models.CharField(max_length=100,unique=True)
-    desc=models.TextField(blank=True,null=False,default='No desc provided')
-    thumbnail=models.ImageField(upload_to='Quiz-Thumbnail',default='default_quiz.jpeg',validators=[validate_image_file_extension])
 
-    def __str__(self):
-        return self.title
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-
-        img = Image.open(self.thumbnail.path)
-
-        if img.height > 300 or img.width > 300:
-            output_size = (190, 163)
-            img.thumbnail(output_size)
-            img.save(self.thumbnail.path)
-
-    class Meta:
-        verbose_name_plural='QuizPost'
-
-class QuesModel(models.Model):
-    ques_post=models.ForeignKey(QuizPost,on_delete=models.CASCADE)
-    question = models.CharField(max_length=200,null=True)
-    op1 = models.CharField(max_length=200,null=True)
-    op2 = models.CharField(max_length=200,null=True)
-    op3 = models.CharField(max_length=200,null=True)
-    op4 = models.CharField(max_length=200,null=True)
-    ans = models.CharField(max_length=200,null=True)
+class QuizQuestion(models.Model):
+    options = (
+        ('A','A'),
+        ('B','B'),
+        ('C','C'),
+        ('D','D'),
+    )
+    question_statement=models.CharField(max_length=250)
+    option_a=models.CharField(max_length=70)
+    option_b=models.CharField(max_length=70)
+    option_c=models.CharField(max_length=70)
+    option_d=models.CharField(max_length=70)
+    answer=models.CharField(max_length=10, choices=options)
     
     def __str__(self):
-        return self.question
+        return self.question_statement
 
 
-class QuizResult(models.Model):
-    post=models.ForeignKey(QuizPost,on_delete=models.CASCADE)
-    score=models.CharField(max_length=100)
-    time=models.CharField(max_length=100)
-    correct=models.CharField(max_length=100)
-    wrong=models.CharField(max_length=100)
-    percent=models.CharField(max_length=100)
-    total=models.CharField(max_length=100)
-    result_of=models.ForeignKey(User,on_delete=models.CASCADE)
-
-    def __str__(self):
-        return f"{self.post}"
 
 class AddNotice(models.Model):
     notice=models.CharField(max_length=70, null=True, blank=True, default='Welcome to St. John')
