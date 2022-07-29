@@ -159,10 +159,10 @@ class QuizResult(models.Model):
     total_wrong=models.CharField(max_length=10)
     total_attempt=models.CharField(max_length=10)
     time=models.CharField(max_length=10)
-    datetime=models.DateTimeField(auto_created=True)
+    datetime=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.user
+        return self.user.username
 
 
 class AddNotice(models.Model):

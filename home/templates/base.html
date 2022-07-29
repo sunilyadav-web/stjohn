@@ -146,6 +146,9 @@
                                     </a>
                                     <ul class="dropdown-menu bg-primary" aria-labelledby="navbarDropdownMenuLink">
                                         <li><a class="dropdown-item" href="{% url 'index:quiz' %}">QUIZ</a></li>
+                                        {% if request.user.is_authenticated %}
+                                        <li><a class="dropdown-item" href="{% url 'index:quiz-results' %}">QUIZ RESULTS</a></li>
+                                        {% endif %}
                                         <li><a class="dropdown-item" href="{% url 'index:idcard' %}">ID CARDS</a></li>
                                         <li>
                                             <a class="dropdown-item" href="{% url 'index:certificate' %}">CERTIFICATE</a>

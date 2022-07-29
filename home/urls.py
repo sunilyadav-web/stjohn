@@ -17,8 +17,7 @@ urlpatterns = [
 
 
     path('quiz/',views.quiz,name='quiz'),
-    path('quiz/<str:title>/',views.quiz,name='quiz'),
-    path('result-quiz/',views.result_quiz,name='result_quiz'),
+    path('quiz-results/',views.quizResults,name='quiz-results'),
 
     path('courses/',views.courses,name='courses'),
     path('health_science_courses/', views.health_science_courses,name='health_science_courses'),

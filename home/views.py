@@ -233,6 +233,13 @@ def quiz(request):
                     total_wrong+=1
                 a+=1
                 score=(total_right/5)*100
+            qr=QuizResult.objects.create(user=request.user)
+            qr.total_right=total_right
+            qr.total_wrong=total_wrong
+            qr.total_attempt=total_attempt
+            qr.time=quizTime
+            qr.save()
+            
             param={'total_attempt':total_attempt,'total_right':total_right,'total_wrong':total_wrong,'score':score,'quizTime':quizTime}
             return render(request,'home/result_quiz.html',param)
 
@@ -244,50 +251,16 @@ def quiz(request):
 
 
 @login_required
-def quizresult(request):
-    # queryset=QuizQuestion.objects.get(title=title)
-    # if request.method == 'POST':
-    #     #print(request.POST)
-    #     questions=QuesModel.objects.filter(ques_post=queryset)
-    #     score=0
-    #     wrong=0
-    #     correct=0
-    #     total=0
-    #     for q in questions:
-    #         total+=1
-    #         print(request.POST.get(q.question))
-    #         print(q.ans)
-    #         print()
-    #         if q.ans ==  request.POST.get(q.question):
-    #             score+=10
-    #             correct+=1
-    #         else:
-    #             wrong+=1
-    #     percent = score/(total*10) *100
-    #     context = {
-    #         'score':score,
-    #         'time': request.POST.get('timer'),
-    #         'correct':correct,
-    #         'wrong':wrong,
-    #         'percent':percent,
-    #         'total':total,
-    #         'queryset':queryset,
-    #     }
-    #     entry=QuizResult(post=queryset,score=context['score'],time=context['time'],correct=context['correct'],wrong=context['wrong'],percent=context['wrong'],total=context['total'],result_of=request.user)
-    #     entry.save()
-    #     return render(request,'home/result_quiz.html',context)
-    # else:
-    #     questions=QuesModel.objects.filter(ques_post=queryset)
-    #     context = {
-    #         'questions':questions,
-    #         'queryset':queryset
-    #     }
+def quizResults(request):
     context={}
+    try:
+        queryset=QuizResult.objects.filter(user=request.user)
+        context['results']=queryset
+    except Exception as e:
+        print('Quiz Result Exception :',e)
         
-    return render(request,'home/quiz.html',context)
+    return render(request,'home/quiz_all_results.html',context)
 
-def result_quiz(request):
-    return render(request,'home/result_quiz.html')
 
 
 

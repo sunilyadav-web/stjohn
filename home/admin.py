@@ -5,7 +5,7 @@ from .models import *
 admin.site.register(AddNotice)
 admin.site.register(Contact)
 admin.site.register(QuizQuestion)
-# admin.site.register(QuesModel)
+admin.site.register(QuizResult)
 # admin.site.register(QuizResult)
 
 from django.contrib import admin
