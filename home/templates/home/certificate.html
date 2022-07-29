@@ -1,0 +1,27 @@
+{% extends "../base.html" %}
+{% block title %} Admit Card {% endblock title %}
+{% block body %}
+
+{% load static %}
+
+<div class="container">
+    <div class="row d-flex justify-content-center">
+        <div class="col-11 col-md-6 py-3 pt-4 ">
+            <h2 class="text-center title text-uppercase">Certifications</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="enrollment-input" class="form-label">Enrollment No.</label>
+                    <input type="text" class="form-control" name="enrollment_no" id="enrollment-input"
+                        placeholder="Search Enrollment No.">
+                </div>
+                <div class="d-grid">
+                    <input type="submit" class="btn" value="Submit"
+                        style="background-color: darkblue; color: white; cursor: pointer;padding: 10px;">
+                </div>
+            </form>
+        </div>
+    
+    </div>
+</div>
+{% endblock body %}

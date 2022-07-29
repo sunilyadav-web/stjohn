@@ -1,5 +1,110 @@
-<!DOCTYPE html>
-{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{{myvar.enrollment_no}}</title>
+    <style>
+        body{
+            height: 1000px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .bg-color{
+            background-color: #040467;
+        }
+        .title{
+            color: #040467;
+        }
+        .admit-header h2{
+            width: fit-content;
+            margin: 0px auto;
+            color: white;
+            padding: 1rem 3rem;
+            border-radius: 22px;
+        }
+        .user-info{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50%;
+            margin: 0rem auto;  
+        }
+        .user-info .user {
+            margin: 0 auto;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+        .user-info .user img{
+            height: 220px;
+        }
+        .info{
+            margin-left: 1.5rem;
+        }
+        .info h4{
+            font-size: 15px;
+        }
+    </style>
+  </head>
+  <body>
+    
+
+    <header class="admit-header">
+        <h2 class="text-center bg-color text-white m-auto px-5 py-3 rounded">St. John INTERNATIONAL UNIVERSITY</h2>
+    </header>
+    <main>
+        <div class="user-info">
+            <div class="user">
+                <img src="{{myvar.image.path}}" alt="">
+                <img src="../../../static/images/Photo.jfif" alt="">
+                <div class="info">
+                <h4>Registration Number- 9IM10BCM89756</h4>
+                <h4>Name- Raja Krishan</h4>
+                <h4>Date- 10th August 2022</h4>
+                <h4>Time- 14:00 to 17:00 hrs</h4>
+                <h4>GATE Paper- Science</h4>
+                <h5>Exam Center(Exam Center(St. Aloysius International University No. 1507 11th Cross C-Block Mariyappanapalya  Rajajinagar, Bangalore - 560021.)</h5>
+            </div>
+        </div>
+        </div>
+    </main>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
 
@@ -56,4 +161,4 @@
             </div>
         </div>
 </body>
-</html>
+</html> !--> 

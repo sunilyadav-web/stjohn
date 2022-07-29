@@ -3,12 +3,95 @@
 {% block title %} St.John University {% endblock title %}
 
 {% block body %}
-<div class="container">
-    <div class="row">
-        <div class="col text-dark">
-            Home
-        </div>
+
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/stspring.jpg' %}" class="d-block w-100" alt="...">
     </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/Alumni_Weekend17-192_360x240.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/DSC_5948.360x240_0.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<div class="container-fluid mt-3">
+  <h2 class="text-center title">WELCOME TO ST. JOHN INTERNATIONAL UNIVERSITY !</h2>
+  <div class="row d-flex justify-content-around my-3 g-0">
+    <div class="col-lg-5 c-12 pt-2 home d-flex justify-content-center d-none d-lg-block">
+      <img class="rounded m-auto" src="{% static 'images/students.jpg' %}" alt="">
+    </div>
+    <div class="col-lg-6 col-11 d-flex align-items-center flex-column pt-3 pt-lg-5 justify-content-center">
+      <p>St. John university is an Autonomous body that is imparting "ONLINE EDUCATION" to empower people irrespective
+        of Age, Cast, Creed and Religion for those who have lost the opportunity at the right age due to Poverty, Social
+        Compulsion, and family conditions.</p>
+      <p>All the Courses offered by St. John university are Non-Conventional, Need Based and Tailor made model to suit
+        the needs of the People aimed at gainful employment based on the Prime Minister's "SKILL MISSION Programme". <a
+          href="{% url 'index:about' %}" class="text-decoration-none">Read More</a></p>
+    </div>
+  </div>
+  <h2 class="text-center pt-3 title">It's Your Time to Shine</h2>
+  <p class="text-center title">At St. john, you have endless opportunities to discover your inspiration with St. John
+    Courses.</p>
+  <div class="row d-flex justify-content-evenly align-items-center gy-3 px-3">
+
+    <div class="course-card col-12 col-md-3 ">
+      <div class="card w-100">
+        <img src="{% static 'images/program.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title title">Health Course</h5>
+          <a href="{% url 'index:health_science_courses' %}" class="btn btn-outline-dark">Know More</a>
+        </div>
+      </div>
+    </div>
+    <div class="course-card col-12 col-md-3">
+      <div class="card w-100">
+        <img src="{% static 'images/gina.png' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Engineering Courses</h5>
+          <a href="{% url 'index:engineering_courses' %}" class="btn btn-outline-dark">Know More</a>
+        </div>
+      </div>
+    </div>
+    <div class="course-card col-12 col-md-3">
+      <div class="card w-100">
+        <img src="{% static 'images/greg.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Management Courses</h5>
+          <a href="{% url 'index:management_courses' %}" class="btn btn-outline-dark">Know more</a>
+        </div>
+      </div>
+    </div>
+    <div class="course-card col-12 col-md-3">
+      <div class="card w-100">
+        <img src="{% static 'images/greg.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Certified Courses</h5>
+          <a href="{% url 'index:certified_courses' %}" class="btn btn-outline-dark">Know More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<div class="bg-primary row my-5  d-flex justify-content-center shadow">
+  <div class="col-6">
+    <h5 class="text-center py-3 fs-3 " ><a class="text-white text-decoration-none" href="#">News</a></h5>
+  </div>
+  <div class="col-6">
+    <h5 class="text-center py-3 fs-3 "><a class="text-white text-decoration-none" href="#">Events</a></h5>
+  </div>
+</div>
 </div>
 
 

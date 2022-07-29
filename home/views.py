@@ -9,7 +9,13 @@ from xhtml2pdf import pisa
 from django.contrib.auth.decorators import login_required
 
 def index(request):
-    return render(request,'home/index.html')
+    context={}
+    try:
+        notice=AddNotice.objects.last()
+        context['notice']=notice
+    except Exception as e:
+        print('Index Exception :',e)
+    return render(request,'home/index.html',context)
 
 def about(request):
     return render(request,'home/about.html')
@@ -58,10 +64,10 @@ def result(request):
 
             # FINDING GRADE FOR STUDENT
             grade = "Fail"
-            if student_percentage > 60:
+            if student_percentage > 60: 
                 grade = "First Class"
             elif student_percentage > 50:
-                grade = "Second Class"
+                grade = "Second Class" 
             elif student_percentage > 35 and student_percentage < 50:
                 grade = "Third Class"
             else:
@@ -71,7 +77,7 @@ def result(request):
             return render(request, 'home/result.html', context)
         
         except Exception as e:
-            messages.warning(request, 'Please enter correct enrollment number!!')
+            messages.error(request, 'Please enter correct enrollment number!!')
 
             return render(request, 'home/result.html')
     # messages.success(request, 'Your profile was updated.')
@@ -113,6 +119,9 @@ def admitcard(request):
             messages.warning(request, 'Please enter correct enrollment number!!')
             return render(request, 'home/admitcard.html')
     return render(request,'home/admitcard.html')
+
+def certificate(request):
+    return render(request,'home/certificate.html')
 
 def admit_render_pdf_view(request,en_no):
     template_path = 'home/pdf1.html'

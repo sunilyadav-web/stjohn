@@ -12,9 +12,16 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
-
+from django.contrib import messages
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+MESSAGE_TAGS = {
+    messages.ERROR: 'danger',
+}
+
+# over right Messages Tags
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
@@ -151,8 +158,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR,'Data')
 
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER='aryanjainak@gmail.com'
-EMAIL_HOST_PASSWORD='Iamreal123'
+EMAIL_HOST_USER='testdjangocode@gmail.com'
+EMAIL_HOST_PASSWORD='dbqmaqacrfwdjdci'
 EMAIL_PORT= 587
 EMAIL_USE_TLS= True
 EMAIL_USE_SSL= False

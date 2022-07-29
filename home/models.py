@@ -1,3 +1,4 @@
+import datetime
 from django.db import models
 from django.core.validators import validate_image_file_extension
 from PIL import Image
@@ -180,3 +181,7 @@ class QuizResult(models.Model):
 
     def __str__(self):
         return f"{self.post}"
+
+class AddNotice(models.Model):
+    notice=models.CharField(max_length=70, null=True, blank=True, default='Welcome to St. John')
+    notice_date=models.DateTimeField(auto_created=True,auto_now=True)

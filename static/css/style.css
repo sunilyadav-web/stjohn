@@ -29,17 +29,38 @@ body{
 .bg-primary{
     background-color: rgb(4 4 103) !important;
 }
+
+.dropdown-menu li a{   
+    color:white!important;
+}
+.dropdown-menu li a:hover
+{
+    background-color: #8188f7!important;
+}
 .nav-link{
     color: white!important;
 }
 .nav-border{
-    /* border-color: #d68c03; */
-    border-bottom: 5px solid #efa41ae7;
+    border-bottom: 5px solid #8188f7;
 }
 .nav-item:hover{
-    background-color: rgba(204, 211, 222, 0.363)!important;
-    transition: 1s;
+    background-color: #8188f7!important;
+    /* background-color:#232653 !important; */
+    transition: 0.8s;
+
 }
+
+/* Message Alert */
+.alert-width{
+    width: 50%;
+}
+
+.alert-success {
+    color: #000000 !important;
+    background-color: #69d7a5 !important;
+   border-color: #35b279 !important;
+}
+
 
 .footer-logo{
     height: 250px;
@@ -54,6 +75,30 @@ body{
     color:#1d1f3f!important;
 }
 
+
+/* =========HOME PAGE============== */
+
+.carousel-item {
+    height:85vh;
+    width: 100%;
+  }
+
+.home img{
+    /* height:60vh!important; */
+    width: 90%;
+}
+.course-card{
+    transition: 0.8s ease-in;
+    cursor:pointer;
+}
+.course-card div img{
+    object-fit: cover;
+    aspect-ratio: 16/9 !important;
+}
+
+.course-card:hover{
+    transform: scale(1.1);
+}
 
 
 /* ======CONTACT PAGE======== */
@@ -99,6 +144,13 @@ outline: none!important;;
         width: 100%;
        height: 30vh;
     }
+    .alert-width{
+        width: 60%;
+    }
+    .carousel-item {
+        height:max-content;
+        width: 100%;
+      }
 }
 
 
@@ -143,5 +195,8 @@ outline: none!important;;
             width: 100%;
            height: 20vh;
         }
+    .alert-width{
+        width: 95%;
+    }
     
 }

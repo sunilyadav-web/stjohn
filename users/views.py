@@ -1,10 +1,10 @@
-from django.shortcuts import render
-from django.contrib.auth import logout as auth_logout
+from django.shortcuts import render,redirect
+from django.contrib.auth import logout as auth_logout, login,authenticate
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-
+ 
 def register(request):
     if request.method=='POST':
         username=request.POST.get('username')
@@ -24,11 +24,34 @@ def register(request):
             else:
                 entry=User.objects.create_user(username=username,email=email,password=password)
                 entry.save()
+                messages.success(request,'Your Account Has been created successfully!')
                 return HttpResponseRedirect(reverse('users:login'))
         else:
             messages.info(request,'Password and confirm password didn"t match')
     return render(request,'users/signup.html')
 
+def signup(request):
+    try:
+        if request.user.is_authenticated:
+            messages.error(request,'Something went wrong!')
+            return redirect('/')
+        if request.method == "POST":
+            username = request.POST['username']
+            password = request.POST['password']
+            print('username : ',username)
+            user = authenticate(request, username=username, password=password)
+            print('user : ',user)
+            if user is not None:
+                login(request, user)
+                messages.success(request,'logged in successful')
+                return redirect('/')
+            else:
+                messages.error(request,'Please enter correct Username and Password !!')
+                return redirect('users:login')
+            
+    except Exception as e:
+        print('Login Exception',e)
+    return render(request,'users/login.html')
 def logout(request):
     auth_logout(request)
     messages.success(request,'Logout Successful')

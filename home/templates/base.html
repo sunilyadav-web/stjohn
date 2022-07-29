@@ -21,7 +21,7 @@
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/vnd.microsoft.icon" />
 
 
-    {% block css %}{% endblock css %}
+   
     <!-- ==========BOOTSTRAP CDN LINK============= -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -36,28 +36,9 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
     <title>{% block title %} {% endblock title %}</title>
-
+    {% block css %}{% endblock css %}
 
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon.ico' %}">
-
-
-    <!-- ======OLD THEME LINKS========= -->
-
-    {% load static %}
-    <!-- <link rel="stylesheet" media="all" href="{% static 'css/main2.css' %}" /> -->
-    <!-- <link rel="stylesheet" media="all" href="{% static 'css/main.css' %}" /> -->
-    <!-- <link rel="stylesheet" media="all" href="{% static 'css/program.css' %}" />
-    <link rel="stylesheet" media="all" href="{% static 'css/about.css' %}" />
-
-
-
-    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
-    <link rel="manifest" href="site.webmanifest">
-    <link rel="mask-icon" href="{% static 'safari-pinned-tab.svg' %}" color="#cd2033">
-    <meta name="msapplication-TileColor" content="#ffffff">
-    <meta name="theme-color" content="#ffffff"> -->
 
 
 </head>
@@ -72,13 +53,13 @@
                 <div class="col-md-4 col-12 order-1 mb-1 mb-lg-0">
                     <div class="contact-mail d-flex justify-content-center align-items-center">
                         <i class='bx bxs-envelope text-warning fs-5'></i>
-                        <span class="ms-1">anonymousmember@gmail.com</span>
+                        <a href="mailto:administrator@stjohnedu.in" class="ms-1 text-decoration-none text-white">administrator@stjohnedu.in</a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-12 order-md-2 order-3 mb-2 mb-lg-0">
                     <div class="top-news d-flex justify-content-center align-items-center">
                         <span class="top-news-title">Notice:</span>
-                        <a href="#" class="text-white ms-2">Admissions open for 2021-2022 Batches</a>
+                        <a href="#" class="text-white ms-2">{{notice.notice}}</a>
                     </div>
                 </div>
                 <div class="col-md-4 col-12 order-3 ">
@@ -102,7 +83,6 @@
 
             <!-- University Logo Start -->
             <div class="row logo-div">
-                <!-- <img class="logo-bg z-index-1" src="{% static 'images/gate.jpg' %}" alt=""> -->
                 <div class="col-12 d-flex justify-content-center align-items-center">
                     <a href="/"><img class="logo-img z-index-1" src="{% static 'logos/stjohn-bgr.png' %}" alt="">
                     </a>
@@ -113,7 +93,7 @@
 
 
             <!-- Navbar Start  -->
-            <div class="row bg-primary px-3 px-lg-5 d-flex justify-content-center">
+            <div class="row bg-primary px-3 px-lg-5 d-flex justify-content-center nav-border">
                 <nav class="navbar navbar-expand-md navbar-dark bg-primary py-0 ">
                     <div class="container-fluid">
                         <button class="navbar-toggler text-center" type="button" data-bs-toggle="collapse"
@@ -123,7 +103,7 @@
                         </button>
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav mx-auto ">
-                                <li class="nav-item border-end border-start px-lg-4 px-2 py-2">
+                                <li class="nav-item border-end  border-start px-lg-4 px-2 py-2">
                                     <a class="nav-link" href="/">HOME</a>
                                 </li>
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
@@ -148,9 +128,9 @@
                                     </ul>
                                 </li> -->
 
-                                
+
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
-                                    
+
                                     <a class="nav-link" href="{% url 'index:result' %}">RESULT</a>
                                 </li>
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
@@ -159,21 +139,25 @@
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
                                     <a class="nav-link" href="{% url 'index:contact' %}">CONTACT US</a>
                                 </li>
-                                <li class="nav-item dropdown border-end px-lg-4 px-2 py-2">
+                                <li class="nav-item dropdown border-end px-lg-4 px-2 py-2 ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         STUDENT
                                     </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                    <ul class="dropdown-menu bg-primary" aria-labelledby="navbarDropdownMenuLink">
                                         <li><a class="dropdown-item" href="#">QUIZ</a></li>
                                         <li><a class="dropdown-item" href="{% url 'index:idcard' %}">ID CARDS</a></li>
-                                        <li >
-                                            <a class="dropdown-item" href="#">CERTIFICATE</a>
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'index:certificate' %}">CERTIFICATE</a>
                                         </li>
                                         <li>
                                             <a class="dropdown-item" href="{% url 'index:admitcard' %}">ADMIT CARD</a>
                                         </li>
+                                        {% if request.user.is_authenticated %}
+                                        <li><a class="dropdown-item" href="{% url 'users:logout' %}">LOGOUT</a></li>
+                                        {% else %}
                                         <li><a class="dropdown-item" href="{% url 'users:login' %}">LOGIN</a></li>
+                                        {% endif %}
                                     </ul>
                                 </li>
                             </ul>
@@ -188,18 +172,27 @@
         </div>
     </header>
 
-    {% block body %}
 
+    <main class="main-content" id="main-content">
+        {% if messages %}
+        {% for msg in messages %}
+        <div class="alert alert-{{msg.tags}} alert-dismissible fade show m-auto alert-width my-3" role="alert">
+     {{msg}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
+        {% endif %}
+        {% block body %} {% endblock body %}
+    </main>
 
-
-    {% endblock body %}
-
-    <div class="container-fluid bg-white p-0 overflow-hidden"  >
+{% comment %} <h2>Logged is as : {{request.user.username}}</h2> {% endcomment %}
+    <div class="container-fluid bg-white p-0 overflow-hidden mt-3">
         <footer class="row mt-5 px-5 d-flex justify-content-center gx-3">
 
-            <div class="col-lg-4 col-md-6 col-12 py-md-5 py-3" >
+            <div class="col-lg-4 col-md-6 col-12 py-md-5 py-3">
                 <h5 class="text-md-start text-center title fw-bold">CONTACT US</h5>
                 <h6>Admissions: 718-990-2000</h6>
+                <h6>Mail: <a class='text-decoration-none ' href="mailto:administrator@stjohnedu.in">administrator@stjohnedu.in</a></h6>
                 <p>160, Chelekere Main Road Banaswadi Outer Ring <br> Road, Kalyan Nagar Post, Behind BTS Bus Depot,
                     <br> Bengaluru, Karnataka 560043
                 </p>
@@ -215,20 +208,28 @@
                 <h5 class="text-center title fw-bold">QUICK LINKS</h5>
                 <div class="d-flex justify-content-center mb-3 ">
                     <a class="text-decoration-none  text-dark fw-semibold" href="{% url 'index:about' %}">About</a>
-                    <a class="text-decoration-none  text-dark fw-semibold ps-lg-3 ps-md-2 ps-2" href="{% url 'index:contact' %}">Contact us</a>
-                    <a class="text-decoration-none  text-dark fw-semibold ps-lg-3 ps-md-2 ps-2" href="{% url 'index:result' %}">Result</a>
-                    <a class="text-decoration-none text-dark  fw-semibold ps-lg-3 ps-md-2 ps-2" href="{% url 'index:courses' %}">Programs</a>
+                    <a class="text-decoration-none  text-dark fw-semibold ps-lg-3 ps-md-2 ps-2"
+                        href="{% url 'index:contact' %}">Contact us</a>
+                    <a class="text-decoration-none  text-dark fw-semibold ps-lg-3 ps-md-2 ps-2"
+                        href="{% url 'index:result' %}">Result</a>
+                    <a class="text-decoration-none text-dark  fw-semibold ps-lg-3 ps-md-2 ps-2"
+                        href="{% url 'index:courses' %}">Programs</a>
                 </div>
                 <h5 class="text-center title fw-bold">CONNECT WITH US</h5>
                 <div class="social-links d-flex justify-content-center pt-2">
-                    <a  class="" href="https://www.facebook.com/stjohnsu/" target="_blank"><i class='fs-3 bx bxl-facebook-circle'></i></a>
-                    <a  class="ps-3" href="https://www.youtube.com/user/stjohnsedu?feature=watch" target="_blank"><i class='fs-3 bx bxl-youtube'></i></a>
-                    <a class="ps-3"  href="https://twitter.com/StJohnsU" target="_blank"><i class='fs-3 bx bxl-twitter'></i></a>
-                    <a  class="ps-3" href="https://www.instagram.com/stjohnsu/" target="_blank"><i class='fs-3 bx bxl-instagram'></i></a>
+                    <a class="" href="https://www.facebook.com/stjohnsu/" target="_blank"><i
+                            class='fs-3 bx bxl-facebook-circle'></i></a>
+                    <a class="ps-3" href="https://www.youtube.com/user/stjohnsedu?feature=watch" target="_blank"><i
+                            class='fs-3 bx bxl-youtube'></i></a>
+                    <a class="ps-3" href="https://twitter.com/StJohnsU" target="_blank"><i
+                            class='fs-3 bx bxl-twitter'></i></a>
+                    <a class="ps-3" href="https://www.instagram.com/stjohnsu/" target="_blank"><i
+                            class='fs-3 bx bxl-instagram'></i></a>
                 </div>
             </div>
         </footer>
-        <p class=" text-center text-white py-3 mb-0" style="background-color:#1d1f3f;">Copyright © 2022 St-John.in All Rights Reserved.</p>
+        <p class=" text-center text-white py-3 mb-0" style="background-color:#1d1f3f;">Copyright © 2022 St-John.in All
+            Rights Reserved.</p>
     </div>
 
     <!-- ========BOOTSTRAP SCRIPT CDN LINK========== -->
