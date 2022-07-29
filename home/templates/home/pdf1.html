@@ -1,10 +1,11 @@
 <!doctype html>
 <html lang="en">
-  <head>
+{% load static %}
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{myvar.enrollment_no}}</title>
-    <style>
+    <!-- <style>
         body{
             height: 1000px;
             font-family: Arial, Helvetica, sans-serif;
@@ -46,13 +47,13 @@
         .info h4{
             font-size: 15px;
         }
-    </style>
-    <link rel="stylesheet" href="../../../static/css/style.css">
-  </head>
-  <body>
-    
+    </style> -->
+</head>
 
-    <header class="admit-header">
+<body>
+
+
+    <!-- <header class="admit-header">
         <h2 class="text-center bg-color text-white m-auto px-5 py-3 rounded">St. John INTERNATIONAL UNIVERSITY</h2>
     </header>
     <main>
@@ -70,8 +71,31 @@
             </div>
         </div>
         </div>
-    </main>
-  </body>
+    </main> -->
+    <center>
+    <table border="1" cellspacing="2">
+        <tr border="none"   >
+            <!-- <h1>St. John INTERNATIONAL UNIVERSITY</h1> -->
+           <td> <img src="{% static 'logos/stjohn-bgr.png' %}" alt="" height="120"></td>
+           <!-- <td> <img src="../../../static/logos/stjohn-bgr.png" alt="" height="120"></td> -->
+        </tr>
+        <tr>
+            <td>
+                <h2>Registration Number - </h2>
+            </td>
+            <td><b>156456456465</b></td>
+            <td>Helo</td>
+        </tr>
+        <tr>
+            <td>
+                <h2>Name - </h2>
+            </td>
+            <td><b>Suresh</b></td>
+        </tr>
+    </table>
+</center>
+</body>
+
 </html>
 
 
@@ -162,4 +186,4 @@
             </div>
         </div>
 </body>
-</html> !--> 
+</html> !-->
