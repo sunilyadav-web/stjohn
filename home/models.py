@@ -101,6 +101,7 @@ class AdmitCard(models.Model):
     name=models.CharField(max_length=200)
     paper=models.CharField(max_length=200)
     exam_centre=models.CharField(max_length=200)
+    datetime=models.DateTimeField(auto_now=True, null=True , blank=True)
     instruction=models.TextField(default="""Instructions to the Candidate
 1. This Admit Card must be presented for verification at the time of examination, along with at least one original (not photocopied or scanned copy) and valid (not expired) photo identification card (eg: College ID, Employer ID. Driving License, Passport, PAN card, Voter ID, Aadhaar-UID, etc).
 2. This Admit Card is valid only if the candidate's photograph and signature images are legibly printed. Print this on an A4 sized paper using a laser printer, preferably a colour photo printer.
@@ -112,8 +113,7 @@ class AdmitCard(models.Model):
 8. Calculator is allowed in the examination hall. However, shanng of calculators is NOT ALLOWED. D not bring any Charts/Tables/Loose sheets to the examination hall
 9. Mobile phones or any other Electronic gadgets are NOT ALLOWED inside the examination hall. There may not be any facility for safe keeping of your gadget outside the hall, sot me be easier to leave it at your residence')
 """)
-    def __str__(self):
-        return f"{self.enrollment_no} - {self.date}"
+   
 
     class Meta:
         ordering=['-id']
@@ -128,9 +128,9 @@ class IdCard(models.Model):
     address=models.CharField(max_length=100)
     issuing_year=models.CharField(max_length=100)
     validity_year=models.CharField(max_length=100)
+    datetime=models.DateTimeField(auto_now=True, null=True , blank=True)
 
-    def __str__(self):
-        return f"{self.enrollment_no}"
+   
 
     class Meta:
         ordering=['-id']
@@ -149,9 +149,8 @@ class QuizQuestion(models.Model):
     option_c=models.CharField(max_length=70)
     option_d=models.CharField(max_length=70)
     answer=models.CharField(max_length=10, choices=options)
+    datetime=models.DateTimeField(auto_now=True, null=True , blank=True)
     
-    def __str__(self):
-        return self.question_statement
 
 class QuizResult(models.Model):
     user=models.ForeignKey(User, on_delete=models.CASCADE)
@@ -167,6 +166,7 @@ class QuizResult(models.Model):
 class UserEnrollment(models.Model):
     enrollment_no=models.CharField(max_length=50)
     user=models.OneToOneField(User,on_delete=models.CASCADE)
+    datetime=models.DateTimeField(auto_now=True, null=True , blank=True)
     
     def __str__(self):
         return self.user.username
@@ -185,9 +185,8 @@ class Certificate(models.Model):
     date=models.CharField(max_length=100)
     center_id=models.CharField(max_length=100)
     file=models.FileField(blank=True,null=True)
+    datetime=models.DateTimeField(auto_now=True,null=True, blank=True)
     
-    def __str__(self):
-        return f"{self.enrollment_no} - {self.date}"
 
     class Meta:
         ordering=['-id']

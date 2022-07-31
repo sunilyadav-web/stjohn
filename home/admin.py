@@ -2,21 +2,35 @@ from django.contrib import admin
 from .models import *
 
 # Register your models here.
-admin.site.register(UserEnrollment)
-admin.site.register(AddNotice)
-admin.site.register(Contact)
-admin.site.register(QuizQuestion)
 admin.site.register(QuizResult)
-# admin.site.register(QuizResult)
+
+admin.site.register(UserEnrollment)
+
+admin.site.register(AddNotice)
+
+admin.site.register(Contact)
+
+class QuizQuestionAdmin(admin.ModelAdmin):
+    list_display=['question_statement','datetime']
+admin.site.register(QuizQuestion,QuizQuestionAdmin)
+
+
 
 from django.contrib import admin
 
+class AdmitCardAdmin(admin.ModelAdmin):
+    list_display=['enrollment_no','name','datetime']
+admin.site.register(AdmitCard,AdmitCardAdmin)
 
-admin.site.register(IdCard)
-admin.site.register(AdmitCard)
-admin.site.register(Certificate)
+class CertificateAdmin(admin.ModelAdmin):
+    list_display=['enrollment_no','name','datetime']
+admin.site.register(Certificate, CertificateAdmin)
+    
 
-# from import_export.admin import ImportExportModelAdmin
+class IdCardAdmin(admin.ModelAdmin):
+      list_display = ['enrollment_no','name','datetime']
+admin.site.register(IdCard, IdCardAdmin)
+
 
 
 # Register your models here.
