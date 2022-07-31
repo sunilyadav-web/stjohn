@@ -66,7 +66,7 @@ class Profile(models.Model):
     father_name = models.CharField(max_length=50)
     course = models.CharField(max_length=50)
     specialization = models.CharField(max_length=50)
-    academic_year = models.CharField(max_length=50)
+    academic_year = models.CharField(max_length=50) 
     year_of_passing = models.IntegerField()
     profile_pic = models.ImageField(upload_to='uploads/student_images/',blank=True)
     
@@ -164,7 +164,30 @@ class QuizResult(models.Model):
     def __str__(self):
         return self.user.username
 
+class UserEnrollment(models.Model):
+    enrollment_no=models.CharField(max_length=50)
+    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    
+    def __str__(self):
+        return self.user.username
 
 class AddNotice(models.Model):
     notice=models.CharField(max_length=70, null=True, blank=True, default='Welcome to St. John')
     notice_date=models.DateTimeField(auto_created=True,auto_now=True)
+
+class Certificate(models.Model):
+    enrollment_no=models.CharField(max_length=40,unique=True)
+    name=models.CharField(max_length=100)
+    office_at=models.CharField(max_length=100)
+    period_of=models.CharField(max_length=100)
+    period_to=models.CharField(max_length=100)
+    place=models.CharField(max_length=100)
+    date=models.CharField(max_length=100)
+    center_id=models.CharField(max_length=100)
+    file=models.FileField(blank=True,null=True)
+    
+    def __str__(self):
+        return f"{self.enrollment_no} - {self.date}"
+
+    class Meta:
+        ordering=['-id']

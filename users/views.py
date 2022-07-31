@@ -1,15 +1,17 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect,get_object_or_404
 from django.contrib.auth import logout as auth_logout, login,authenticate
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from home.models import UserEnrollment
  
 def register(request):
     if request.method=='POST':
         username=request.POST.get('username')
         email=request.POST.get('email')
         password=request.POST.get('password')
+        enroll=request.POST.get('enroll')
         confirm_password=request.POST.get('confirm_password')
         if password == confirm_password:
             if User.objects.filter(username=username).exists():
@@ -24,6 +26,9 @@ def register(request):
             else:
                 entry=User.objects.create_user(username=username,email=email,password=password)
                 entry.save()
+                enrollment_obj=UserEnrollment.objects.create(enrollment_no=enroll,user=entry)
+                enrollment_obj.save()
+                
                 messages.success(request,'Your Account Has been created successfully!')
                 return HttpResponseRedirect(reverse('users:login'))
         else:

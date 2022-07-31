@@ -2,6 +2,7 @@ from django.contrib import admin
 from .models import *
 
 # Register your models here.
+admin.site.register(UserEnrollment)
 admin.site.register(AddNotice)
 admin.site.register(Contact)
 admin.site.register(QuizQuestion)
@@ -13,6 +14,7 @@ from django.contrib import admin
 
 admin.site.register(IdCard)
 admin.site.register(AdmitCard)
+admin.site.register(Certificate)
 
 # from import_export.admin import ImportExportModelAdmin
 
