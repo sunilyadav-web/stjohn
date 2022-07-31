@@ -1,27 +1,85 @@
-{% extends "../base.html" %}
-{% block title %} Admit Card {% endblock title %}
-{% block body %}
-
-{% load static %}
+{% extends "../base.html" %} {% block title %} Admit Card {% endblock title %}
+{% block body %} {% load static %}
 
 <div class="container">
     <div class="row d-flex justify-content-center">
-        <div class="col-11 col-md-6 py-3 pt-4 ">
+        <div class="col-11 col-md-6 py-3 pt-4">
             <h2 class="text-center title text-uppercase">Certifications</h2>
             <form action="" method="post">
                 {% csrf_token %}
                 <div class="mb-3">
                     <label for="enrollment-input" class="form-label">Enrollment No.</label>
-                    <input type="text" class="form-control" name="enrollment_no" id="enrollment-input"
-                        placeholder="Search Enrollment No.">
+                    <input type="text" class="form-control" name="search" id="enrollment-input"
+                        placeholder="Enrollment No or Center Id" />
                 </div>
                 <div class="d-grid">
-                    <input type="submit" class="btn" value="Submit"
-                        style="background-color: darkblue; color: white; cursor: pointer;padding: 10px;">
+                    <input type="submit" class="btn" value="Submit" style="
+              background-color: darkblue;
+              color: white;
+              cursor: pointer;
+              padding: 10px;
+            " />
                 </div>
             </form>
         </div>
-    
     </div>
 </div>
-{% endblock body %}
+
+{% if queryset %}
+<div class="container">
+    <div class="row">
+        <div class="col my-2">
+            {% for query in queryset %}
+            <div class="dropdown d-grid gap-2">
+                <button type="button" class="dropbtn btn btn-primary">
+                    {{query.name}}
+                </button>
+                <div class="dropdown-content col-12">
+                    <div class="container">
+                        <div class="row row-2 my-4 border border-secondary">
+                            <div class="col-12 border border-secondary">
+                                <b>{{query.center_id}}</b>
+                            </div>
+                            <div class="col-6 border border-secondary">Name</div>
+                            <div class="col-6 border border-secondary">{{query.name}}</div>
+                            <div class="col-6 border border-secondary">Office Address</div>
+                            <div class="col-6 border border-secondary">
+                                {{query.office_at}}
+                            </div>
+                            <div class="col-6 border border-secondary">Period of</div>
+                            <div class="col-6 border border-secondary">
+                                {{query.period_of}}
+                            </div>
+                            <div class="col-6 border border-secondary">Period to</div>
+                            <div class="col-6 border border-secondary">
+                                {{query.period_to}}
+                            </div>
+                            <div class="col-6 border border-secondary">Place</div>
+                            <div class="col-6 border border-secondary">{{query.place}}</div>
+                            <div class="col-6 border border-secondary">Date</div>
+                            <div class="col-6 border border-secondary">{{query.date}}</div>
+                            <div class="col-6 border border-secondary">Center Id</div>
+                            <div class="col-6 border border-secondary">
+                                <strong>{{query.center_id}}</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                {% if query.file %}
+                                <a class="btn btn-dark text-white" href="{{query.file.url}}" download="{{query.file.url}}"
+                                    role="button">Download</a>
+                                {% else %}
+                                <a class="btn btn-dark text-white" role="button">Certificate Not Uploaded</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %} {% endif %} {% endblock body %}

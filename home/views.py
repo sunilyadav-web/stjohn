@@ -9,6 +9,7 @@ from django.urls import reverse
 from django.template.loader import get_template
 from xhtml2pdf import pisa
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 
 def index(request):
     context={}
@@ -209,6 +210,22 @@ def certificate(request):
     context={}
     notice=AddNotice.objects.last()
     context['notice']=notice
+    if request.user.is_authenticated:
+        try:
+            user=UserEnrollment.objects.get(user=request.user)
+        except:
+            messages.error(request,'Your Certificate not found')
+        try:
+            certificate = Certificate.objects.filter(enrollment_no=user.enrollment_no)
+            context['queryset']=certificate
+        except Exception as e:
+            messages.warning(request, 'Certificate card not found !!')
+        
+    if request.method == 'POST':
+        searched=request.POST['search']
+        queryset=Certificate.objects.filter(Q(enrollment_no__icontains=searched) | Q(center_id__icontains=searched))
+        context['queryset']=queryset
+
     return render(request,'home/certificate.html',context)
 
 def admit_render_pdf_view(request,en_no):
