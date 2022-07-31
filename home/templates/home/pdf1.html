@@ -1,136 +1,6 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-{% load static %}
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{myvar.enrollment_no}}</title>
-    <!-- <style>
-        body{
-            height: 1000px;
-            font-family: Arial, Helvetica, sans-serif;
-        }
-        .bg-color{
-            background-color: #040467;
-        }
-        .title{
-            color: #040467;
-        }
-        .admit-header h2{
-            width: fit-content;
-            margin: 0px auto;
-            color: white;
-            padding: 1rem 3rem;
-            border-radius: 22px;
-        }
-        .user-info{
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 50%;
-            margin: 0rem auto;  
-        }
-        .user-info .user {
-            margin: 0 auto;
-            margin-top: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-        }
-        .user-info .user img{
-            height: 220px;
-        }
-        .info{
-            margin-left: 1.5rem;
-        }
-        .info h4{
-            font-size: 15px;
-        }
-    </style> -->
-</head>
 
-<body>
-
-
-    <!-- <header class="admit-header">
-        <h2 class="text-center bg-color text-white m-auto px-5 py-3 rounded">St. John INTERNATIONAL UNIVERSITY</h2>
-    </header>
-    <main>
-        <div class="user-info">
-            <div class="user">
-                <img src="{{myvar.image.path}}" alt="">
-                <img src="../../../static/images/Photo.jfif" alt="">
-                <div class="info">
-                <h4>Registration Number- 9IM10BCM89756</h4>
-                <h4>Name- Raja Krishan</h4>
-                <h4>Date- 10th August 2022</h4>
-                <h4>Time- 14:00 to 17:00 hrs</h4>
-                <h4>GATE Paper- Science</h4>
-                <h5>Exam Center(Exam Center(St. Aloysius International University No. 1507 11th Cross C-Block Mariyappanapalya  Rajajinagar, Bangalore - 560021.)</h5>
-            </div>
-        </div>
-        </div>
-    </main> -->
-    <center>
-    <table border="1" cellspacing="2">
-        <tr border="none"   >
-            <!-- <h1>St. John INTERNATIONAL UNIVERSITY</h1> -->
-           <td> <img src="{% static 'logos/stjohn-bgr.png' %}" alt="" height="120"></td>
-           <!-- <td> <img src="../../../static/logos/stjohn-bgr.png" alt="" height="120"></td> -->
-        </tr>
-        <tr>
-            <td>
-                <h2>Registration Number - </h2>
-            </td>
-            <td><b>156456456465</b></td>
-            <td>Helo</td>
-        </tr>
-        <tr>
-            <td>
-                <h2>Name - </h2>
-            </td>
-            <td><b>Suresh</b></td>
-        </tr>
-    </table>
-</center>
-</body>
-
-</html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <!DOCTYPE html>
-<html lang="en">
 <head>
 
     <meta charset="UTF-8">
@@ -138,52 +8,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{{myvar.enrollment_no}}</title>
     <style>
-    
-        body{
+       
+        body {
             height: 1000px;
             font-family: Arial, Helvetica, sans-serif;
         }
-        .title{
+
+        .title {
             background-color: darkblue;
             color: #fff;
-            padding: 1em;
             border-radius: 60px;
+            font-size: 28px;
+            padding-top: 22px;
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
         }
-        .photo{
-            width: 250px;
-            height: 250px;text-align: right;
-        }   
 
-       .row{ 
+        .student {
+            display: flex;
+        }
+
+        .photo {
+            width: 250px;
+            height: 250px;
+            text-align: right;
+        }
+
+        .row {
             display: flex;
             flex-direction: row;
         }
-        p{
-            margin-left: 100px;
+
+        p {
+            margin-left: 10px;
         }
     </style>
 </head>
+
 <body>
+
+    <div class="title" id="header_content">St. John INTERNATIONAL
+        UNIVERSITY</div>
+
+    <div class="student">
+        <img src="{{myvar.image.path}}" alt="" style="height:200px;">
+        <img src="../../../static/images/Photo.jfif" alt="" style="height:200px;">
+        <span class="studnet-detail">
+            <b>Registration Number- {{myvar.reg_no}}</b> <br>
+            <b>Name- {{myvar.name}}</b> <br>
+            <b>Date- {{myvar.date}}</b> <br>
+            <b>Time- {{myvar.time}}</b> <br>
+            <b>GATE Paper- {{myvar.paper}}</b> <br>
+            <p>Exam Center({{myvar.exam_centre}})</p>
+        </span>
+    </div>
+    <hr><br>
     <div>
-        <center> 
-        <h1 style="background-color: darkblue;padding:10px; color:white; font-size:28px;">St. John INTERNATIONAL UNIVERSITY</h1>
-    
-        <div style="display: flex; flex-direction: row;">
-          <img src="{{myvar.image.path}}" alt="" style="height:300px;">
-            <div style="margin-top: 20px;">
-                <h1>Registration Number- {{myvar.reg_no}}</h1>
-                <h1>Name- {{myvar.name}}</h1>
-                <h1>Date- {{myvar.date}}</h1>
-                <h1>Time- {{myvar.time}}</h1>
-                <h1>GATE Paper- {{myvar.paper}}</h1>
-                <h1>Exam Center({{myvar.exam_centre}})</h1>
-            </div>
-            </div></center>
-        <hr><br>
-            <div>
-                <center><h1>Following are the Instructions:</h1></center>
-                <p style="font-size: 14px;">{{myvar.instruction}}</p>
-            </div>
+        <center>
+            <h1>Following are the Instructions:</h1>
+        </center>
+        <div style="font-size: 14px; float:left;">
+
+            {{ myvar.instruction|safe }}
         </div>
+    </div>
 </body>
-</html> !-->
+
+</html>

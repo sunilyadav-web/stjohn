@@ -27,17 +27,18 @@
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <div>
                         <h3 class="title d-inline">Alumni Details</h3>
-                        <a href="{% url 'index:admit-pdf-view' admitcard.enrollment_no %}" target="_blank"><input
-                                type="submit" class="btn bg-primary text-white mb-1" value="Download Admit Card">
-                        </a>
+                        <a onclick="printCard()" href="{% url 'index:admit-pdf-view' admitcard.enrollment_no %}"
+                            target="_blank"><input type="submit" class="btn bg-primary text-white mb-1"
+                                value="Download Admit Card"></a>
+
                     </div>
                 </div>
-
-                <div class="admit-card">
-                    <div class="card-logo d-flex justify-content-center">
-                    <img style="height:20vh;" class="img-responsive d-block text-center"
-                        src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
-                    </div>
+                <div id="card" class="body">
+                    <div class="admit-card w " i>
+                        <div class="card-logo d-flex justify-content-center">
+                            <img style="height:20vh;" class="img-responsive d-block text-center"
+                                src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
+                        </div>
                         <div class="admit-card-user">
                             <img src="{{admitcard.image.url}}" alt="" height="270" class="me-4">
                             <div class="ms-3 ">
@@ -49,8 +50,10 @@
                                 <p> <b> Name :</b> {{admitcard.name}}</p>
                                 <p> <b> Exam Center :</b> {{admitcard.exam_centre}}</p>
                             </div>
-                            
+
                         </div>
+                    </div>
+
                 </div>
 
                 {% endif %}
@@ -58,4 +61,14 @@
         </div>
     </div>
 </div>
+<script>
+    function printCard() {
+        var backup = document.body.innerHTML
+        var AdmitcardHtml = document.getElementById('card').innerHTML
+
+        document.body.innerHTML = AdmitcardHtml
+        window.print()
+        document.body.innerHTML = backup
+    }
+</script>
 {% endblock body %}

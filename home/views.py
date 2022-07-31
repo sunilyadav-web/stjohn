@@ -20,9 +20,16 @@ def index(request):
     return render(request,'home/index.html',context)
 
 def about(request):
-    return render(request,'home/about.html')
+    context={}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
+    
+    return render(request,'home/about.html',context)
 
 def contact(request):
+    context={}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
     if request.method == 'POST':
         name=request.POST.get('name')
         email=request.POST.get('email')
@@ -33,14 +40,17 @@ def contact(request):
         contact_entry.save()
         messages.success(request,'THANKS FOR CONTACTING US! WE WILL REACH TO U ASAP')
         return HttpResponseRedirect(reverse('index:index'))
-    return render(request,'home/contact.html')
+    return render(request,'home/contact.html',context)
 
 
 def result(request):
-
+    context={}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
+    
     if request.method == 'POST':
+        
         enrollment_no = request.POST.get('enrollment_no')
-        # print(enrollment_no)
     
         try:
             profile = Profile.objects.get(enrollment_no=enrollment_no)
@@ -74,18 +84,21 @@ def result(request):
                 grade = "Third Class"
             else:
                 grade = "Fail"            
-            context = {'semesters':sem,'profile':profile,"total_max_marks": total_max_marks,"total_min_marks":total_min_marks,"total_obtained_marks":total_obtained_marks,'student_percentage':student_percentage,'grade':grade}
+            context = {'semesters':sem,'profile':profile,"total_max_marks": total_max_marks,"total_min_marks":total_min_marks,"total_obtained_marks":total_obtained_marks,'student_percentage':student_percentage,'grade':grade, 'notice':notice}
 
             return render(request, 'home/result.html', context)
         
         except Exception as e:
             messages.error(request, 'Please enter correct enrollment number!!')
 
-            return render(request, 'home/result.html')
+            return render(request, 'home/result.html', context)
     # messages.success(request, 'Your profile was updated.')
-    return render(request, 'home/result.html')
+    return render(request, 'home/result.html',context)
 
 def apply(request):
+    context={}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
     if request.method =='POST':
         apply = Apply()
         name = request.POST.get('name')
@@ -102,13 +115,20 @@ def apply(request):
         apply.applying_for = course
         apply.save()
         return HttpResponse("THANKS FOR APPLYING FOR COURSES <br> <p><a href='/'> HOME </a> </p>")
-    return render(request, 'home/apply.html')
+    return render(request, 'home/apply.html',context)
 
 def courses(request):
-    return render(request,'home/courses.html')
+    context={}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
+    return render(request,'home/courses.html',context)
 
 
 def admitcard(request):
+    context={}
+    notice=AddNotice.objects.last()
+    context['notice']=notice 
+    
     if request.method == 'POST':
         enrollment_no = request.POST.get('enrollment_no')
         print(enrollment_no)
@@ -120,48 +140,51 @@ def admitcard(request):
         except Exception as e:
             messages.warning(request, 'Please enter correct enrollment number!!')
             return render(request, 'home/admitcard.html')
-    return render(request,'home/admitcard.html')
+    return render(request,'home/admitcard.html',context)
 
 def certificate(request):
-    return render(request,'home/certificate.html')
+    context={}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
+    return render(request,'home/certificate.html',context)
 
 def admit_render_pdf_view(request,en_no):
     template_path = 'home/pdf1.html'
     queryset=get_object_or_404(AdmitCard,enrollment_no=en_no)
     context = {'myvar': queryset}
+    
     # Create a Django response object, and specify content_type as pdf
-    # response = HttpResponse(content_type='application/pdf')
+    response = HttpResponse(content_type='application/pdf')
     
     #if directly download
-    #response['Content-Disposition'] = 'attachment; filename="report.pdf"'
+    response['Content-Disposition'] = 'attachment; filename="report.pdf"'
 
     #if u want to open a proper pdf format
-    # response['Content-Disposition'] = 'filename="report.pdf"'
+    response['Content-Disposition'] = 'filename="report.pdf"'
 
     # find the template and render it.
     template = get_template(template_path)
     html = template.render(context)
 
+
     # create a pdf
-    # pisa_status = pisa.CreatePDF(
-    #    html, dest=response)
+    pisa_status = pisa.CreatePDF(
+       html, dest=response)
     
-    response = BytesIO()
-    # response['Content-Disposition'] = 'filename="report.pdf"'
+   
+    response['Content-Disposition'] = 'filename="report.pdf"'
     
-    pdf = pisa.pisaDocument(BytesIO(html.encode("UTF-8")), response)
-
     # if error then show some funny view
-    # if pisa_status.err:
-    #    return HttpResponse('We had some errors <pre>' + html + '</pre>')
-    # return response
-    if not pdf.err:
-            return HttpResponse(response.getvalue(), content_type='application/pdf')
-    else:
-            return HttpResponse("Error Rendering PDF", status=400) 
-
+    if pisa_status.err:
+       return HttpResponse('We had some errors <pre>' + html + '</pre>')
+    return response
+    
+    
 
 def idcard(request):
+    context={}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
     if request.method == 'POST':
         enrollment_no = request.POST.get('enrollment_no')
         print(enrollment_no)
@@ -173,7 +196,7 @@ def idcard(request):
         except Exception as e:
             messages.warning(request, 'Please enter correct enrollment number!!')
             return render(request, 'home/idcard.html')
-    return render(request,'home/idcard.html')
+    return render(request,'home/idcard.html',context)
 
 
 def idcard_render_pdf_view(request,en_no):
@@ -267,20 +290,27 @@ def quizResults(request):
 def health_science_courses(request):
     course_desc = Course_desc.objects.filter(branch="Health Science Courses")
     context = {'course_desc':course_desc}
-
+    notice=AddNotice.objects.last()
+    context['notice']=notice
     return render(request, 'home/health_science_courses.html',context)
 
 def engineering_courses(request):
     course_desc = Course_desc.objects.filter(branch="Engineering Courses")
     context = {'course_desc':course_desc}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
     return render(request, 'home/engineering_courses.html',context)
 
 def management_courses(request):
     course_desc = Course_desc.objects.filter(branch="Management Courses")
     context = {'course_desc':course_desc}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
     return render(request, 'home/management_courses.html',context)
 
 def certified_courses(request):
     course_desc = Course_desc.objects.filter(branch="Certified Courses")
     context = {'course_desc':course_desc}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
     return render(request, 'home/certified_courses.html',context)
