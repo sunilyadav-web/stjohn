@@ -190,3 +190,10 @@ class Certificate(models.Model):
 
     class Meta:
         ordering=['-id']
+        
+
+class ResultHighlightControl(models.Model):
+    display=models.BooleanField(default=False)
+
+    def __str__(self):
+        return f"RESULTSTYLEDISPLAY-{self.display}"

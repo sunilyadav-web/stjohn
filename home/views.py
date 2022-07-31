@@ -15,6 +15,8 @@ def index(request):
     context={}
     try:
         notice=AddNotice.objects.last()
+        rh=ResultHighlightControl.objects.get(id=1)
+        context['rh']=rh
         context['notice']=notice
     except Exception as e:
         print('Index Exception :',e)
@@ -23,6 +25,8 @@ def index(request):
 def about(request):
     context={}
     notice=AddNotice.objects.last()
+    rh=ResultHighlightControl.objects.get(id=1)
+    context['rh']=rh
     context['notice']=notice
     
     return render(request,'home/about.html',context)

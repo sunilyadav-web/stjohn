@@ -128,11 +128,16 @@
                                     </ul>
                                 </li> -->
 
+                                {% if rh.display != False %}
+                                <li class="nav-item border-end px-lg-4 px-2 py-2  glow_button">
 
+                                    <a class="nav-link " href="{% url 'index:result' %}">RESULT</a>
+                                </li>{% else %}
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
 
                                     <a class="nav-link" href="{% url 'index:result' %}">RESULT</a>
                                 </li>
+                                {% endif %}
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
                                     <a class="nav-link" href="{% url 'index:about' %}">ABOUT US</a>
                                 </li>
@@ -213,8 +218,11 @@
                     <a class="text-decoration-none  text-dark fw-semibold" href="{% url 'index:about' %}">About</a>
                     <a class="text-decoration-none  text-dark fw-semibold ps-lg-3 ps-md-2 ps-2"
                         href="{% url 'index:contact' %}">Contact us</a>
-                    <a class="text-decoration-none  text-dark fw-semibold ps-lg-3 ps-md-2 ps-2"
-                        href="{% url 'index:result' %}">Result</a>
+                        {% if rh.display %}
+                    <a class="text-decoration-none  text-dark fw-semibold ms-lg-3 ms-md-2 ms-2 px-2 rounded glow_button  " href="{% url 'index:result' %}">Result</a>
+                    {% else %}
+                    <a class="text-decoration-none  text-dark fw-semibold ms-lg-3 ms-md-2 ms-2 rounded" href="{% url 'index:result' %}">Result</a>
+                    {% endif %}
                     <a class="text-decoration-none text-dark  fw-semibold ps-lg-3 ps-md-2 ps-2"
                         href="{% url 'index:courses' %}">Programs</a>
                 </div>
