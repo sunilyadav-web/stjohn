@@ -21,3 +21,5 @@ class ExamControl(models.Model):
     start_exam=models.BooleanField(default=False)
     start_submission=models.BooleanField(default=False)
     end_exam=models.BooleanField(default=False)
+    
+    

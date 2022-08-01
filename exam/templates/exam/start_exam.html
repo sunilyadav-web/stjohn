@@ -4,6 +4,7 @@
 
 <div class="container py-3 my-3">
     <div class="row d-flex justify-content-center">
+        {% if not exam_obj %}
         <div class="col-11 col-md-6 py-3 pt-4 ">
             <h2 class="text-center title ">Get Your Exam Paper</h2>
             <form action="" method="post">
@@ -19,6 +20,25 @@
                 </div>
             </form>
         </div>
+        {% else %}
+
+        <div class="col-11 d-flex justify-content-center flex-column">
+
+            <h5 class="text-start title">{{exam_obj.exam_title}}</h5>
+            <div class="info-header text-start">
+                <h6 class="pe-2 ">Time : {{exam_obj.start_date_time | time }}</h6> <h6 class="">Exam Code : {{exam_obj.code}}</h6>
+            </div>
+            <div class="info text-start">
+                <h6>Enrollment No. - {{exam_obj.enrollment_no}}</h6>
+                <h6>Name  - {{exam_obj.student_name}}</h6>
+                <h6>Download Question Paper:  <a href="{{exam_obj.paper.url}}" download="{{exam_obj.paper.url}}" class="btn-dark btn mx-3">Download</a></h6>
+            </div>
+
+        </div>
+
+        {% endif %}
     </div>
+
+
 
 {% endblock body %}
