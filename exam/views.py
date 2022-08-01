@@ -21,6 +21,10 @@ def examStart(request):
     context={}
     ec=ExamControl.objects.latest('id')
     if ec.start_exam:
+        notice=AddNotice.objects.last()
+        rh=ResultHighlightControl.objects.get(id=1)
+        context['rh']=rh
+        context['notice']=notice
         if request.method == 'POST':
             enrollment_no=request.POST['enrollment_no']
             try:
@@ -46,7 +50,10 @@ def examSubmission(request):
         context['ec']=ec
         
         if ec.start_submission:
-            
+            notice=AddNotice.objects.last()
+            rh=ResultHighlightControl.objects.get(id=1)
+            context['rh']=rh
+            context['notice']=notice
             if request.method == 'POST':
                 enrollment_no=request.POST['enrollment_no']
                 exam_code=request.POST['exam_code']
