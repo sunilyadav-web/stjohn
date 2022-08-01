@@ -26,7 +26,11 @@ def examStart(request):
             try:
                 exam_obj=ConductExam.objects.get(enrollment_no=enrollment_no)
                 if exam_obj:
+                    start_time=exam_obj.start_date_time
+                    end_time=exam_obj.end_date_time
+                    time=end_time-start_time
                     context['exam_obj']=exam_obj
+                    context['time']=time
             except:
                 messages.error(request,'Enrollment Not found')
                 
@@ -59,13 +63,12 @@ def examSubmission(request):
                     return redirect('exam:home')      
                 
             return render(request,'exam/exam_submission.html',context)
-        else:
-            messages.warning(request,'Examination Submission will start soon!')
-            
-        if ec.end_exam:
+        elif ec.end_exam:
             messages.warning(request,"Exam submission time has been over You can't submit Now!")
             return redirect('/')
-
+        else:
+            messages.warning(request,'Examination Submission will start soon!')
+            return redirect('exam:home')
     except Exception as e:
         print('exam Submission Exception : ',e)
         messages.warning(request,'Something went wrong!')
