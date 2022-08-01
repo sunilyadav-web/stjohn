@@ -42,12 +42,8 @@
         <img style="height:25vh;" class="img-responsive d-block text-center" src="{% static 'logos/stjohn-bgr.png' %}"
           alt="St. John's University Logo">
       </div>
-
-      <div>
-        <div class="d-flex flex-column flex-md-row">
-          <div class="profile-image">
-            <img class="img-fluid" src="{{profile.profile_pic.url}}" alt="" height="250px" width="200px">
-          </div>
+        <div class="d-flex flex-column flex-sm-row ">
+            <img class="img-fluid" src="{{profile.profile_pic.url}}" alt="" width="200px">
           <div class="ms-4 mb-2">
             <p> <b> Enrollment No:</b> {{profile.enrollment_no}}</p>
             <p> <b> Name : </b> {{profile.name}}</p>
@@ -103,7 +99,7 @@
             </tbody>
           </table>
         </div>
-      </div>
+      
     </div>
 
   
