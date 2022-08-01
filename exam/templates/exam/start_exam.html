@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+<div class="container py-3 my-3">
+    <div class="row d-flex justify-content-center">
+        <div class="col-11 col-md-6 py-3 pt-4 ">
+            <h2 class="text-center title ">Get Your Exam Paper</h2>
+            <form action="" method="post">
+                {% csrf_token %}
+                <div class="inputs" style="margin-bottom:20px;">
+                    <label class="form-label" for="">Enrollment No.</label>
+                    <input type="text" class="form-control" name="enrollment_no" id=""
+                        placeholder="Search Enrollment No.">
+                </div>
+                <div class="d-grid">
+                    <input type="submit" class="btn" value="Submit"
+                        style="background-color: darkblue; color: white; cursor: pointer;padding: 10px;">
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock body %}

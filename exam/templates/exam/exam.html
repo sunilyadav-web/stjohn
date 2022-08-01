@@ -2,6 +2,17 @@
 
 {% block body %}
 
-Hello Exma Application
+
+<div class="container py-5 my-3">
+    <div class="row">
+        <h1 class="title text-center">Examination</h1>
+        <div class="col d-flex align-items-center justify-content-center mt-3">
+            <a class="btn btn-dark mx-3" href="{% url 'exam:exam-start' %}">Start Exam</a>
+            
+            <a class="btn btn-success mx-3" href="{% url 'exam:exam-submission' %}">Exam Submission</a>
+        </div>
+    </div>
+</div>
+
 
 {% endblock body %}
