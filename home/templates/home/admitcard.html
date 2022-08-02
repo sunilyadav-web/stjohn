@@ -1,5 +1,6 @@
 {% extends "../base.html" %}
 {% block title %} Admit Card {% endblock title %}
+
 {% block body %}
 
 {% load static %}
@@ -27,14 +28,13 @@
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <div>
                         <h3 class="title d-inline">Alumni Details</h3>
-                        <a onclick="printCard()" href="{% url 'index:admit-pdf-view' admitcard.enrollment_no %}"
-                            target="_blank"><input type="submit" class="btn bg-primary text-white mb-1"
-                                value="Download Admit Card"></a>
+                        <a onclick="printCard()" ><input type="submit" class="btn bg-primary text-white mb-1" value="Download Admit Card"></a>
 
                     </div>
                 </div>
                 <div id="card" class="body">
-                    <div class="admit-card w " i>
+                    <div class="mx-3">
+                    <div class="admit-card w " >
                         <div class="card-logo d-flex justify-content-center">
                             <img style="height:20vh;" class="img-responsive d-block text-center"
                                 src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
@@ -53,7 +53,12 @@
 
                         </div>
                     </div>
-
+                    <h4 class="text-center my-2 mb-3">Instructions to the Candidate</h4>
+                    <div class="note">
+                        
+                        {{admitcard.instruction | safe}}
+                    </div>
+                </div>
                 </div>
 
                 {% endif %}

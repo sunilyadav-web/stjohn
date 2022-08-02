@@ -2,6 +2,18 @@
 {% load static %}
 {% block title %} Id card {% endblock title %}
 
+{% block css %}
+
+<style>
+    @page {
+        size: A4 portrait;
+        margin: 0px;
+      }
+      
+</style>
+
+{% endblock css %}
+
 {% block body %}
 
 
@@ -23,88 +35,52 @@
             </form>
         </div>
     </div>
-    <!-- <div class="row d-flex justify-content-center">
-        <div class="col-11 col-md-6 py-3 pt-3">
-            {% if idcard %}
-            <h3>Alumni Details</h3>
-            <div>
-                <a href="{% url 'index:idcard-pdf-view' idcard.enrollment_no %}" target="_blank"><input type="submit"
-                        class="btn-contact" value="Download Id Card"
-                        style="background-color: darkblue; color: white; cursor: pointer;width:30%;padding: 10px;">
-
-            </div>
-
-            <center style="margin: 20px;">
-                <div id="block-main-logo" class="site-header__logo"><a href="index.html"><span
-                            class="show-for-sr">Return
-                            to St. John's University homepage</span><img class="medium-up"
-                            src="{% static 'logos/stjohn.png'%}" alt="St. John's University Logo"><img
-                            class="small-only" src="{% static 'logos/stjohn.png' %}"
-                            alt="St. John's University Logo"></a></div>
-            </center>
-            <div style="display:  flex;">
-                <img src="{{idcard.image.url}}" alt="" width="290" height="250">
-                <div style="margin:15px;">
-                    <p> <b> Course :</b>{{idcard.title}} </p>
-                    <p> <b> Name :</b> {{idcard.name}}</p>
-                    <p> <b> Enrollment No:</b> {{idcard.enrollment_no}}</p>
-                    <p> <b> Father's Name : </b> {{idcard.fathers_name}} </p>
-                    <p> <b> DOB : </b> {{idcard.dob}}</p>
-                    <p> <b> Address :</b> {{idcard.address}}</p>
-                    <p> <b> Issuing Year :</b> {{idcard.issuing_year}}</p>
-
-                    <p> <b> Validity Year :</b> {{idcard.validity_year}}</p>
-                </div>
-
-            </div>
-            {% endif %}
-        </div>
-    </div>  -->
-
 
     <div class="row">
         <div class="col-11 pt-3 d-flex flex-column justify-content-center align-items-center">
-            {% if idcard  %}
+            {% if idcard %}
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <div>
                     <h3 class="title d-inline">Alumni Details</h3>
-                    <a href="{% url 'index:idcard-pdf-view' idcard.enrollment_no %}" target="_blank"><input
-                            type="submit" class="btn bg-primary text-white mb-1" value="Download Admit Card">
-                    </a>
+                    <input type="button" class="btn bg-primary text-white mb-1" value="Download Admit Card" onclick="printCard()" >
                 </div>
             </div>
-
-            <div class="admit-card">
-                <div class="card-logo d-flex justify-content-center">
-                    <img style="height:20vh;" class="img-responsive d-block text-center"
-                        src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
-                </div>
-                <div class="admit-card-user">
-                    <img src="{{idcard.image.url}}" alt="" height="270" class="me-4">
-                    <div class="ms-3 ">
-                        {% comment %} <p> <b> Enrollment No:</b> {{admitcard.enrollment_no}}</p>
-                        <p> <b> Title : </b> {{idcard.title}}</p>
-                        <p> <b> Date : </b> {{admitcard.date}}</p>
-                        <p> <b> Time :</b> {{admitcard.time}}</p>
-                        <p> <b> Registration No :</b> {{admitcard.reg_no}}</p>
-                        <p> <b> Name :</b> {{admitcard.name}}</p>
-                        <p> <b> Exam Center :</b> {{admitcard.exam_centre}}</p> {% endcomment %}
-                        <p> <b> Course :</b>{{idcard.title}} </p>
-                        <p> <b> Name :</b> {{idcard.name}}</p>
-                        <p> <b> Enrollment No:</b> {{idcard.enrollment_no}}</p>
-                        <p> <b> Father's Name : </b> {{idcard.fathers_name}} </p>
-                        <p> <b> DOB : </b> {{idcard.dob}}</p>
-                        <p> <b> Address :</b> {{idcard.address}}</p>
-                        <p> <b> Issuing Year :</b> {{idcard.issuing_year}}</p>
+            <div id="card">
+                <div class="id-card mx-3">
+                    <div class="card-logo d-flex justify-content-center">
+                        <img style="height:20vh;" class="img-responsive d-block text-center"
+                            src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
                     </div>
+                    <div class="id-card-user">
+                        <img src="{{idcard.image.url}}" alt="" height="280" class="me-4">
+                        <div class="ms-3 id-card-info">
+                            <p> <b> Course :</b>{{idcard.title}} </p>
+                            <p> <b> Name :</b> {{idcard.name}}</p>
+                            <p> <b> Enrollment No:</b> {{idcard.enrollment_no}}</p>
+                            <p> <b> Father's Name : </b> {{idcard.fathers_name}} </p>
+                            <p> <b> DOB : </b> {{idcard.dob}}</p>
+                            <p> <b> Address :</b> {{idcard.address}}</p>
+                            <p> <b> Issuing Year :</b> {{idcard.issuing_year}}</p>
+                        </div>
 
+                    </div>
                 </div>
             </div>
-
             {% endif %}
         </div>
     </div>
 
 </div>
+
+<script>
+    function printCard() {
+        var backup = document.body.innerHTML
+        var AdmitcardHtml = document.getElementById('card').innerHTML
+
+        document.body.innerHTML = AdmitcardHtml
+        window.print()
+        document.body.innerHTML = backup
+    }
+</script>
 
 {% endblock body %}

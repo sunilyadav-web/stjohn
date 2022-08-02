@@ -163,6 +163,38 @@ outline: none!important;;
     align-items: center;
     margin-bottom: 1rem;
 }
+.note p{
+    font-size: 14px;
+}
+.note{
+    font-size: 14px;
+}
+
+/* =========Id Card Page======= */
+.id-card{
+    margin: 0 auto;
+    border: 3px solid rgb(4 4 103);
+    border-radius: 4px;
+    background-color: white;
+    padding: 0rem 3.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    padding-bottom: 0.5rem;
+}
+
+.id-card-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    text-transform: uppercase;
+    font-family: serif;
+    font-weight:bold ;
+    font-size: 18px;
+}
+.id-card-user p{
+    margin-bottom: 9px;
+}
 
 /* ==========COURSES PAGE============ */
 
