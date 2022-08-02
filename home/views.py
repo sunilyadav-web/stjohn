@@ -53,54 +53,7 @@ def result(request):
     notice=AddNotice.objects.last()
     context['notice']=notice
 
-    # getting Result for authenticated user
-
-    if request.user.is_authenticated:
-        
-        try:
-            user=UserEnrollment.objects.get(user=request.user)
-        except:
-            messages.error(request,'Your result not found')
-        try:
-            profile = Profile.objects.get(enrollment_no=user.enrollment_no)
-
-            sem = Semester.objects.filter(profile=profile)
-            # print(sem)
-            
-            # TOTAL CALCULATION
-            total_max_marks = 0
-            total_min_marks = 0
-            total_obtained_marks = 0
-            
-            for semester in sem:
-                total_max_marks = semester.max_marks + total_max_marks
-                total_min_marks = semester.min_marks + total_min_marks
-                total_obtained_marks = semester.obtained + total_obtained_marks
-
-                print(f"{semester}", semester.min_marks)
-                print(f"{semester}", semester.max_marks)
-
-            percentage = (total_obtained_marks/total_max_marks)*100
-            student_percentage = round(percentage,2)
-
-            # FINDING GRADE FOR STUDENT
-            grade = "Fail"
-            if student_percentage > 60: 
-                grade = "First Class"
-            elif student_percentage > 50:
-                grade = "Second Class" 
-            elif student_percentage > 35 and student_percentage < 50:
-                grade = "Third Class"
-            else:
-                grade = "Fail"            
-            context = {'semesters':sem,'profile':profile,"total_max_marks": total_max_marks,"total_min_marks":total_min_marks,"total_obtained_marks":total_obtained_marks,'student_percentage':student_percentage,'grade':grade, 'notice':notice}
-
-            return render(request, 'home/result.html', context)
-        
-        except Exception as e:
-            messages.error(request, 'Your Result Not found!!')
-
-            return render(request, 'home/result.html', context)
+    
 
     if request.method == 'POST':
         
@@ -143,9 +96,56 @@ def result(request):
             return render(request, 'home/result.html', context)
         
         except Exception as e:
-            messages.error(request, 'Please enter correct enrollment number!!')
+            print('Result Exception : ',e)
+            messages.error(request, 'Please Enter Correct Enrollment Number !!')
+            return render(request, 'home/result.html', context)
+        # getting Result for authenticated user
+    if request.user.is_authenticated:
+        
+        try:
+            user=UserEnrollment.objects.get(user=request.user)
+        except:
+            messages.error(request,'Your Enrollment Number not found!')
+            return render(request, 'home/result.html', context)
+        try:
+            profile = Profile.objects.get(enrollment_no=user.enrollment_no)
+
+            sem = Semester.objects.filter(profile=profile)
+            # print(sem)
+            
+            # TOTAL CALCULATION
+            total_max_marks = 0
+            total_min_marks = 0
+            total_obtained_marks = 0
+            
+            for semester in sem:
+                total_max_marks = semester.max_marks + total_max_marks
+                total_min_marks = semester.min_marks + total_min_marks
+                total_obtained_marks = semester.obtained + total_obtained_marks
+
+                print(f"{semester}", semester.min_marks)
+                print(f"{semester}", semester.max_marks)
+
+            percentage = (total_obtained_marks/total_max_marks)*100
+            student_percentage = round(percentage,2)
+
+            # FINDING GRADE FOR STUDENT
+            grade = "Fail"
+            if student_percentage > 60: 
+                grade = "First Class"
+            elif student_percentage > 50:
+                grade = "Second Class" 
+            elif student_percentage > 35 and student_percentage < 50:
+                grade = "Third Class"
+            else:
+                grade = "Fail"            
+            context = {'semesters':sem,'profile':profile,"total_max_marks": total_max_marks,"total_min_marks":total_min_marks,"total_obtained_marks":total_obtained_marks,'student_percentage':student_percentage,'grade':grade, 'notice':notice}
 
             return render(request, 'home/result.html', context)
+        
+        except Exception as e:
+            messages.warning(request, 'Your Result Not Genrated Yet !!')
+
     # messages.success(request, 'Your profile was updated.')
     return render(request, 'home/result.html',context)
 
@@ -183,19 +183,7 @@ def admitcard(request):
     notice=AddNotice.objects.last()
     context['notice']=notice 
 
-    # getting admitcard for authenticated user
     
-    if request.user.is_authenticated:
-        try:
-            user=UserEnrollment.objects.get(user=request.user)
-        except:
-            messages.error(request,'Your result not found')
-        try:
-            admitcard = AdmitCard.objects.get(enrollment_no=user.enrollment_no)
-            return render(request,'home/admitcard.html',{'admitcard':admitcard})
-
-        except Exception as e:
-            messages.warning(request, 'Admit card not found !!')
         
     if request.method == 'POST':
         enrollment_no = request.POST.get('enrollment_no')
@@ -206,29 +194,52 @@ def admitcard(request):
             return render(request,'home/admitcard.html',{'admitcard':admitcard})
 
         except Exception as e:
-            messages.warning(request, 'Please enter correct enrollment number!!')
-            return render(request, 'home/admitcard.html')
+            messages.warning(request, 'Please Enter Correct Enrollment Number!!')
+            return render(request, 'home/admitcard.html',context)
+        
+    # getting admitcard for authenticated user
+    if request.user.is_authenticated:
+        try:
+            user=UserEnrollment.objects.get(user=request.user)
+        except:
+            messages.warning(request,'Your Enrollment not found!')
+            return render(request, 'home/admitcard.html',context)
+        try:
+            admitcard = AdmitCard.objects.get(enrollment_no=user.enrollment_no)
+            return render(request,'home/admitcard.html',{'admitcard':admitcard})
+
+        except Exception as e:
+            messages.warning(request, 'Your Admit Card Not Generated Yet!!')
     return render(request,'home/admitcard.html',context)
 
 def certificate(request):
     context={}
     notice=AddNotice.objects.last()
     context['notice']=notice
-    if request.user.is_authenticated:
-        try:
-            user=UserEnrollment.objects.get(user=request.user)
-        except:
-            messages.error(request,'Your Certificate not found')
-        try:
-            certificate = Certificate.objects.filter(enrollment_no=user.enrollment_no)
-            context['queryset']=certificate
-        except Exception as e:
-            messages.warning(request, 'Certificate card not found !!')
+    
         
     if request.method == 'POST':
         searched=request.POST['search']
         queryset=Certificate.objects.filter(Q(enrollment_no__icontains=searched) | Q(center_id__icontains=searched))
         context['queryset']=queryset
+        if not queryset:
+            messages.warning(request,'Please Enter Correct Enrollment Either Cenrter Id!')
+        return render(request,'home/certificate.html',context)
+
+        # getting certificate for login user
+    if request.user.is_authenticated:
+        try:
+            user=UserEnrollment.objects.get(user=request.user)
+        except:
+            messages.warning(request,'Your Enrollment Not Found!')
+            return render(request,'home/certificate.html',context)
+        try:
+            certificate = Certificate.objects.filter(enrollment_no=user.enrollment_no)
+            context['queryset']=certificate
+            if not certificate:
+                messages.warning(request, 'Certificate Not Generated Yet !!')             
+        except Exception as e:
+            print('Certificate Exception : ',e)
 
     return render(request,'home/certificate.html',context)
 
@@ -270,19 +281,7 @@ def idcard(request):
     notice=AddNotice.objects.last()
     context['notice']=notice
 
-    # getting id card for authenticated user
-    if request.user.is_authenticated:
-        try:
-            user=UserEnrollment.objects.get(user=request.user)
-        except:
-            messages.error(request,'Your result not found')
-            
-        try:
-            idcard= IdCard.objects.get(enrollment_no=user.enrollment_no)
-            return render(request,'home/idcard.html',{'idcard':idcard})
-
-        except Exception as e:
-            messages.warning(request, 'Id card not found !!')
+    
 
     if request.method == 'POST':
         enrollment_no = request.POST.get('enrollment_no')
@@ -293,8 +292,23 @@ def idcard(request):
             return render(request,'home/idcard.html',{'idcard':idcard})
 
         except Exception as e:
-            messages.warning(request, 'Please enter correct enrollment number!!')
-            return render(request, 'home/idcard.html')
+            messages.warning(request, 'Please Enter correct Enrollment number!!')
+            return render(request, 'home/idcard.html',context)
+
+        # getting id card for authenticated user
+    if request.user.is_authenticated:
+        try:
+            user=UserEnrollment.objects.get(user=request.user)
+        except:
+            messages.error(request,'Your Your Enrollment Number not found')
+            return render(request,'home/idcard.html',context)
+        try:
+            idcard= IdCard.objects.get(enrollment_no=user.enrollment_no)
+            return render(request,'home/idcard.html',{'idcard':idcard})
+
+        except Exception as e:
+            messages.warning(request, 'Your Id Card Not Generated Yet !!')
+            
     return render(request,'home/idcard.html',context)
 
 

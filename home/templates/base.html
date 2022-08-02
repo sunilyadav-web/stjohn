@@ -128,7 +128,7 @@
                                     </ul>
                                 </li> -->
 
-                                {% if rh.display != False %}
+                                {% if rh.display %}
                                 <li class="nav-item border-end px-lg-4 px-2 py-2  glow_button">
 
                                     <a class="nav-link " href="{% url 'index:result' %}">RESULT</a>
@@ -150,20 +150,24 @@
                                         STUDENT
                                     </a>
                                     <ul class="dropdown-menu bg-primary" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="{% url 'index:quiz' %}">QUIZ</a></li>
-                                        {% if request.user.is_authenticated %}
-                                        <li><a class="dropdown-item" href="{% url 'index:quiz-results' %}">QUIZ RESULTS</a></li>
-                                        {% endif %}
-                                        <li><a class="dropdown-item" href="{% url 'index:idcard' %}">ID CARDS</a></li>
-                                        <li>
-                                            <a class="dropdown-item" href="{% url 'index:certificate' %}">CERTIFICATE</a>
-                                        </li>
+                                        
+                                        <li><a class="dropdown-item" href="{% url 'index:idcard' %}">ID CARD</a></li>
                                         <li>
                                             <a class="dropdown-item" href="{% url 'index:admitcard' %}">ADMIT CARD</a>
                                         </li>
                                         <li>
+                                            <a class="dropdown-item" href="{% url 'index:certificate' %}">CERTIFICATE</a>
+                                        </li>
+                                        
+                                        <li>
                                             <a class="dropdown-item" href="{% url 'exam:home' %}">EXAM</a>
                                         </li>
+
+                                        <li><a class="dropdown-item" href="{% url 'index:quiz' %}">QUIZ</a></li>
+                                        {% if request.user.is_authenticated %}
+                                        <li><a class="dropdown-item" href="{% url 'index:quiz-results' %}">QUIZ RESULTS</a></li>
+                                        {% endif %}
+
                                         {% if request.user.is_authenticated %}
                                         <li><a class="dropdown-item" href="{% url 'users:logout' %}">LOGOUT</a></li>
                                         {% else %}
