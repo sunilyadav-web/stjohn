@@ -149,9 +149,10 @@ LOGIN_URL='users:login'
 
 STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS =[
-    STATIC_ROOT
-]
+# STATIC_ROOT = '/static/'
+# STATICFILES_DIRS =[
+#     STATIC_ROOT
+# ]
 
 
 MEDIA_URL = '/Data/'
