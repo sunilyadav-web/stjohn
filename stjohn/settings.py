@@ -31,7 +31,7 @@ with open(os.path.join(BASE_DIR,'secret_key.txt')) as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['stjohnedu.in','www.stjohnedu.in','localhost','127.0.0.1']
 
@@ -147,11 +147,11 @@ LOGIN_URL='users:login'
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 
-# STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 STATIC_URL = '/static/'
-# STATICFILES_DIRS =[
-#     STATIC_ROOT
-# ]
+STATICFILES_DIRS =[
+    STATIC_ROOT
+]
 
 
 MEDIA_URL = '/Data/'
@@ -170,6 +170,6 @@ EMAIL_USE_SSL= False
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-STATICFILES_DIRS = [
-     BASE_DIR / "static"
- ]
+# STATICFILES_DIRS = [
+#      BASE_DIR / "static"
+#  ]
