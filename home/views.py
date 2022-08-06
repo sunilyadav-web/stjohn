@@ -206,7 +206,7 @@ def admitcard(request):
             return render(request, 'home/admitcard.html',context)
         try:
             admitcard = AdmitCard.objects.get(enrollment_no=user.enrollment_no)
-            return render(request,'home/admitcard.html',{'admitcard':admitcard})
+            context['admitcard']=admitcard
 
         except Exception as e:
             messages.warning(request, 'Your Admit Card Not Generated Yet!!')
@@ -304,7 +304,7 @@ def idcard(request):
             return render(request,'home/idcard.html',context)
         try:
             idcard= IdCard.objects.get(enrollment_no=user.enrollment_no)
-            return render(request,'home/idcard.html',{'idcard':idcard})
+            context['idcard']=idcard
 
         except Exception as e:
             messages.warning(request, 'Your Id Card Not Generated Yet !!')

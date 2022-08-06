@@ -37,22 +37,23 @@
     </div>
 
     <div class="row">
+        {% if idcard %}
         <div class="col-11 pt-3 d-flex flex-column justify-content-center align-items-center">
-            {% if idcard %}
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <div>
                     <h3 class="title d-inline">Alumni Details</h3>
                     <input type="button" class="btn bg-primary text-white mb-1" value="Download Admit Card" onclick="printCard()" >
                 </div>
             </div>
-            <div id="card">
-                <div class="id-card mx-3">
+        </div>
+            <div id="card" class="col-12">
+                <div class="id-card m-auto mt-3">
                     <div class="card-logo d-flex justify-content-center">
                         <img style="height:20vh;" class="img-responsive d-block text-center"
                             src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
                     </div>
                     <div class="id-card-user">
-                        <img src="{{idcard.image.url}}" alt="" height="280" class="me-4">
+                        <img src="{{idcard.image.url}}" alt="" height="280vh" class="me-4">
                         <div class="ms-3 id-card-info">
                             <p> <b> Course :</b>{{idcard.title}} </p>
                             <p> <b> Name :</b> {{idcard.name}}</p>
