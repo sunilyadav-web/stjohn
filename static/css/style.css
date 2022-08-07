@@ -29,7 +29,8 @@ body {
 
 .logo-img {
   height: 150px;
-  padding-left: 5.2rem;
+  /* padding-left: 5.2rem; */
+padding-right: 3.6rem;
 }
 
 .bg-primary {
