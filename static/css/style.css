@@ -173,25 +173,53 @@ padding-right: 3.6rem;
   border: 3px solid rgb(4 4 103);
   border-radius: 4px;
   background-color: white;
-  padding: 0rem 3.5rem;
   margin-top: 1.5rem;
-  margin-bottom: 2rem;
-  padding-bottom: 0.5rem;
-  width: fit-content;
-}
-
-.id-card-user {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-  text-transform: uppercase;
+  width:370px;
   font-family: serif;
+  text-transform: uppercase;
+}
+.coursename{
+  align-items: center;
+  display: flex;
+}
+.university{
+  display: flex;
+  align-items: center;
+  
+}
+.university h6{
+  font-size: 19px !important;
+}
+.id-card-user {
   font-weight: bold;
   font-size: 18px;
 }
 .id-card-user p {
-  margin-bottom: 9px;
+  margin-bottom: 1px;
+}
+.issuing-year p{
+line-height: 20px;
+}
+.brand-logo{
+  height: 60px;
+
+}
+
+.signature{
+  display: flex;
+  flex-direction: column;
+  color: #000000!important;
+  justify-content: center;
+}
+.sign{
+  height: 16px;
+}
+.signature span {
+  font-size: 10px;
+}
+.signature small{
+  font-size: 7px;
+  margin-left: 8px;
 }
 
 /* ==========COURSES PAGE============ */
