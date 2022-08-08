@@ -121,7 +121,7 @@ class AdmitCard(models.Model):
 
 class IdCard(models.Model):
     enrollment_no=models.CharField(max_length=40,unique=True)
-    course_name=models.CharField(max_length=150 , null=True , blank=True)
+    course_name=models.CharField(max_length=150 , default='')
     image=models.ImageField(upload_to='idcard',blank=True)
     name=models.CharField(max_length=100)
     fathers_name=models.CharField(max_length=100)
