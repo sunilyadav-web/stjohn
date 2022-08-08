@@ -33,7 +33,7 @@ with open(os.path.join(BASE_DIR,'secret_key.txt')) as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['stjohnedu.in','www.stjohnedu.in','localhost','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
