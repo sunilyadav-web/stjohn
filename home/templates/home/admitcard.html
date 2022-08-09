@@ -22,18 +22,20 @@
                 </div>
             </form>
         </div>
+        {% if admitcard %}
         <div class="row">
             <div class="col-11 pt-3 d-flex flex-column justify-content-center align-items-center">
-                {% if admitcard %}
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <div>
                         <h3 class="title d-inline">Alumni Details</h3>
                         <a onclick="printCard()"><input type="submit" class="btn bg-primary text-white mb-1"
                                 value="Download Admit Card"></a>
-
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="mess text-center my-1 mt-2 d-block d-lg-none">
+            <span class="text-danger ">*For download Admit Card use Desktop Computer to get proper format*</span>
         </div>
         <div id="card" class="body">
             <div class="m-auto" style="width:800px;">
@@ -63,8 +65,11 @@
                 </div>
             </div>
         </div>
+        
 
+       
         {% endif %}
+        
 
 
     </div>
@@ -77,6 +82,7 @@
         document.body.innerHTML = AdmitcardHtml
         window.print()
         document.body.innerHTML = backup
+        
     }
 </script>
 {% endblock body %}

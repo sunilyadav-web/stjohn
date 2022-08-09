@@ -4,9 +4,12 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from home.models import UserEnrollment
+from home.models import AddNotice, UserEnrollment
  
 def register(request):
+    context={}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
     if request.method=='POST':
         username=request.POST.get('username')
         email=request.POST.get('email')
@@ -16,13 +19,13 @@ def register(request):
         if password == confirm_password:
             if User.objects.filter(username=username).exists():
                 messages.info(request,'Username Taken')
-                return render(request,'users/signup.html')
+                return render(request,'users/signup.html',context)
             elif len(password) <8:
                 messages.info(request,'ATLEAST 8 CHARACTER PASSWORD NEEDED')
-                return render(request,'users/signup.html')
+                return render(request,'users/signup.html',context)
             elif User.objects.filter(email=email).exists():
                 messages.info(request,'Email Taken')
-                return render(request,'users/signup.html')
+                return render(request,'users/signup.html',context)
             else:
                 entry=User.objects.create_user(username=username,email=email,password=password)
                 entry.save()
@@ -33,9 +36,12 @@ def register(request):
                 return HttpResponseRedirect(reverse('users:login'))
         else:
             messages.info(request,'Password and confirm password didn"t match')
-    return render(request,'users/signup.html')
+    return render(request,'users/signup.html',context)
 
 def signup(request):
+    context={}
+    notice=AddNotice.objects.last()
+    context['notice']=notice
     try:
         if request.user.is_authenticated:
             messages.error(request,'Something went wrong!')
@@ -56,7 +62,7 @@ def signup(request):
             
     except Exception as e:
         print('Login Exception',e)
-    return render(request,'users/login.html')
+    return render(request,'users/login.html',context)
 def logout(request):
     auth_logout(request)
     messages.success(request,'Logout Successful')

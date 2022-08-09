@@ -28,7 +28,26 @@
 </div>
 
 <div class="container-fluid mt-3">
-  <h2 class="text-center title">WELCOME TO ST. JOHN INTERNATIONAL UNIVERSITY</h2>
+  
+  <div class="row d-flex justify-content-center g-0">
+    <div class="col-lg-5 c-12 bg-white box-shadow p-5">
+        <h3 class="mb-4">Take the Next Step</h3>
+        <div class="border border-dark "></div>
+        <p class="mt-4 fw-semibold" style="font-size: large;">Take the next step in your journey and find out how a degree from St. John's University will transform your life.</p>
+        <div class="d-grid">
+          <a href="{% url 'index:courses' %}" class="btn bg-primary text-white">Courses</a>
+        </div>
+    </div>
+    <div class="col-lg-5 c-12 bg-white box-shadow  p-5">
+      <h3 class="mb-4">Admission</h3>
+      <div class="border border-dark "></div>
+      <p class="mt-4 fw-semibold" style="font-size: large;">St. John's offers many courses. Learn more about admission requirements and scholarship opportunities.</p>
+      <div class="d-grid">
+        <a href="{% url 'index:apply' %}" class="btn bg-primary text-white" >Apply</a>
+      </div>
+    </div>
+  </div>
+  <h2 class="text-center title mt-4">WELCOME TO ST. JOHN INTERNATIONAL UNIVERSITY</h2>
   <div class="row d-flex justify-content-around my-3 g-0">
     <div class="col-lg-5 c-12 pt-2 home d-flex justify-content-center d-none d-lg-block">
       <img class="rounded m-auto" src="{% static 'images/students.jpg' %}" alt="">

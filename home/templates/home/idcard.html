@@ -8,17 +8,17 @@
     @page {
         size: A4 portrait;
         margin: 0px;
-      
-          }
-          @media print {
-            body {
-                -webkit-print-color-adjust: exact;
-                -moz-print-color-adjust: exact;
-                -ms-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
+
+    }
+
+    @media print {
+        body {
+            -webkit-print-color-adjust: exact;
+            -moz-print-color-adjust: exact;
+            -ms-print-color-adjust: exact;
+            print-color-adjust: exact;
         }
-      
+    }
 </style>
 
 {% endblock css %}
@@ -51,47 +51,56 @@
             <div class="d-flex flex-column justify-content-center align-items-center ">
                 <div>
                     <h3 class="title d-inline">Alumni Details</h3>
-                    <input type="button" class="btn bg-primary text-white mb-1" value="Download Admit Card" onclick="printCard()" >
+                    <input type="button" class="btn bg-primary text-white mb-1" value="Download Admit Card"
+                        onclick="printCard()">
                 </div>
             </div>
         </div>
-            <div id="card" class="col-12">
-                <div class="id-card m-auto mt-3">
-                    <div class="card-logo d-flex justify-content-center">
-                        <img style="height:60px;" class="img-responsive d-block text-center py-1 pe-2"
-                            src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
-                    </div>
-                    <div class="w-100 bg-primary text-white pt-1 mb-2 px-1 coursename text-upper"><h6>{{idcard.course_name}}</h6></div>
-                    <div class="id-card-user mt-2 title">
-                        <img src="{{idcard.image.url}}" alt="" width="120vw" class="m-auto border border-2   border-dark d-block">
-                        <h5 class="text-center fw-bold my-1">{{idcard.name}}</h5>
-                        <div class="ms-3 id-card-info px-2">
-                            <p> <b> Enrollment No:</b> {{idcard.enrollment_no}}</p>
-                            <p> <b> Father's Name : </b> {{idcard.fathers_name}} </p>
-                            <p> <b> DOB : </b> {{idcard.dob}}</p>
-                            <p> <b> Address :</b> {{idcard.address}}</p>
-                            <div class="d-flex align-items">
-                                <div class="issuing-year">
-                                    <p > <b> Issuing Year :</b> {{idcard.issuing_year}}</p>
-                                    <p> <b> Validity Year :</b> {{idcard.validity_year}}</p>
-                                </div>
-                                <img src="{% static 'logos/sji.png' %}" class="brand-logo " alt="">
-                                <div class="signature">
-                                    <img src="{% static 'logos/Sign.png' %}" alt="" class="sign">
-                                    <span>SIGNATURE</span> 
-                                    <small>OF Issuing</small> 
-                                    <small>AUTHORITY</small>
-                                </div>
+        <div class="mess text-center my-1 mt-2 d-block d-lg-none">
+            <span class="text-danger ">*For download IdCard use Desktop Computer to get proper format*</span>
+        </div>
+        <div id="card" class="col-12">
+            <div class="id-card m-auto mt-3">
+                <div class="card-logo d-flex justify-content-center">
+                    <img style="height:60px;" class="img-responsive d-block text-center py-1 pe-2"
+                        src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
+                </div>
+                <div class="w-100 bg-primary text-white pt-1 mb-2 px-1 coursename text-upper">
+                    <h6>{{idcard.course_name}}</h6>
+                </div>
+                <div class="id-card-user mt-2 title">
+                    <img src="{{idcard.image.url}}" alt="" width="120vw"
+                        class="m-auto border border-2   border-dark d-block">
+                    <h5 class="text-center fw-bold my-1">{{idcard.name}}</h5>
+                    <div class="ms-3 id-card-info px-2">
+                        <p> <b> Enrollment No:</b> {{idcard.enrollment_no}}</p>
+                        <p> <b> Father's Name : </b> {{idcard.fathers_name}} </p>
+                        <p> <b> DOB : </b> {{idcard.dob}}</p>
+                        <p> <b> Address :</b> {{idcard.address}}</p>
+                        <div class="d-flex align-items">
+                            <div class="issuing-year">
+                                <p> <b> Issuing Year :</b> {{idcard.issuing_year}}</p>
+                                <p> <b> Validity Year :</b> {{idcard.validity_year}}</p>
+                            </div>
+                            <img src="{% static 'logos/sji.png' %}" class="brand-logo " alt="">
+                            <div class="signature">
+                                <img src="{% static 'logos/Sign.png' %}" alt="" class="sign">
+                                <span>SIGNATURE</span>
+                                <small>OF Issuing</small>
+                                <small>AUTHORITY</small>
                             </div>
                         </div>
-
                     </div>
-                    <div class="w-100 bg-primary text-white pt-1  px-1 university text-upper"><h6 class="text-center">ST. JOHN INTERNATIONAL UNIVERSITY</h6></div>
+
+                </div>
+                <div class="w-100 bg-primary text-white pt-1  px-1 university text-upper">
+                    <h6 class="text-center">ST. JOHN INTERNATIONAL UNIVERSITY</h6>
                 </div>
             </div>
-            {% endif %}
         </div>
+        {% endif %}
     </div>
+</div>
 
 </div>
 
