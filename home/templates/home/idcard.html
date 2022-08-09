@@ -26,7 +26,7 @@
 {% block body %}
 
 
-<div class="container">
+<div class="container px-0">
     <div class="row d-flex justify-content-center">
         <div class="col-11 col-md-6 py-3 pt-4 ">
             <h2 class="text-center title text-uppercase">Id Card</h2>
@@ -45,10 +45,10 @@
         </div>
     </div>
 
-    <div class="row">
+    <div class="row gx-0">
         {% if idcard %}
         <div class="col-11 pt-3 d-flex flex-column justify-content-center align-items-center">
-            <div class="d-flex flex-column justify-content-center align-items-center">
+            <div class="d-flex flex-column justify-content-center align-items-center ">
                 <div>
                     <h3 class="title d-inline">Alumni Details</h3>
                     <input type="button" class="btn bg-primary text-white mb-1" value="Download Admit Card" onclick="printCard()" >
@@ -58,7 +58,7 @@
             <div id="card" class="col-12">
                 <div class="id-card m-auto mt-3">
                     <div class="card-logo d-flex justify-content-center">
-                        <img style="height:85px;" class="img-responsive d-block text-center"
+                        <img style="height:60px;" class="img-responsive d-block text-center py-1 pe-2"
                             src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
                     </div>
                     <div class="w-100 bg-primary text-white pt-1 mb-2 px-1 coursename text-upper"><h6>{{idcard.course_name}}</h6></div>

@@ -28,42 +28,45 @@
                 <div class="d-flex flex-column justify-content-center align-items-center">
                     <div>
                         <h3 class="title d-inline">Alumni Details</h3>
-                        <a onclick="printCard()" ><input type="submit" class="btn bg-primary text-white mb-1" value="Download Admit Card"></a>
+                        <a onclick="printCard()"><input type="submit" class="btn bg-primary text-white mb-1"
+                                value="Download Admit Card"></a>
 
                     </div>
                 </div>
-                <div id="card" class="body">
-                    <div class="mx-3">
-                    <div class="admit-card w " >
-                        <div class="card-logo d-flex justify-content-center">
-                            <img style="height:20vh;" class="img-responsive d-block text-center"
-                                src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
-                        </div>
-                        <div class="admit-card-user">
-                            <img src="{{admitcard.image.url}}" alt="" height="270" class="me-4">
-                            <div class="ms-3 ">
-                                <p> <b> Enrollment No:</b> {{admitcard.enrollment_no}}</p>
-                                <p> <b> Title : </b> {{admitcard.title}}</p>
-                                <p> <b> Date : </b> {{admitcard.date}}</p>
-                                <p> <b> Time :</b> {{admitcard.time}}</p>
-                                <p> <b> Registration No :</b> {{admitcard.reg_no}}</p>
-                                <p> <b> Name :</b> {{admitcard.name}}</p>
-                                <p> <b> Exam Center :</b> {{admitcard.exam_centre}}</p>
-                            </div>
-
-                        </div>
-                    </div>
-                    <h4 class="text-center my-2 mb-3">Instructions to the Candidate</h4>
-                    <div class="note">
-                        
-                        {{admitcard.instruction | safe}}
-                    </div>
-                </div>
-                </div>
-
-                {% endif %}
             </div>
         </div>
+        <div id="card" class="body">
+            <div class="m-auto" style="width:800px;">
+                <div class="admit-card w ">
+                    <div class="card-logo d-flex justify-content-center py-2 mb-1">
+                        <img style="height:9vh;" class="img-responsive d-block text-center"
+                            src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
+                    </div>
+                    <div class="admit-card-user">
+                        <img src="{{admitcard.image.url}}" alt="" height="200" class="me-4">
+                        <div class="ms-3 ">
+                            <p> <b> Enrollment No:</b> {{admitcard.enrollment_no}}</p>
+                            <p> <b> Title : </b> {{admitcard.title}}</p>
+                            <p> <b> Date : </b> {{admitcard.date}}</p>
+                            <p> <b> Time :</b> {{admitcard.time}}</p>
+                            <p> <b> Registration No :</b> {{admitcard.reg_no}}</p>
+                            <p> <b> Name :</b> {{admitcard.name}}</p>
+                            <p class="address"> <b> Exam Center :</b> {{admitcard.exam_centre}}</p>
+                        </div>
+
+                    </div>
+                </div>
+                <h4 class="text-center my-2 mb-3">Instructions to the Candidate</h4>
+                <div class="note">
+
+                    {{admitcard.instruction | safe}}
+                </div>
+            </div>
+        </div>
+
+        {% endif %}
+
+
     </div>
 </div>
 <script>

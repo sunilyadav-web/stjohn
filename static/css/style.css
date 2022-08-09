@@ -17,19 +17,14 @@ body {
 }
 /* ======Header Logo Section====== */
 .logo-div {
-  height: 150px;
+  height: 19vh;
   background-color: #e4ece43d;
 }
 
-.logo-bg {
-  width: 100%;
-  height: 200px;
-  z-index: 0;
-}
+
 
 .logo-img {
-  height: 150px;
-  /* padding-left: 5.2rem; */
+  height: 12vh;
 padding-right: 3.6rem;
 }
 
@@ -144,11 +139,10 @@ padding-right: 3.6rem;
   width: fit-content;
 }
 .admit-card {
-  margin: 0 auto;
   border: 3px solid rgb(4 4 103);
   border-radius: 4px;
   background-color: white;
-  padding: 0rem 5rem;
+  padding: 0rem 1rem;
   margin-top: 1.5rem;
   margin-bottom: 2rem;
   padding-bottom: 0.5rem;
@@ -159,6 +153,13 @@ padding-right: 3.6rem;
   justify-content: center;
   align-items: center;
   margin-bottom: 1rem;
+}
+.admit-card-user div p{
+  line-height: 12px;
+}
+.address{
+  line-height: 16px !important  ;
+
 }
 .note p {
   font-size: 14px;
@@ -174,7 +175,7 @@ padding-right: 3.6rem;
   border-radius: 4px;
   background-color: white;
   margin-top: 1.5rem;
-  width:370px;
+  width:360px;
   font-family: serif;
   text-transform: uppercase;
 }
@@ -187,9 +188,7 @@ padding-right: 3.6rem;
   align-items: center;
   
 }
-.university h6{
-  font-size: 19px !important;
-}
+
 .id-card-user {
   font-weight: bold;
   font-size: 18px;
