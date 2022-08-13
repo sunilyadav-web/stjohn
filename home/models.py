@@ -202,6 +202,8 @@ class ResultHighlightControl(models.Model):
 
 class SiteDown(models.Model):
     display=models.BooleanField(default=False)
+    add_link=models.CharField(max_length=100,null=True,blank=True)
+    caption=models.CharField(max_length=20,null=True,blank=True)
 
 
     def __str__(self):

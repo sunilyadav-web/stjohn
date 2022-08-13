@@ -8,8 +8,20 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
 <style type="text/css">
+  .link a{
+    text-decoration: underline;
+    cursor: pointer !important;
+    color: blue;  }
+    .link{
+      border: none !important;
+      margin: 1rem;
+      box-shadow: none;
+      outline: none !important;
+      text-align: center;
+    }
       .text-9xl{
       font-size: 14rem;
+      
       }
       @media(max-width: 645px){
       .text-9xl{
@@ -37,6 +49,7 @@
       padding-left: 1rem;
       padding-right: 1rem;
       }
+
       }
     </style>
 </head>
@@ -44,12 +57,18 @@
 <div class="bg-gradient-to-r from-purple-300 to-blue-200">
 <div class="w-9/12 m-auto py-16 min-h-screen flex items-center justify-center">
 <div class="bg-white shadow overflow-hidden sm:rounded-lg pb-8">
+  <!-- <div class="link ">
+    <a href="{{link}}"><button class="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-orange-500 text-white font-semibold px-6 py-3 rounded-md mr-6">
+      {{caption}}
+      </button>
+      </a></div> -->
 <div class="border-t border-gray-200 text-center pt-8">
+  
 <h1 class="text-9xl font-bold text-purple-400">404</h1>
 <h1 class="text-6xl font-medium py-8">oops! Page not found</h1>
 <p class="text-2xl pb-8 px-12 font-medium">Oops! The page you are looking for does not exist. It might have been moved or deleted.</p>
-<a href="{% url 'index:index' %}"><button class="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-orange-500 text-white font-semibold px-6 py-3 rounded-md mr-6">
-HOME
+<a href="{{link}}"><button class="bg-gradient-to-r from-purple-400 to-blue-500 hover:from-pink-500 hover:to-orange-500 text-white font-semibold px-6 py-3 rounded-md mr-6">
+{{caption}}
 </button>
 </a>
 <a href="{% url 'index:contact' %}">

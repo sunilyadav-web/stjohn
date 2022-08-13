@@ -22,7 +22,9 @@ def index(request):
         sd=SiteDown.objects.get(id=1)
         context['site-down']=sd
         if sd.display == True:
-            return render(request,'error404.html')
+            caption=sd.caption
+            link=sd.add_link
+            return render(request,'error404.html',{'link':link,'caption':caption})
     except Exception as e:
         print('Index Exception :',e)
     return render(request,'home/index.html',context)
