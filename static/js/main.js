@@ -1,6 +1,6 @@
 let width = screen.width;
 
-if (width <= 537)
+if (width <= 992)
 {
 let navitems=document.querySelectorAll('.nav-item')
 let firstNav=document.getElementById('first-nav')

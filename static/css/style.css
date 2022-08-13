@@ -43,6 +43,7 @@ padding-right: 3.6rem;
 }
 .nav-link {
   color: white !important;
+  font-size: 15px;
 }
 .nav-border {
   border-bottom: 5px solid #8188f7;
