@@ -19,6 +19,10 @@ def index(request):
         rh=ResultHighlightControl.objects.get(id=1)
         context['rh']=rh
         context['notice']=notice
+        sd=SiteDown.objects.get(id=1)
+        context['site-down']=sd
+        if sd.display == True:
+            return render(request,'error404.html')
     except Exception as e:
         print('Index Exception :',e)
     return render(request,'home/index.html',context)
