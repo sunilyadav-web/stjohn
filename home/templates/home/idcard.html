@@ -19,6 +19,12 @@
             print-color-adjust: exact;
         }
     }
+
+    .watermark{
+        left: 32%;
+        top: 14%;
+        opacity: 14%;
+    }
 </style>
 
 {% endblock css %}
@@ -65,18 +71,19 @@
                     <img style="height:60px;" class="img-responsive d-block text-center py-1 pe-2"
                         src="{% static 'logos/stjohn-bgr.png' %}" alt="St. John's University Logo">
                 </div>
-                <div class="w-100 bg-primary text-white pt-1 mb-2 px-1 coursename text-upper">
+                <div class="w-100 bg-primary text-white pt-2 px-1 coursename text-uppercase">
                     <h6>{{idcard.course_name}}</h6>
                 </div>
-                <div class="id-card-user mt-2 title">
-                    <img src="{{idcard.image.url}}" alt="" width="120vw"
-                        class="m-auto border border-2   border-dark d-block">
-                    <h5 class="text-center fw-bold my-1">{{idcard.name}}</h5>
-                    <div class="ms-3 id-card-info px-2">
-                        <p> <b> Enrollment No:</b> {{idcard.enrollment_no}}</p>
-                        <p> <b> Father's Name : </b> {{idcard.fathers_name}} </p>
+                <div class="bg-primary avtar py-3">
+                    <img src="{{idcard.image.url}}" alt="" width="120" height="120" class="m-auto rounded-circle d-block ">
+                    <h5 class="text-center  my-1 text-light">{{idcard.name | title}}</h5>
+                </div>
+                <div class="id-card-user mt-3 title">
+                    <!-- <div class="ms-3 id-card-info px-2 row"> -->
+                    <!-- {% comment %} <p> <b> Enrollment No:</b> {{idcard.enrollment_no}}</p>
+                        <p> <b> Father's Name : </b> {{idcard.fathers_name | title}} </p>
                         <p> <b> DOB : </b> {{idcard.dob}}</p>
-                        <p> <b> Address :</b> {{idcard.address}}</p>
+                        <p> <b> Address :</b> {{idcard.address | title}}</p>
                         <div class="d-flex align-items">
                             <div class="issuing-year">
                                 <p> <b> Issuing Year :</b> {{idcard.issuing_year}}</p>
@@ -89,13 +96,62 @@
                                 <small>OF Issuing</small>
                                 <small>AUTHORITY</small>
                             </div>
+                        </div> {% endcomment %} -->
+                    <!-- </div> -->
+                    <div class="row fs-6 g-0 text-dark position-relative">
+                        <div class="col-5 text-start ps-3  property-name">
+                            <span>Enrollment No:</span>
+                        </div>
+                        <div class="col-7">
+                            <span>{{idcard.enrollment_no}}</span>
+                        </div>
+
+                        <div class="col-6 text-start ps-3 property-name">
+                                <span>Father's Name :</span>
+                        </div>
+                        <div class="col-6">
+                           <span>{{idcard.fathers_name | title}}</span> 
+                        </div>
+                        <div class="col-6 text-start ps-3 property-name">
+                            <span>DOB :</span>
+                        </div>
+                        <div class="col-6">
+                            <span>{{idcard.dob}}</span>
+                        </div>
+                        <div class="col-6 text-start ps-3 property-name">
+                            <span>Address :</span>
+                        </div>
+                        <div class="col-7" style="width:65.333333% !important;">
+                            <span>{{idcard.address | title}}</span>
+                        </div>
+                        <div class="col-6 text-start ps-3 property-name">
+                                <span>Issuing Year :</span>
+                        </div>
+                        <div class="col-6">
+                            <span>{{idcard.issuing_year}}</span>
+                        </div>
+                        <div class="col-6 text-start ps-3 property-name">
+                            <span>Validity Year :</span>
+                        </div>
+                        <div class="col-6">{{idcard.validity_year}}</div>
+                        <div class="col-12 d-flex justify-content-around mb-2">
+                            <img src="{% static 'logos/sji.png' %}" class="brand-logo" alt="">
+                            <div class="signature">
+                                <img src="{% static 'logos/Sign.png' %}" alt="" class="sign">
+                                <span>SIGNATURE</span>
+                                <small>OF Issuing</small>
+                                <small>AUTHORITY</small>
+                            </div>
+                        </div>
+                        <div class="position-absolute watermark">
+                            <img src="{% static 'logos/sji.png' %}" height="100" width="100" alt="">
                         </div>
                     </div>
 
                 </div>
-                <div class="w-100 bg-primary text-white pt-1  px-1 university text-upper">
+                {% comment %} <div class="w-100 bg-primary text-white pt-1  px-1 university text-upper">
                     <h6 class="text-center">ST. JOHN INTERNATIONAL UNIVERSITY</h6>
-                </div>
+                </div> {% endcomment %}
             </div>
         </div>
         {% endif %}

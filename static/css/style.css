@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+
 * {
   scroll-behavior: smooth;
 }
@@ -186,25 +188,36 @@ padding-right: 3.6rem;
   background-color: white;
   margin-top: 1.5rem;
   width:360px;
-  font-family: serif;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
+  font-family: 'Slabo 27px', serif;
+  font-size: 16px;
 }
 .coursename{
   align-items: center;
   display: flex;
+  justify-content: center;
+}
+.coursename h6{
+  font-size: 1.1rem;
+}
+.avtar{
+  /* border-end-end-radius: 150px; */
 }
 .university{
   display: flex;
   align-items: center;
   
 }
-
+.property-name{
+  width: 33.666667% !important;
+}
 .id-card-user {
   font-weight: bold;
   font-size: 18px;
 }
 .id-card-user p {
   margin-bottom: 1px;
+
 }
 .issuing-year p{
 line-height: 20px;
@@ -219,6 +232,7 @@ line-height: 20px;
   flex-direction: column;
   color: #000000!important;
   justify-content: center;
+  width: fit-content;
 }
 .sign{
   height: 16px;
