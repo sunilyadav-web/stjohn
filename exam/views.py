@@ -46,14 +46,15 @@ def examStart(request):
 def examSubmission(request):
     context={}
     try:
+        notice=AddNotice.objects.last()
+        rh=ResultHighlightControl.objects.get(id=1)
         ec=ExamControl.objects.latest('id')
+        context['rh']=rh
+        context['notice']=notice
         context['ec']=ec
         
         if ec.start_submission:
-            notice=AddNotice.objects.last()
-            rh=ResultHighlightControl.objects.get(id=1)
-            context['rh']=rh
-            context['notice']=notice
+            
             if request.method == 'POST':
                 enrollment_no=request.POST['enrollment_no']
                 exam_code=request.POST['exam_code']
@@ -74,8 +75,8 @@ def examSubmission(request):
             messages.warning(request,"Exam submission time has been over You can't submit Now!")
             return redirect('/')
         else:
-            messages.warning(request,'Examination Submission will start soon!')
-            return redirect('exam:home')
+            # messages.warning(request,'Examination Submission will start soon!')
+            return render(request,'exam/exam_submission.html',context)
     except Exception as e:
         print('exam Submission Exception : ',e)
         messages.warning(request,'Something went wrong!')
