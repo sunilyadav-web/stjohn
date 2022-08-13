@@ -8,9 +8,9 @@
             <form action="" method="post">
                 {% csrf_token %}
                 <div class="mb-3">
-                    <label for="enrollment-input" class="form-label">Enrollment No.</label>
-                    <input type="text" class="form-control" name="search" id="enrollment-input"
-                        placeholder="Enrollment No or Center Id" />
+                    <label for="enrollment-input" class="form-label">Center Id</label>
+                    <input type="text" class="form-control" name="center_id" id="enrollment-input"
+                        placeholder="Enter Center Id" />
                 </div>
                 <div class="d-grid">
                     <input type="submit" class="btn" value="Submit" style="
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
         </div>
     </div>
 </div>

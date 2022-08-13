@@ -1,0 +1,28 @@
+{% extends "../base.html" %}
+{% block css %}{% endblock css %}
+{% block title %} Vision & Mission {% endblock title %}
+{% load static %}
+{% block body %}
+
+<div class="container py-5 mt-3">
+    <div class="row">
+        <div class="col-12 col-sm-10">
+            <!-- Paragraph 1 Start -->
+            <div class="para-1 vision">
+                <img class=" rounded" src="{% static 'images/vision.jpg' %}" alt="">
+            </div>
+            <div class="para-2 mt-5">
+                <h3 class="title">Vision</h3>
+                   <p>
+                    To facilitate and promote studies and research in emerging areas of higher education with focus on new frontiers of Science, Engineering, Technology, Architecture & Management, leading to evolution of enlightened technocrats, innovators, scientists, leaders and entrepreneurs who will contribute to national growth in particular and to international community as a whole.
+                   </p> 
+            </div>
+            <div class="para-3">
+                <h3 class="title">Mission</h3>
+                <p>Universitys’ mission is to achieve excellence in education and research in main and related areas of Applied Science, Engineering, Technology, Architecture, Management and Healthcare and to occupy a place of pride amongst the most eminent organizations of the world.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock body %}

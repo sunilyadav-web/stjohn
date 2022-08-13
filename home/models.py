@@ -198,3 +198,11 @@ class ResultHighlightControl(models.Model):
 
     def __str__(self):
         return f"RESULTSTYLEDISPLAY-{self.display}"
+
+
+class SiteDown(models.Model):
+    display=models.BooleanField(default=False)
+
+
+    def __str__(self):
+        return f"SITEDOWN-{self.display}"

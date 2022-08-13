@@ -20,6 +20,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/vnd.microsoft.icon" />
 
+    <!-- ===========FavIcon======== -->
+
+    {% comment %}<link rel="apple-touch-icon" sizes="180x180" href="{% static 'apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon-16x16.png' %}">
+    <link rel="manifest" href="{% static 'site.webmanifest' %}"> {% endcomment %}
 
    
     <!-- ==========BOOTSTRAP CDN LINK============= -->
@@ -107,26 +113,11 @@
                                     <a class="nav-link" href="/">HOME</a>
                                 </li>
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
-                                    <a class="nav-link" href="{% url 'index:apply' %}">APPLY</a>
+                                    <a class="nav-link" href="{% url 'index:apply' %}">APPLY COURSES</a>
                                 </li>
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
                                     <a class="nav-link" href="{% url 'index:courses' %}">PROGRAMS</a>
                                 </li>
-
-                                <!-- Coursed Dropdown -->
-
-                                <!-- <li class="nav-item dropdown border-end px-lg-4 px-2 py-2">
-                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        COURSES
-                                    </a>
-                                    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                        <li><a class="dropdown-item" href="{% url 'index:health_science_courses' %}">HEALTH SCIENCE COURSES</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'index:engineering_courses' %}">ENGINEERING COURSES</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'index:management_courses' %}">MANAGEMENT COURSES</a></li>
-                                        <li><a class="dropdown-item" href="{% url 'index:certified_courses' %}">CERTIFIED COURSES</a></li>
-                                    </ul>
-                                </li> -->
 
                                 {% if rh.display %}
                                 <li class="nav-item border-end px-lg-4 px-2 py-2  glow_button">
@@ -144,6 +135,24 @@
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
                                     <a class="nav-link" href="{% url 'index:contact' %}">CONTACT US</a>
                                 </li>
+                                <!-- Exam Dropdown -->
+                                <li class="nav-item dropdown border-end px-lg-4 px-2 py-2 ">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        EXAM
+                                    </a>
+                                    <ul class="dropdown-menu bg-primary" aria-labelledby="navbarDropdownMenuLink">
+
+                                        <li><a class="dropdown-item" href="{% url 'index:quiz' %}">QUIZ</a></li>
+                                        {% if request.user.is_authenticated %}
+                                        <li><a class="dropdown-item" href="{% url 'index:quiz-results' %}">QUIZ RESULTS</a></li>
+                                        {% endif %}
+                                        <li>
+                                            <a class="dropdown-item" href="{% url 'exam:home' %}">EXAM</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
                                 <li class="nav-item dropdown border-end px-lg-4 px-2 py-2 ">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -158,15 +167,6 @@
                                         <li>
                                             <a class="dropdown-item" href="{% url 'index:certificate' %}">CERTIFICATE</a>
                                         </li>
-                                        
-                                        <li>
-                                            <a class="dropdown-item" href="{% url 'exam:home' %}">EXAM</a>
-                                        </li>
-
-                                        <li><a class="dropdown-item" href="{% url 'index:quiz' %}">QUIZ</a></li>
-                                        {% if request.user.is_authenticated %}
-                                        <li><a class="dropdown-item" href="{% url 'index:quiz-results' %}">QUIZ RESULTS</a></li>
-                                        {% endif %}
 
                                         {% if request.user.is_authenticated %}
                                         <li><a class="dropdown-item" href="{% url 'users:logout' %}">LOGOUT</a></li>
@@ -175,7 +175,10 @@
                                         {% endif %}
                                     </ul>
                                 </li>
-                            </ul>
+                            </ul></li>
+
+                                
+
                             </ul>
 
                         </div>
@@ -213,8 +216,8 @@
                 </p>
             </div>
 
-            <div class="col-4 d-none d-lg-block">
-                <div class="footer-logo ms-5">
+            <div class="col-4 d-none d-lg-flex justify-content-center align-items-center">
+                <div class="footer-logo d-flex justify-content-center me-1">
                     <img class="img-fluid" src="{% static 'logos/sji.png' %}" alt="">
                 </div>
             </div>

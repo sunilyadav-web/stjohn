@@ -11,6 +11,7 @@ from xhtml2pdf import pisa
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 
+
 def index(request):
     context={}
     try:
@@ -30,6 +31,15 @@ def about(request):
     context['notice']=notice
     
     return render(request,'home/about.html',context)
+
+def aboutVision(request):
+    context={}
+    notice=AddNotice.objects.last()
+    rh=ResultHighlightControl.objects.get(id=1)
+    context['rh']=rh
+    context['notice']=notice
+    
+    return render(request,'home/about_vision.html',context)
 
 def contact(request):
     context={}
@@ -219,27 +229,27 @@ def certificate(request):
     
         
     if request.method == 'POST':
-        searched=request.POST['search']
-        queryset=Certificate.objects.filter(Q(enrollment_no__icontains=searched) | Q(center_id__icontains=searched))
+        searched=request.POST['center_id']
+        queryset=Certificate.objects.filter(center_id=searched)
         context['queryset']=queryset
         if not queryset:
             messages.warning(request,'Please Enter Correct Enrollment Either Cenrter Id!')
-        return render(request,'home/certificate.html',context)
+        # return render(request,'home/certificate.html',context)
 
-        # getting certificate for login user
-    if request.user.is_authenticated:
-        try:
-            user=UserEnrollment.objects.get(user=request.user)
-        except:
-            messages.warning(request,'Your Enrollment Not Found!')
-            return render(request,'home/certificate.html',context)
-        try:
-            certificate = Certificate.objects.filter(enrollment_no=user.enrollment_no)
-            context['queryset']=certificate
-            if not certificate:
-                messages.warning(request, 'Certificate Not Generated Yet !!')             
-        except Exception as e:
-            print('Certificate Exception : ',e)
+      # getting certificate for login user
+    # if request.user.is_authenticated:
+    #     try:
+    #         user=UserEnrollment.objects.get(user=request.user)
+    #     except:
+    #         messages.warning(request,'Your Enrollment Not Found!')
+    #         return render(request,'home/certificate.html',context)
+    #     try:
+    #         certificate = Certificate.objects.filter(enrollment_no=user.enrollment_no)
+    #         context['queryset']=certificate
+    #         if not certificate:
+    #             messages.warning(request, 'Certificate Not Generated Yet !!')             
+    #     except Exception as e:
+    #         print('Certificate Exception : ',e)
 
     return render(request,'home/certificate.html',context)
 

@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 from pathlib import Path
 import os
 from django.contrib import messages
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +22,7 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
 }
 
-# over right Messages Tags
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -31,9 +33,10 @@ with open(os.path.join(BASE_DIR,'secret_key.txt')) as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['www.stjohnedu.in','stjohnedu.in','localhost','18.235.136.116']
+# ALLOWED_HOSTS = ['www.stjohnedu.in','stjohnedu.in','localhost','18.235.136.116','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -144,15 +147,14 @@ LOGIN_REDIRECT_URL='index:index'
 LOGIN_URL='users:login'
 
 # HTTP settings
-SESSION_COOKIES_SECURE=True
-CSRF_COOKIE_SECURE=True
-SECURE_SSL_REDIRECT=True
+# SESSION_COOKIES_SECURE=True
+# CSRF_COOKIE_SECURE=True
+# SECURE_SSL_REDIRECT=True
 
 # HSTS Settings
-SECURE_HSTS_SECONDS = 31536000 #1 Year
-SECURE_HSTS_PRELOAD = True
-SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-
+##SECURE_HSTS_SECONDS = 31536000 #1 Year
+# SECURE_HSTS_PRELOAD = True
+# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/

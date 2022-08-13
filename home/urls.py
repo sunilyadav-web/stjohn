@@ -6,6 +6,7 @@ app_name='index'
 urlpatterns = [
     path('',views.index,name='index'),   
     path('about/',views.about,name='about'),
+    path('vision-and-mission/',views.aboutVision,name='vision-and-mission'),
     path('result/', views.result,name='result'),
     path('apply/', views.apply,name='apply'),
     path('admitcard/',views.admitcard,name='admitcard'),

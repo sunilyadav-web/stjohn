@@ -65,6 +65,7 @@ class ProfileAdmin(admin.ModelAdmin):
 admin.site.register(Profile,ProfileAdmin)
 
 admin.site.register(ResultHighlightControl)
+admin.site.register(SiteDown)
 
 
 # @admin.register(Profile)

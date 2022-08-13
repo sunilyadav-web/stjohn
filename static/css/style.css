@@ -122,6 +122,15 @@ padding-right: 3.6rem;
   transform: scale(1.1);
 }
 
+/* =======About Page========= */
+.vision
+{
+  height: 300px;
+}
+.vision img{
+  width: auto;
+  height: 300px;
+}
 /* ======CONTACT PAGE======== */
 
 .form-label {
