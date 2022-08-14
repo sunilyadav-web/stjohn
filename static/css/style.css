@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Slabo+27px&display=swap');
+
 
 * {
   scroll-behavior: smooth;
@@ -13,7 +13,7 @@ body {
 .title {
   color: rgb(4 4 103);
 }
-.d-focus{
+.d-focus {
   box-shadow: none !important;
   outline: none;
 }
@@ -23,18 +23,16 @@ body {
   background-color: #e4ece43d;
 }
 
-
-
 .logo-img {
   height: 12vh;
-padding-right: 3.6rem;
+  padding-right: 3.6rem;
 }
 
 .bg-primary {
   background-color: rgb(4 4 103) !important;
 }
-.navbar-toggler{
-  border: none!important;
+.navbar-toggler {
+  border: none !important;
   color: white;
 }
 .dropdown-menu li a {
@@ -126,11 +124,10 @@ padding-right: 3.6rem;
 }
 
 /* =======About Page========= */
-.vision
-{
+.vision {
   height: 300px;
 }
-.vision img{
+.vision img {
   width: auto;
   height: 300px;
 }
@@ -166,12 +163,11 @@ padding-right: 3.6rem;
   align-items: center;
   margin-bottom: 1rem;
 }
-.admit-card-user div p{
+.admit-card-user div p {
   line-height: 12px;
 }
-.address{
+.address {
   line-height: 16px !important  ;
-
 }
 .note p {
   font-size: 14px;
@@ -182,67 +178,98 @@ padding-right: 3.6rem;
 
 /* =========Id Card Page======= */
 
-.id-card {
-  border: 3px solid rgb(4 4 103);
-  border-radius: 4px;
-  background-color: white;
-  margin-top: 1.5rem;
-  width:360px;
-  /* text-transform: uppercase; */
-  font-family: 'Slabo 27px', serif;
+.rcontainer {
+  height: 65vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  box-sizing: border-box;
+  flex-direction: row;
+  border-color: black;
+  border-radius: 2;
+}
+.font {
+  height: 375px;
+  width: 225px;
+  position: relative;
+  border-radius: 10px;
+  background-image: url("./ecardbgfinal.png");
+  background-size: 225px 375px;
+  background-repeat: no-repeat;
+}
+.companyname {
+  color: White;
+  padding: 10px;
+  font-size: 25px;
+}
+
+.tab {
+  padding-right: 20px;
+}
+
+.top img {
+  height: 68px;
+  width: 68px;
+  background-color: #e6ebe0;
+  border-radius: 57px;
+  position: absolute;
+  align-items: center;
+  top: 70px;
+  left: 78px;
+  object-fit: content;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+.ename {
+  position: absolute;
+  top: 141px;
+  left: 75px;
+  color: white;
   font-size: 16px;
-}
-.coursename{
-  align-items: center;
-  display: flex;
-  justify-content: center;
-}
-.coursename h6{
-  font-size: 1.1rem;
-}
-.avtar{
-  /* border-end-end-radius: 150px; */
-}
-.university{
-  display: flex;
-  align-items: center;
-  
-}
-.property-name{
-  width: 33.666667% !important;
-}
-.id-card-user {
-  font-weight: bold;
-  font-size: 18px;
-}
-.id-card-user p {
-  margin-bottom: 1px;
-
-}
-.issuing-year p{
-line-height: 20px;
-}
-.brand-logo{
-  height: 60px;
-
+  text-align: center;
 }
 
-.signature{
-  display: flex;
-  flex-direction: column;
-  color: #000000!important;
-  justify-content: center;
-  width: fit-content;
-}
-.sign{
-  height: 16px;
-}
-.signature span {
+.cname {
+  position: absolute;
+  top: 165px;
+  left: 22px;
+  color: white;
   font-size: 10px;
+  text-align: center;
 }
-.signature small{
-  font-size: 7px;
-  margin-left: 8px;
+
+.edetails {
+  position: absolute;
+  top: 195px;
+  text-transform: capitalize;
+  font-size: 11px;
+  text-emphasis: spacing;
+  margin-left: 10px;
+  color: #e6ebe0;
+}
+.edetails p{
+  margin-bottom: -4px;
+}
+.signature {
+  position: absolute;
+  top: 153px;
+  left: 160px;
+  color: rgb(21, 21, 117);
+  text-align: right;
+}
+.signature img {
+  height: 70px;
+  width: 70px;
+  position: absolute;
+  align-items: center;
+  top: 150px;
+  left: -15px;
+}
+
+.edetails .Address {
+  width: 94%;
+  text-align: justify;
 }
 
 /* ==========COURSES PAGE============ */
@@ -285,7 +312,7 @@ line-height: 20px;
 }
 
 @media screen and (max-width: 960px) {
-  .logo-div{
+  .logo-div {
     height: 13vh;
   }
   .logo-img {
@@ -359,6 +386,6 @@ line-height: 20px;
     padding: 0.5rem 0;
   }
   .nav-item:hover {
-    background-color: #040467 !important;}
-  
+    background-color: #040467 !important;
+  }
 }
