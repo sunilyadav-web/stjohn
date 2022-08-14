@@ -195,7 +195,7 @@ body {
   width: 225px;
   position: relative;
   border-radius: 10px;
-  /* background-image: url("./ecardbgfinal.png"); */
+  background-image: url("./ecardbgfinal.png");
   background-size: 225px 375px;
   background-repeat: no-repeat;
 }

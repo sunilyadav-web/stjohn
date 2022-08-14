@@ -35,7 +35,7 @@ with open(os.path.join(BASE_DIR,'secret_key.txt')) as f:
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['www.stjohnedu.in','stjohnedu.in','localhost','18.235.136.116','127.0.0.1']
+ALLOWED_HOSTS = ['www.stjohnedu.in','stjohnedu.in','18.235.136.116']
 # ALLOWED_HOSTS = ['*']
 
 
@@ -161,7 +161,7 @@ SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 # STATICFILES_DIRS =[
 #     STATIC_ROOT
 # ]
