@@ -239,7 +239,7 @@ def certificate(request):
         queryset=Certificate.objects.filter(center_id=searched)
         context['queryset']=queryset
         if not queryset:
-            messages.warning(request,'Please Enter Correct Enrollment Either Cenrter Id!')
+            messages.warning(request,'Please Enter Correct Cenrter Id!')
         # return render(request,'home/certificate.html',context)
 
       # getting certificate for login user
