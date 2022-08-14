@@ -29,7 +29,7 @@
 
 <div class="container-fluid mt-3">
   
-  <div class="row d-flex justify-content-center g-0">
+  <div class="row d-flex justify-content-center g-0" id="next-step">
     <div class="col-lg-5 c-12 bg-white box-shadow p-5">
         <h3 class="mb-4">Take the Next Step</h3>
         <div class="border border-dark "></div>
@@ -47,12 +47,12 @@
       </div>
     </div>
   </div>
-  <h2 class="text-center title mt-4">WELCOME TO ST. JOHN INTERNATIONAL UNIVERSITY</h2>
+  <h2 class="text-center title mt-4" id="greeting">WELCOME TO ST. JOHN INTERNATIONAL UNIVERSITY</h2>
   <div class="row d-flex justify-content-around my-3 g-0">
-    <div class="col-lg-5 c-12 pt-2 home d-flex justify-content-center d-none d-lg-block">
+    <div class="col-lg-5 c-12 pt-2 home d-flex justify-content-center d-none d-lg-block" id="about-left">
       <img class="rounded m-auto" src="{% static 'images/students.jpg' %}" alt="">
     </div>
-    <div class="col-lg-6 col-11 d-flex align-items-center flex-column pt-3 pt-lg-5 justify-content-center">
+    <div class="col-lg-6 col-11 d-flex align-items-center flex-column pt-3 pt-lg-5 justify-content-center" id="about-right">
       <p>St. John university is an Autonomous body that is imparting "ONLINE EDUCATION" to empower people irrespective
         of Age, Cast, Creed and Religion for those who have lost the opportunity at the right age due to Poverty, Social
         Compulsion, and family conditions.</p>
@@ -61,10 +61,10 @@
           href="{% url 'index:about' %}" class="text-decoration-none">Read More</a></p>
     </div>
   </div>
-  <h2 class="text-center pt-3 title">It's Your Time to Shine</h2>
-  <p class="text-center title">At St. john, you have endless opportunities to discover your inspiration with St. John
+  <h2 class="text-center pt-3 title courses-title">It's Your Time to Shine</h2>
+  <p class="text-center title courses-title">At St. john, you have endless opportunities to discover your inspiration with St. John
     Courses.</p>
-  <div class="row d-flex justify-content-evenly align-items-center gy-3 px-3">
+  <div class="row d-flex justify-content-evenly align-items-center gy-3 px-3" id="courses">
 
     <div class="course-card col-12 col-md-3 ">
       <div class="card w-100">
@@ -103,7 +103,7 @@
       </div>
     </div>
   </div>
-<div class="bg-primary row my-5  d-flex justify-content-start shadow">
+<div class="bg-primary row my-5  d-flex justify-content-start shadow" id="news-event">
   <div class="col-6">
     <h5 class="text-center py-3 fs-3 " ><a class="text-white text-decoration-none" href="#">Events</a></h5>
   </div>
@@ -113,13 +113,13 @@
 </div>
 <div class="row overflow-hidden d-flex justify-content-center gy-3">
   
-  <div class="col-11 ps-3 col-lg-5">
+  <div class="col-11 ps-3 col-lg-5 event">
     <h6 class="fs-4">Aug | 22 <small>2022</small></h6>
     <a href="#" class=" fs-5 text-decoration-none">Alumni Volunteer Information Session - Regional Alumni Chapters</a> <br>
     <small>Virtual</small>
   </div>
   
-  <div class="col-11 ps-3 col-lg-5">
+  <div class="col-11 ps-3 col-lg-5 event">
     <h6 class="fs-4">Sep | 1 <small>2022</small></h6>
     <a href="#" class="fs-5 text-decorations-none">Fall Tobin CEO Seminar Series</a> <br>
     <small>Virtual</small>
@@ -128,16 +128,37 @@
     <h4 class="my-4 fs-3 text-start test-start">News</h4>
 <hr>
   </div>
-  <div class="col-11 ps-3 col-lg-5">
+  <div class="col-11 ps-3 col-lg-5 news">
     <a href="#" class="text-decoration-none fs-5">St. John’s Welcomes Return of Summer Concert</a>
     <br> <span>August 16, 2022</span>
   </div>
-  <div class="col-11 ps-3 col-lg-5">
+  <div class="col-11 ps-3 col-lg-5 news">
     <a href="#" class="text-decoration-none fs-5">St. John’s Researcher Studying Sharks for Clues to Cure Alzheimer’s, Parkinson’s Diseases</a>
     <br> <span>August 16, 2022</span>
   </div>
 </div>
 </div>
 
+<script>
+  const sr= ScrollReveal({
+    origin:'top',
+    distance:'60px',
+    duration: 1500,
+    delay:400,
+    })
+//sr.reveal('#head',{origin:'bottom'}) 
+sr.reveal('.carousel',{delay:500})
+sr.reveal('#next-step')
+sr.reveal('#greeting',{delay:600})
+sr.reveal('#about-left',{delay:600,origin:'left'})
+sr.reveal('#about-right',{delay:600,origin:'right'})
+sr.reveal('.courses-title',{delay:600,origin:'top'})
+sr.reveal('#courses',{delay:600,origin:'bottom'})
+sr.reveal('#news-event',{delay:600,origin:'top'})
+sr.reveal('.event',{delay:700,origin:'left'})
+sr.reveal('.news',{delay:700,origin:'right'})
+
+
+</script>
 
 {% endblock body %}

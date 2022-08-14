@@ -295,13 +295,15 @@ body {
 
 /* ==========RESULT PAGE========== */
 .profile-image {
-  height: 250px;
 }
-.profile-image img {
-  width: 100% !important;
-  height: 100% !important;
+.profile{
+  height: 190px;
+  width: 150px;
 }
-
+.result-user-info p{
+  font-size: 14px;
+  line-height: 10px;
+}
 /* ===========QUIZ PAGE========== */
 .question-answer .form-select {
   background-color: #22334c !important;
