@@ -1,5 +1,3 @@
-
-
 * {
   scroll-behavior: smooth;
 }
@@ -248,7 +246,7 @@ body {
   margin-left: 10px;
   color: #e6ebe0;
 }
-.edetails p{
+.edetails p {
   margin-bottom: -4px;
 }
 .signature {
@@ -263,10 +261,22 @@ body {
   width: 70px;
   position: absolute;
   align-items: center;
-  top: 150px;
-  left: -15px;
+  top: 82%;
+  left: 68%;
 }
-
+.imp {
+  top: 41%;
+  position: relative;
+  text-transform: none;
+  font-size: 13px;
+  text-emphasis: spacing;
+  color: #e6ebe0;
+  text-align: center;
+  align-items: center;
+  align-self: center;
+  align-tracks: center;
+  font-family: Arial, Helvetica, sans-serif;
+}
 .edetails .Address {
   width: 94%;
   text-align: justify;
@@ -296,11 +306,11 @@ body {
 /* ==========RESULT PAGE========== */
 .profile-image {
 }
-.profile{
+.profile {
   height: 190px;
   width: 150px;
 }
-.result-user-info p{
+.result-user-info p {
   font-size: 14px;
   line-height: 10px;
 }
