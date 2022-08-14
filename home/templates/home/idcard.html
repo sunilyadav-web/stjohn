@@ -1,5 +1,5 @@
 {% extends "../base.html" %}
-{% load static %}
+
 {% block title %} Id card {% endblock title %}
 
 {% block css %}
@@ -24,7 +24,7 @@
 {% endblock css %}
 
 {% block body %}
-
+{% load static %}
 
 <div class="container px-0 overflow-hidden">
     <div class="row d-flex justify-content-center">
@@ -79,7 +79,7 @@
 
 
                             <div class="signature">
-                                <img src="{% static 'logos/signature.png' %}" alt="">
+                                <img src="{% static 'logos/sign.png' %}" alt="">
                             </div>
 
                             <div class="edetails">
