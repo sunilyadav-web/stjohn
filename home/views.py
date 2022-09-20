@@ -115,6 +115,7 @@ def result(request):
             print('Result Exception : ',e)
             messages.error(request, 'Please Enter Correct Enrollment Number !!')
             return render(request, 'home/result.html', context)
+        
         # getting Result for authenticated user
     if request.user.is_authenticated:
         
