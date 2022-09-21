@@ -106,7 +106,7 @@ def result(request):
             elif student_percentage > 35 and student_percentage < 50:
                 grade = "Third Class"
             else:
-                grade = "Fail"            
+                grade = "Fail"             
             context = {'semesters':sem,'profile':profile,"total_max_marks": total_max_marks,"total_min_marks":total_min_marks,"total_obtained_marks":total_obtained_marks,'student_percentage':student_percentage,'grade':grade, 'notice':notice}
 
             return render(request, 'home/result.html', context)
