@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'stjohn',
     'users',
     'exam',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -188,3 +189,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR / "static")
  ]
+
+AWS_QUERYSTRING_AUTH=False
+AWS_S3_FILE_OVERWRITE=False
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID="AKIAZ32I4Q4BFBBN52H5"
+AWS_SECRET_ACCESS_KEY="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"
+
+AWS_STORAGE_BUCKET_NAME="stjohnedu"
