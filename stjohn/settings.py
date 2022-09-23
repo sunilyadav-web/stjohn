@@ -33,12 +33,12 @@ with open(os.path.join(BASE_DIR,'secret_key.txt')) as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = False
-DEBUG = True
+DEBUG = False
+# DEBUG = True
 
 #ALLOWED_HOSTS = ['www.stjohnedu.in','stjohnedu.in','18.235.136.116']
-# ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+# ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -165,10 +165,10 @@ LOGIN_URL='users:login'
 
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR,'static')
-# STATICFILES_DIRS =[
-#     STATIC_ROOT
-# ]
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATICFILES_DIRS =[
+    STATIC_ROOT
+]
 
 
 MEDIA_URL = '/Data/'
