@@ -26,4 +26,8 @@ urlpatterns = [
     path('management_courses/', views.management_courses,name='management_courses'),
     path('certified_courses/', views.certified_courses,name='certified_courses'),
 
+    path('regular',views.regularAdmission,name='admission-regular'),
+    path('online',views.onlineAdmission,name='admission-online'),
+    path('evening',views.eveningAdmission,name='admission-evening'),
+
 ]

@@ -465,3 +465,28 @@ def certified_courses(request):
     notice = AddNotice.objects.last()
     context['notice'] = notice
     return render(request, 'home/certified_courses.html', context)
+
+
+def regularAdmission(request):
+    context={}
+    try:
+        pass
+    except Exception as e:
+        print('Regular Admission Exception : ',e)
+    return render(request,'home/admission_regular.html',context)
+
+def onlineAdmission(request):
+    context={}
+    try:
+        pass
+    except Exception as e:
+        print('Online Admission Exception : ',e)
+    return render(request,'home/admission_online.html',context)
+
+def eveningAdmission(request):
+    context={}
+    try:
+        pass
+    except Exception as e:
+        print('Evening Admission Exception : ',e)
+    return render(request,'home/admission_evening.html',context)

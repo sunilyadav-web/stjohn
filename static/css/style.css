@@ -293,6 +293,11 @@ body {
   height: 50vh;
 }
 
+.type-admission ul li a{
+  color: #040467 !important;
+  font-size: 18px !important;
+}
+
 /* ==========RESULT PAGE========== */
 .profile-image {
 }
