@@ -29,5 +29,6 @@ urlpatterns = [
     path('regular',views.regularAdmission,name='admission-regular'),
     path('online',views.onlineAdmission,name='admission-online'),
     path('evening',views.eveningAdmission,name='admission-evening'),
+    path('download-document',views.downloadDocument,name='download-document'),
 
 ]

@@ -490,3 +490,12 @@ def eveningAdmission(request):
     except Exception as e:
         print('Evening Admission Exception : ',e)
     return render(request,'home/admission_evening.html',context)
+
+def downloadDocument(request):
+    context={}
+    try:
+        download_documents=DownloadDocument.objects.all()
+        context['documents']=download_documents
+    except Exception as e:
+        print('Download Document Exception : ',e)
+    return render(request,'home/download_document.html',context)

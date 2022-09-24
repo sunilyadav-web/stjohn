@@ -210,3 +210,16 @@ class SiteDown(models.Model):
 
     def __str__(self):
         return f"SITEDOWN-{self.display}"
+
+
+class DownloadDocument(models.Model):
+    name=models.CharField(max_length=100)
+    discription=models.TextField(max_length=250)
+    price=models.FloatField()
+    semple=models.FileField(upload_to="document_semple")
+    thankyou_message=models.TextField(max_length=150)
+    created_at= models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name

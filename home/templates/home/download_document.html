@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %} Download Document {% endblock title %}
+
+{% block body %}
+
+{% load static %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-7">
+                <h3 class="title text-center mb-4 ">Download Document</h3>
+                <div class="document-detail rounded bg-white p-3 d-none " id="document-details">
+                    <form action="">
+                        <h6 id="name">PYthon Programming Document</h6>
+                        <p class="py-2" id="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+                            Voluptates cum nulla reprehenderit expedita obcaecati sit et fugit numquam ex a dolore
+                            exercitationem, deserunt architecto quidem dignissimos tempora est asperiores! Placeat?</p>
+
+                        <span class="fw-semibold">Price <span id="price"> ₹15000/ </span></span><button
+                            class="btn btn-success float-end btn-sm">Pay Now</button>
+                    </form>
+                </div>
+                <table class="table table-bordered rounded my-3 border-dark">
+                    {% for document in documents %}
+                    <tr>
+                        <td>{{forloop.counter}}.</td>
+                        <td class="px-3">{{document.name}}</td>
+                        <td><a class="text-decoration-none" href="{{document.semple.url}}"
+                                download="{{document.semple.url}}" target="_blank">View Semple</a></td>
+                        <td><a href="#" class="btn btn-sm btn-outline-success"
+                                onclick="showDocumentDetail('{{document.name}}','{{document.discription}}','{{document.price}}')">Know
+                                More</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
