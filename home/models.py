@@ -214,9 +214,9 @@ class SiteDown(models.Model):
 
 class DownloadDocument(models.Model):
     name=models.CharField(max_length=100)
-    discription=models.TextField(max_length=250)
+    description=models.TextField(max_length=250)
     price=models.FloatField()
-    semple=models.FileField(upload_to="document_semple")
+    sample=models.FileField(upload_to="document_semple")
     thankyou_message=models.TextField(max_length=150)
     created_at= models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)

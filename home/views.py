@@ -66,13 +66,7 @@ def contact(request):
         contact_entry.save()
         messages.success(
             request, 'THANKS FOR CONTACTING US! WE WILL REACH TO U ASAP')
-        mail = {
-            "name": name,
-            "email": email,
-            "contact_no": contact_no,
-            "subject": subject,
-            "message": message
-        }
+        
 
         res=contactusMail(name,email,contact_no,subject,message)
         print(res)
