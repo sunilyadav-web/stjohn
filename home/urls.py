@@ -31,5 +31,7 @@ urlpatterns = [
     path('evening',views.eveningAdmission,name='admission-evening'),
     path('download-document/',views.downloadDocument,name='download-document'),
     path('checkout/<id>/',views.checkout,name='checkout'),
+    path('payment-success/',views.paymentSuccess,name='payment-success'),
+
 
 ]

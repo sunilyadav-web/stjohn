@@ -1,7 +1,7 @@
 from io import BytesIO
 import random
 from time import time
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import redirect, render, get_object_or_404
 from .models import *
 from django.contrib import messages
 from django.http import HttpResponseRedirect, HttpResponse
@@ -517,15 +517,28 @@ def checkout(request,id):
             DATA = {
                 "amount": (document.price)*100,
                 "currency": "INR",
-                "receipt": "receipt#1",
-                "notes": {
-                    "key1": "value3",
-                    "key2": "value2"
-                }}
-            payment_order=client.order.create(data=DATA)
-            payment_order_id=payment_order['id']
-            context['order_id']=payment_order_id
+                "payment_capture":1,
+                }
+            payment=client.order.create(data=DATA)
+            print("Order : ",payment)
+            context['payment']=payment
 
     except Exception as e:
         print('Check Page Exception : ',e)
     return render(request,'home/checkout.html',context)
+
+def paymentSuccess(request):
+    context={}
+    try:
+        payment_id=request.GET['payment_id']
+        order_id=request.GET['order_id']
+        signature=request.GET['signature']
+        print('Order Id : ',order_id)
+        print('Payment Id : ',payment_id)
+        print('Signature : ',signature)
+        context['order_id']=order_id
+    except Exception as e:
+        print('Payment Success Exception : ',e)
+        messages.error(request,"You are not authrised!")
+        return redirect('/')
+    return render(request,'home/payment_success.html',context)

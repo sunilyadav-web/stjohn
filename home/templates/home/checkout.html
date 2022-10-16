@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} checkout | {{document.name}}  {% endblock title %}
+{% block title %} checkout | {{document.name}} {% endblock title %}
 
 {% block body %}
 
@@ -14,37 +14,55 @@
                     <h6>Document Name - {{document.name}}</h6>
                     <p class="fw-semibold">Price- {{document.price}}</p>
                     <div class="d-grid">
-                        
-                        <button class="btn btn-success float-end btn-sm" id="rzp-button1">Pay Now</button>
+                        <button class="btn btn-success float-end " id="rzp-button1">Pay Now</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
+
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
-var options = {
-    "key": "{{api_key}}", // Enter the Key ID generated from the Dashboard
-    "amount": 5000, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-    "currency": "INR",
-    "name": "St.John International University",
-    "description": "Test Transaction",
-    "image": "https://example.com/your_logo",
-    "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-    "callback_url": "/",
-    
-    "notes": {
-        "address": "Razorpay Corporate Office"
-    },
-    "theme": {
-        "color": "#3399cc"
+    var options = {
+        "key": "{{api_key}}", // Enter the Key ID generated from the Dashboard
+        "amount": "{{payment.amount}}", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+        "currency": "INR",
+        "name": "St.John International University",
+        "description": "Test Transaction",
+        "image": "https://stjohnedu.in/static/logos/sji.png",
+        "order_id": "{{payment.id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+        "handler": function (response) {
+            window.location.href=`/payment-success/?payment_id=${response.razorpay_payment_id}&order_id=${response.razorpay_order_id}&signature=${response.razorpay_signature}`
+            // alert(response.razorpay_payment_id);
+            // alert(response.razorpay_order_id);
+            // alert(response.razorpay_signature)
+            console.log('Payment id',response.razorpay_payment_id)
+            console.log('Order id',response.razorpay_order_id)
+            console.log('Signature',response.razorpay_signature)
+        },
+
+        "notes": {
+            "address": `180, Chelekere Main Road Banaswadi Outer Ring Road, Kalyan Nagar Post, Behind BTS Bus Depot, Bengaluru, Karnataka 560043`
+        },
+        "theme": {
+            "color": "#040467"
+        }
+    };
+    var rzp1 = new Razorpay(options);
+    rzp1.on('payment.failed', function (response) {
+        alert(response.error.code);
+        alert(response.error.description);
+        alert(response.error.source);
+        alert(response.error.step);
+        alert(response.error.reason);
+        alert(response.error.metadata.order_id);
+        alert(response.error.metadata.payment_id);
+    });
+    document.getElementById('rzp-button1').onclick = function (e) {
+        rzp1.open();
+        e.preventDefault();
     }
-};
-var rzp1 = new Razorpay(options);
-document.getElementById('rzp-button1').onclick = function(e){
-    rzp1.open();
-    e.preventDefault();
-}
 </script>
+
 {% endblock body %}
