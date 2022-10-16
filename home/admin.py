@@ -54,4 +54,7 @@ admin.site.register(Profile,ProfileAdmin)
 admin.site.register(ResultHighlightControl)
 admin.site.register(SiteDown)
 admin.site.register(DownloadDocument)
+class DocuemntPurchasedStudentAdmin(admin.ModelAdmin):
+    list_display = ['order_id','payment_id','signature','status','created_at','updated_at']
+admin.site.register(DocumentPurchasedStudent,DocuemntPurchasedStudentAdmin)
 

@@ -506,11 +506,14 @@ def downloadDocument(request):
 def checkout(request,id):
     context={}
     try:
+        print('id : ',id)
         notice = AddNotice.objects.last()
         context['notice'] = notice
         obj=DownloadDocument.objects.filter(id=id).exists()
+        print('Obj ',obj)
         if obj:
             document=DownloadDocument.objects.get(id=id)
+            print('Document ',document)
             context['document']=document
             context['api_key']=RAZORPAY_API_KEY
             client = razorpay.Client(auth=(RAZORPAY_API_KEY, RAZORPAY_API_SECRET_KEY))
@@ -520,11 +523,14 @@ def checkout(request,id):
                 "payment_capture":1,
                 }
             payment=client.order.create(data=DATA)
+            purchase_obj=DocumentPurchasedStudent.objects.create(order_id=payment['id'],document=document,price=payment['amount'])
+            print(purchase_obj)
             print("Order : ",payment)
+
             context['payment']=payment
 
     except Exception as e:
-        print('Check Page Exception : ',e)
+        print('Checkout Page Exception : ',e)
     return render(request,'home/checkout.html',context)
 
 def paymentSuccess(request):
@@ -533,10 +539,18 @@ def paymentSuccess(request):
         payment_id=request.GET['payment_id']
         order_id=request.GET['order_id']
         signature=request.GET['signature']
-        print('Order Id : ',order_id)
-        print('Payment Id : ',payment_id)
-        print('Signature : ',signature)
-        context['order_id']=order_id
+        obj=DocumentPurchasedStudent.objects.filter(order_id=order_id).exists()
+        if obj:
+            document_obj=DocumentPurchasedStudent.objects.get(order_id=order_id)
+            document_obj.payment_id=payment_id
+            document_obj.signature=signature
+            document_obj.status=True
+            document_obj.save()
+            print('document obj ',document_obj)
+           
+            context['order_id']=order_id
+            context['document']=document_obj.document
+
     except Exception as e:
         print('Payment Success Exception : ',e)
         messages.error(request,"You are not authrised!")

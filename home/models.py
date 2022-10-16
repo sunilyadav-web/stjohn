@@ -223,3 +223,15 @@ class DownloadDocument(models.Model):
 
     def __str__(self):
         return self.name
+
+class DocumentPurchasedStudent(models.Model):
+    order_id=models.CharField(max_length=300, null=True,blank=True)
+    payment_id=models.CharField(max_length=300, null=True,blank=True)
+    signature=models.CharField(max_length=300, null=True,blank=True)
+    document=models.ForeignKey(DownloadDocument, on_delete=models.SET_NULL, null=True,blank=True)
+    price=models.FloatField()
+    status=models.BooleanField(default=False)
+    created_at= models.DateTimeField(auto_now_add=True, null=True,blank=True)
+    updated_at = models.DateTimeField(auto_now=True, null=True,blank=True)
+    def __str__(self):
+        return self.document.name
