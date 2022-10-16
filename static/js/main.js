@@ -11,17 +11,19 @@ if (width <= 992) {
 }
 
 // ==========Display Download Document Detail===========
-
-function showDocumentDetail(dname, ddescription, dprice) {
+var amount
+function showDocumentDetail(dname, ddescription, dprice,id) {
     var documentDetails = document.getElementById("document-details"),
         name = document.getElementById("name"),
         description = document.getElementById("description"),
-        price = document.getElementById("price");
-
+        price = document.getElementById("price"),
+        checkout=document.getElementById('checkout')
     documentDetails.classList.remove("d-none");
     name.innerHTML = dname;
     description.innerHTML = ddescription;
     price.innerHTML = dprice;
+    console.log(id)
+    checkout.href='/checkout/'+id+'/'
 
     console.log("Show Document");
 }

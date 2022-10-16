@@ -11,6 +11,8 @@ from xhtml2pdf import pisa
 from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .helper import *
+import razorpay
+from stjohn.settings import RAZORPAY_API_KEY,RAZORPAY_API_SECRET_KEY
 
 
 def index(request):
@@ -464,7 +466,8 @@ def certified_courses(request):
 def regularAdmission(request):
     context={}
     try:
-        pass
+        notice = AddNotice.objects.last()
+        context['notice'] = notice
     except Exception as e:
         print('Regular Admission Exception : ',e)
     return render(request,'home/admission_regular.html',context)
@@ -472,7 +475,8 @@ def regularAdmission(request):
 def onlineAdmission(request):
     context={}
     try:
-        pass
+        notice = AddNotice.objects.last()
+        context['notice'] = notice
     except Exception as e:
         print('Online Admission Exception : ',e)
     return render(request,'home/admission_online.html',context)
@@ -480,7 +484,8 @@ def onlineAdmission(request):
 def eveningAdmission(request):
     context={}
     try:
-        pass
+        notice = AddNotice.objects.last()
+        context['notice'] = notice
     except Exception as e:
         print('Evening Admission Exception : ',e)
     return render(request,'home/admission_evening.html',context)
@@ -488,8 +493,39 @@ def eveningAdmission(request):
 def downloadDocument(request):
     context={}
     try:
+        notice = AddNotice.objects.last()
+        context['notice'] = notice
         download_documents=DownloadDocument.objects.all()
         context['documents']=download_documents
+        
+
     except Exception as e:
         print('Download Document Exception : ',e)
     return render(request,'home/download_document.html',context)
+
+def checkout(request,id):
+    context={}
+    try:
+        notice = AddNotice.objects.last()
+        context['notice'] = notice
+        obj=DownloadDocument.objects.filter(id=id).exists()
+        if obj:
+            document=DownloadDocument.objects.get(id=id)
+            context['document']=document
+            context['api_key']=RAZORPAY_API_KEY
+            client = razorpay.Client(auth=(RAZORPAY_API_KEY, RAZORPAY_API_SECRET_KEY))
+            DATA = {
+                "amount": (document.price)*100,
+                "currency": "INR",
+                "receipt": "receipt#1",
+                "notes": {
+                    "key1": "value3",
+                    "key2": "value2"
+                }}
+            payment_order=client.order.create(data=DATA)
+            payment_order_id=payment_order['id']
+            context['order_id']=payment_order_id
+
+    except Exception as e:
+        print('Check Page Exception : ',e)
+    return render(request,'home/checkout.html',context)

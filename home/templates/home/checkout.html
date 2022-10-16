@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %} checkout | {{document.name}}  {% endblock title %}
+
+{% block body %}
+
+{% load static %}
+
+<section class="py-5">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-5">
+                <h3 class="title text-center mb-4 ">Download Document</h3>
+                <div class="border border-1 p-3 border-dark rounded">
+                    <h6>Document Name - {{document.name}}</h6>
+                    <p class="fw-semibold">Price- {{document.price}}</p>
+                    <div class="d-grid">
+                        
+                        <button class="btn btn-success float-end btn-sm" id="rzp-button1">Pay Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+var options = {
+    "key": "{{api_key}}", // Enter the Key ID generated from the Dashboard
+    "amount": 5000, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+    "currency": "INR",
+    "name": "St.John International University",
+    "description": "Test Transaction",
+    "image": "https://example.com/your_logo",
+    "order_id": "{{order_id}}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+    "callback_url": "/",
+    
+    "notes": {
+        "address": "Razorpay Corporate Office"
+    },
+    "theme": {
+        "color": "#3399cc"
+    }
+};
+var rzp1 = new Razorpay(options);
+document.getElementById('rzp-button1').onclick = function(e){
+    rzp1.open();
+    e.preventDefault();
+}
+</script>
+{% endblock body %}

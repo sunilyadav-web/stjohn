@@ -12,13 +12,12 @@
                 <h3 class="title text-center mb-4 ">Download Document</h3>
                 <div class="document-detail rounded bg-white p-3 d-none " id="document-details">
                     <form action="">
-                        <h6 id="name">PYthon Programming Document</h6>
-                        <p class="py-2" id="description">Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                            Voluptates cum nulla reprehenderit expedita obcaecati sit et fugit numquam ex a dolore
-                            exercitationem, deserunt architecto quidem dignissimos tempora est asperiores! Placeat?</p>
+                        <h6 id="name"></h6>
+                        <p class="py-2" id="description"></p>
 
-                        <span class="fw-semibold">Price <span id="price"> ₹15000/ </span></span><button
-                            class="btn btn-success float-end btn-sm">Pay Now</button>
+                        <span class="fw-semibold">Price <span id="price"> </span></span>
+                        
+                        <a href="#" id="checkout" class="btn btn-primary float-end btn-sm">Checkout</a>
                     </form>
                 </div>
                 <table class="table table-bordered rounded my-3 border-dark">
@@ -29,7 +28,7 @@
                         <td><a class="text-decoration-none" href="{{document.sample.url}}"
                                 download="{{document.semple.url}}" target="_blank">View Sample</a></td>
                         <td><a href="#" class="btn btn-sm btn-outline-success"
-                                onclick="showDocumentDetail('{{document.name}}','{{document.description}}','{{document.price}}')">Know
+                                onclick="showDocumentDetail('{{document.name}}','{{document.description}}','{{document.price}}','{{document.id}}')">Know
                                 More</a></td>
                     </tr>
                     {% endfor %}
@@ -39,5 +38,6 @@
         </div>
     </div>
 </section>
+
 
 {% endblock %}
