@@ -119,6 +119,8 @@ class AdmitCard(models.Model):
 
     class Meta:
         ordering=['-id']
+    def __str__(self):
+        return self.enrollment_no
 
 
 class IdCard(models.Model):

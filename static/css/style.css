@@ -259,13 +259,14 @@ body {
   text-align: right;
 }
 .signature img {
-  height: 70px;
-  width: 70px;
-  position: absolute;
-  align-items: center;
-  top: 150px;
-  left: -10px;
+  height: 40px;
+width: 87px;
+position: absolute;
+align-items: center;
+top: 161px;
+left: -26px;
 }
+
 
 .edetails .Address {
   width: 94%;
