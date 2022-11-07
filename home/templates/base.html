@@ -6,14 +6,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>{% block title %} {% endblock title %}</title>
+    {% block css %}{% endblock css %}
     <!-- =========CUSTOM METAS=========== -->
-    <meta name="description"
-        content="At St. John’s University, you can have it all: a Catholic and Vincentian education that broadens your mind, the chance to serve your community, the resources and excitement of New York City and our global locations, and the support and network you need for success." />
-    <meta name="keywords"
-        content="St. John&#039;s University, Catholic University, Vincentian University, Metropolitan University, Global University, St. John&#039;s, Grad School, Alumni Network" />
-    <meta property="og:image:url"
-        content="https://www.stjohns.edu/sites/default/files/styles/unmodified/public/2019-01/SJU_Spring2018-023_1600x900.jpg?itok=Foxxwvss" />
+    {% block meta %} {% endblock meta %}
+
+    
     <meta name="Generator" content="Drupal 9 (https://www.drupal.org)" />
     <meta name="MobileOptimized" content="width" />
     <meta name="HandheldFriendly" content="true" />
@@ -43,8 +41,7 @@
     <!-- =======CUSTOM CSS LINK============ -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
-    <title>{% block title %} {% endblock title %}</title>
-    {% block css %}{% endblock css %}
+    
 
     <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon.ico' %}">
 
@@ -129,7 +126,7 @@
                                 {% endif %}
 
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
-                                    <a class="nav-link" href="{% url 'index:about' %}">ABOUT US</a>
+                                    <a class="nav-link" href="{% url 'index:about' %}" rel="tags" alt="about this website">ABOUT US</a>
                                 </li>
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
                                     <a class="nav-link" href="{% url 'index:contact' %}">CONTACT US</a>
