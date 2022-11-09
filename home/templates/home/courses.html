@@ -1,5 +1,10 @@
 {% extends "base.html" %}
-{% block title %} Courses {% endblock title %}
+{% block meta %}
+<meta name="description" content="choose the perfect course from St. John's professional courses. which will help you to grow in your career. " />
+<meta name="keywords" content="online education, st. john online courses and diplomas and degrees and certificates, health courses in Bengaluru, Engineering courses in Bengaluru, management courses Bengaluru,  certified courses in Bengaluru, health courses in Karnataka, management courses in Karnataka, cretified courses in Karnataka, engeenring courses in Karnataka, St. John international online autonomous university in Bengaluru, St. John international online autonomous university in Karnataka " />
+<link rel="canonical" href="https://stjohnedu.in/courses">
+{% endblock meta %}
+{% block title %} St. John's Courses {% endblock title %}
 
 {% block body %}
 
@@ -85,7 +90,7 @@
     </div>
 
     <div class="col-11 col-lg-4 col-md-5 pt-">
-      <h5><a class="text-decoration-none" href="{% url 'index:health_science_courses' %}">Health Course</a></h5>
+      <h5><a class="text-decoration-none" href="{% url 'index:health_science_courses' %}">Health Courses</a></h5>
       <h5><a class="text-decoration-none" href="{% url 'index:engineering_courses' %}">Engineering Courses</a></h5>
       <h5><a class="text-decoration-none" href="{% url 'index:management_courses' %}">Management Courses</a></h5>
       <h5><a class="text-decoration-none" href="{% url 'index:certified_courses' %}">Certified Courses</a></h5>

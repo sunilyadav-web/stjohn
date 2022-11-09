@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /accounts/
+Disallow: /password-reset/
+Disallow: /password-reset/done/
+Disallow: /password-reset-complete/

@@ -21,10 +21,10 @@ urlpatterns = [
     path('quiz-results/',views.quizResults,name='quiz-results'),
 
     path('courses/',views.courses,name='courses'),
-    path('health_science_courses/', views.health_science_courses,name='health_science_courses'),
-    path('engineering_courses/', views.engineering_courses,name='engineering_courses'),
-    path('management_courses/', views.management_courses,name='management_courses'),
-    path('certified_courses/', views.certified_courses,name='certified_courses'),
+    path('health-science-courses/', views.health_science_courses,name='health_science_courses'),
+    path('engineering-courses/', views.engineering_courses,name='engineering_courses'),
+    path('management-courses/', views.management_courses,name='management_courses'),
+    path('certified-courses/', views.certified_courses,name='certified_courses'),
 
     path('regular',views.regularAdmission,name='admission-regular'),
     path('online',views.onlineAdmission,name='admission-online'),
