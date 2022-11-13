@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'users',
     'exam',
     'storages',
+    'blog',
 ]
 
 MIDDLEWARE = [
