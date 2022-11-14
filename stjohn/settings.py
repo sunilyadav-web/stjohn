@@ -58,6 +58,7 @@ INSTALLED_APPS = [
     'exam',
     'storages',
     'blog',
+    'ckeditor',
 ]
 
 MIDDLEWARE = [
