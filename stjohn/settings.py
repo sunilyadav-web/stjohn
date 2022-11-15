@@ -33,11 +33,11 @@ with open(os.path.join(BASE_DIR,'secret_key.txt')) as f:
     SECRET_KEY = f.read().strip()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-#ALLOWED_HOSTS = ['www.stjohnedu.in','stjohnedu.in','18.235.136.116']
+ALLOWED_HOSTS = ['www.stjohnedu.in','stjohnedu.in','18.235.136.116']
 # ALLOWED_HOSTS = ['*']
-ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = []
 
 
 
@@ -154,21 +154,21 @@ LOGIN_REDIRECT_URL='index:index'
 LOGIN_URL='users:login'
 
 # HTTP settings
-# SESSION_COOKIES_SECURE=True
-# CSRF_COOKIE_SECURE=True
-# SECURE_SSL_REDIRECT=True
+SESSION_COOKIES_SECURE=True
+CSRF_COOKIE_SECURE=True
+SECURE_SSL_REDIRECT=True
 
 # HSTS Settings
-# SECURE_HSTS_SECONDS = 31536000 #1 Year
-# SECURE_HSTS_PRELOAD = True
-# SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+SECURE_HSTS_SECONDS = 31536000 #1 Year
+SECURE_HSTS_PRELOAD = True
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 
 STATIC_URL = '/static/'
-# STATIC_ROOT = os.path.join(BASE_DIR,'static')
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
 
 
 
