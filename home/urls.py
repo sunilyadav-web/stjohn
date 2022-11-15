@@ -26,9 +26,9 @@ urlpatterns = [
     path('management-courses/', views.management_courses,name='management_courses'),
     path('certified-courses/', views.certified_courses,name='certified_courses'),
 
-    path('regular',views.regularAdmission,name='admission-regular'),
-    path('online',views.onlineAdmission,name='admission-online'),
-    path('evening',views.eveningAdmission,name='admission-evening'),
+    path('admission-regular',views.regularAdmission,name='admission-regular'),
+    path('admission-online',views.onlineAdmission,name='admission-online'),
+    path('admission-evening',views.eveningAdmission,name='admission-evening'),
     path('download-document/',views.downloadDocument,name='download-document'),
     path('checkout/<id>/',views.checkout,name='checkout'),
     path('payment-success/',views.paymentSuccess,name='payment-success'),
