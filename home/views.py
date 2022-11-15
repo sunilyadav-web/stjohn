@@ -225,7 +225,7 @@ def admitcard(request):
 
         try:
             admitcard = AdmitCard.objects.get(enrollment_no=enrollment_no)
-            return render(request, 'home/admitcard.html', {'admitcard': admitcard})
+            return render(request, 'home/admitcard.html', {'admitcard': admitcard,'notice':notice})
 
         except Exception as e:
             messages.warning(
@@ -320,7 +320,7 @@ def idcard(request):
 
         try:
             idcard = IdCard.objects.get(enrollment_no=enrollment_no)
-            return render(request, 'home/idcard.html', {'idcard': idcard})
+            return render(request, 'home/idcard.html', {'idcard': idcard,'notice':notice})
 
         except Exception as e:
             messages.warning(
@@ -523,7 +523,9 @@ def checkout(request,id):
                 "payment_capture":1,
                 }
             payment=client.order.create(data=DATA)
-            purchase_obj=DocumentPurchasedStudent.objects.create(order_id=payment['id'],document=document,price=payment['amount'])
+            payment_price=float(payment['amount'])
+            print('Prices type ',type(payment_price))
+            purchase_obj=DocumentPurchasedStudent.objects.create(order_id=payment['id'],document=document,price=payment_price/100)
             print(purchase_obj)
             print("Order : ",payment)
 

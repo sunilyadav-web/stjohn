@@ -184,8 +184,8 @@ EMAIL_USE_TLS= True
 EMAIL_USE_SSL= False
 
 # RazorPay Intergration Keys
-RAZORPAY_API_KEY='rzp_test_cevVL0c2PQFzgX'
-RAZORPAY_API_SECRET_KEY='olmW3v7adcG477P1RLrEeSuw'
+RAZORPAY_API_KEY='rzp_live_AkcB8O2UdCd62i'
+RAZORPAY_API_SECRET_KEY='tEhR4wJEPE229sa0ZOYswRQq'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
