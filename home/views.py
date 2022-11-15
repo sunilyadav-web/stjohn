@@ -77,7 +77,7 @@ def contact(request):
         return HttpResponseRedirect(reverse('index:index'))
     return render(request, 'home/contact.html', context)
 
-
+@login_required()
 def result(request):
     context = {}
     notice = AddNotice.objects.last()
@@ -213,7 +213,7 @@ def courses(request):
     context['notice'] = notice
     return render(request, 'home/courses.html', context)
 
-
+@login_required()
 def admitcard(request):
     context = {}
     notice = AddNotice.objects.last()
@@ -278,7 +278,7 @@ def certificate(request):
 
     return render(request, 'home/certificate.html', context)
 
-
+@login_required()
 def admit_render_pdf_view(request, en_no):
     template_path = 'home/pdf1.html'
     queryset = get_object_or_404(AdmitCard, enrollment_no=en_no)
@@ -308,7 +308,7 @@ def admit_render_pdf_view(request, en_no):
         return HttpResponse('We had some errors <pre>' + html + '</pre>')
     return response
 
-
+@login_required()
 def idcard(request):
     context = {}
     notice = AddNotice.objects.last()
@@ -343,7 +343,7 @@ def idcard(request):
 
     return render(request, 'home/idcard.html', context)
 
-
+@login_required()
 def idcard_render_pdf_view(request, en_no):
     template_path = 'home/pdf2.html'
     queryset = get_object_or_404(IdCard, enrollment_no=en_no)

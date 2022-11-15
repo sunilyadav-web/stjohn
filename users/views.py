@@ -42,6 +42,7 @@ def signup(request):
     context={}
     notice=AddNotice.objects.last()
     context['notice']=notice
+    next=''
     try:
         if request.user.is_authenticated:
             messages.error(request,'Something went wrong!')
@@ -49,13 +50,23 @@ def signup(request):
         if request.method == "POST":
             username = request.POST['username']
             password = request.POST['password']
+            try:
+                next=request.POST['next']
+                print('Next Print : ',next)
+            except Exception as e:
+                print("Login Next Exception : ", e)
+                next=''
+
             print('username : ',username)
             user = authenticate(request, username=username, password=password)
             print('user : ',user)
             if user is not None:
                 login(request, user)
                 messages.success(request,'logged in successful')
-                return redirect('/')
+                if next != '':
+                    return redirect(next)
+                else:
+                    return redirect('/')
             else:
                 messages.error(request,'Please enter correct Username and Password !!')
                 return redirect('users:login')
