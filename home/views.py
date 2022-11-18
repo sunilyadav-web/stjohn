@@ -12,6 +12,7 @@ from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from .helper import *
 import razorpay
+from blog.models import *
 from stjohn.settings import RAZORPAY_API_KEY,RAZORPAY_API_SECRET_KEY
 
 
@@ -20,6 +21,9 @@ def index(request):
     try:
         notice = AddNotice.objects.last()
         rh = ResultHighlightControl.objects.get(id=1)
+        posts=Post.objects.all()
+        print('All Posts in Home  : ',posts)
+        context['posts']=posts
         context['rh'] = rh
         context['notice'] = notice
         sd = SiteDown.objects.get(id=1)

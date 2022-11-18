@@ -1,0 +1,30 @@
+
+* {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: rgb(204 211 222);
+  }
+  
+  .body {
+    background-color: rgb(204 211 222) !important;
+  }
+  .title {
+    color: rgb(4 4 103);
+  }
+  .d-focus {
+    box-shadow: none !important;
+    outline: none;
+  }
+.search-input:focus{
+    box-shadow: none !important;
+    outline: none;
+    border: none;
+}
+  .bg-primary {
+    background-color: rgb(4 4 103) !important;
+  }
+
+
+/* ========POST DETAIL PAGE=========== */
+
