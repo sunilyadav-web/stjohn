@@ -40,7 +40,7 @@ St. John International Online Autonomous University's Blogs
                     </div>
                 </div> -->
 
-                <div class="row mb-3 bg-light gx-0 rounded blog-post-card shadow-sm">
+                <div class="row mb-3 bg-light gx-0 rounded blog-post-card shadow-sm d-flex justify-content-center align-items-center">
                     <div class="col-12 col-sm-5 card-image-div">
                         <a href="{% url 'blog:post' item.slug %}"><img src="{{item.imageURL}}" alt="" class="img-fluid card-image "></a>
                     </div>
@@ -55,28 +55,6 @@ St. John International Online Autonomous University's Blogs
 
 
                 {% endfor %}
-                <div class="projcard projcard-red">
-                    <div class="projcard-innerbox">
-                        <img class="projcard-img" src="https://picsum.photos/800/600?image=1080" />
-                        <div class="projcard-textbox">
-                            <div class="projcard-title">That's Another Card</div>
-
-                            <div class="projcard-bar"></div>
-                            <div class="projcard-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                                veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore
-                                eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                                qui officia deserunt mollit anim id est laborum.</div>
-                            <div class="projcard-tagbox">
-                                <span class="projcard-tag">PHP</span>
-                                <span class="projcard-tag">SQL</span>
-                                <span class="projcard-tag">Database</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
                 
 
             </div>
