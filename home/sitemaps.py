@@ -10,7 +10,6 @@ class StaticViewSitemap(Sitemap):
     def location(self, item):
         return reverse(item)
 
-
 class BlogSiteMap(Sitemap):
     def items(self):
         return Post.objects.all()
