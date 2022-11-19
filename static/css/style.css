@@ -123,6 +123,14 @@ body {
   transform: scale(1.1);
 }
 
+
+/* Blog Section */
+.blog-thumbnail{
+  object-fit: cover !important;
+  aspect-ratio: 16/ 10 !important; 
+}
+
+
 /* =======About Page========= */
 .vision {
   height: 300px;

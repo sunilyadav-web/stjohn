@@ -21,7 +21,7 @@ def index(request):
     try:
         notice = AddNotice.objects.last()
         rh = ResultHighlightControl.objects.get(id=1)
-        posts=Post.objects.all()
+        posts=Post.objects.all()[0:4]
         print('All Posts in Home  : ',posts)
         context['posts']=posts
         context['rh'] = rh

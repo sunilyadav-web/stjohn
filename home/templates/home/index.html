@@ -6,6 +6,8 @@
 <meta name="keywords"
   content="online education, st. john online courses and diplomas and degrees and certificates, health courses in Bengaluru, Engineering courses in Bengaluru, management courses Bengaluru,  certified courses in Bengaluru, health courses in Karnataka, management courses in Karnataka, cretified courses in Karnataka, engeenring courses in Karnataka, St. John international online autonomous university in Bengaluru, St. John international online autonomous university in Karnataka " />
 <link rel="canonical" href="https://stjohnedu.in/">
+<!-- ===========Swiper CDN Link=========== -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 {% endblock meta %}
 {% block title %} St. John international online autonomous university - Apply Now {% endblock title %}
 
@@ -156,41 +158,35 @@
   </div>
 </div>
 <!-- ======Blobs ================ -->
-<section class="py-5 px-2 overflow-hidden">
-  <div class="container-fluid">
+<section class="py-5 overflow-hidden">
+  <div class="container">
     <h2 class="title text-center my-3">Read Latest Blogs</h2>
-    <p></p>
     <hr class="w-50 m-auto mb-3">
-    <div class="row d-flex align-items-center justify-content-center">
+    
+    <div class="row  d-flex justify-content-center">
       {% for item in posts %}
 
-      <!-- <div class="col-3">
-        <div class="card w-100">
-          <img src="{{item.imageURL}}" class="card-img-top" alt="...">
+      <div class="col-3 swiper-slide">
+        <div class="card shadow-sm ">
+          <img src="{{item.imageURL}}" class="card-img-top blog-thumbnail " alt="...">
           <div class="card-body">
-            <h5 class="card-title">{{item.title | title|truncatewords:2}}</h5>
-            <a href="{% url 'index:management_courses' %}" class="btn btn-outline-dark">Read Full Blog</a>
-          </div>
-        </div>
-      </div> -->
+            <h6 class="card-title text-underline"><a href="{% url 'blog:post' item.slug %}"
+                class="stretched-link text-dark" target="_blank"> {{item.title | title|truncatewords:10}}</a></h6>
 
-      <div class="col-3">
-        <div class="card shadow" style="width: 18rem;">
-          <img src="{{item.imageURL}}" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h6 class="card-title text-underline"><a href="{% url 'blog:post' item.slug %}" class="stretched-link text-dark"> {{item.title | title|truncatewords:10}}</a></h6>
-          
           </div>
         </div>
       </div>
 
       {% endfor %}
-      
+
     </div>
+    <div class="swiper-scrollbar"></div>
   </div>
 </section>
-
+<script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>
+
+
   const sr = ScrollReveal({
     origin: 'top',
     distance: '60px',
@@ -209,7 +205,7 @@
   sr.reveal('.event', { delay: 700, origin: 'left' })
   sr.reveal('.news', { delay: 700, origin: 'right' })
 
-
+ 
 </script>
 
 {% endblock body %}
