@@ -75,7 +75,22 @@ class Profile(models.Model):
 
     def __str__(self):
         return self.name
-    
+
+    @property
+    def getCertificate(self):
+        try:
+            url=self.certificate.url
+        except:
+            url=None
+        return url
+
+    @property
+    def profileImage(self):
+        try:
+            url=self.profile_pic.url
+        except:
+            url=None
+        return url    
 class Semester(models.Model):
 
     REMARKS = (

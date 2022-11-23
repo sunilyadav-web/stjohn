@@ -75,7 +75,7 @@ table{
             </tr>
           <tr>
             <td>
-              <img class="img-fluid ms-sm-0 ms-4 mb-1 profile" src="{{profile.profile_pic.url}}" alt="">
+              <img class="img-fluid ms-sm-0 ms-4 mb-1 profile" src="{{profile.profileImage}}" alt="">
             </td>
             <td>
               <div class="ms-4 mb-2 result-user-info">
@@ -140,7 +140,6 @@ table{
   </div>
 
 
-
   <script type="text/javascript">
     function myfunc() {
       var backup = document.body.innerHTML;
@@ -152,5 +151,14 @@ table{
     }
   </script>
 </div>
+
+{% if profile.getCertificate != None %}
+  
+
+<div class="result-ceritificate text-center my-4s">
+  Download <a href="{{profile.getCertificate}}" target="_blank" class="ms-2">Result Certificate</a>
+</div>
+{% endif %}
+
 {% endif %}
 {% endblock body %}
