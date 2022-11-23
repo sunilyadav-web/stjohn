@@ -62,13 +62,13 @@ class Course_desc(models.Model):
 class Profile(models.Model):
     enrollment_no = models.CharField(max_length=50,unique=True)
     name = models.CharField(max_length=50)
-    # image = models.ImageField(upload_to="Student/profile_image")
     father_name = models.CharField(max_length=50)
     course = models.CharField(max_length=50)
     specialization = models.CharField(max_length=50)
     academic_year = models.CharField(max_length=50) 
     year_of_passing = models.IntegerField()
     profile_pic = models.ImageField(upload_to='uploads/student_images/',blank=True)
+    certificate=models.FileField(upload_to='Result_Certificate',blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True,blank=True,null=True)
     updated_at = models.DateTimeField(auto_now=True,blank=True,null=True)
     
