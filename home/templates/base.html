@@ -111,11 +111,15 @@
             <div class="row bg-primary px-3 px-lg-5 d-flex justify-content-center nav-border">
                 <nav class="navbar navbar-expand-lg navbar-dark bg-primary py-0 ">
                     <div class="container-fluid">
-                        <button class="navbar-toggler text-center d-focus" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
-                            aria-label="Toggle navigation">Menu
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
+                        <div class="nav-text">
+
+                            <button class="navbar-toggler text-center d-focus" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                                <small id="university-nav-name">ಸೇಂಟ್ ಜಾನ್ ಅಂತಾರಾಷ್ಟ್ರೀಯ ವಿಷ್ ವಿದ್ಯಾಲಯ</small>
+                            </button>
+                        </div>
                         <div class="collapse navbar-collapse" id="navbarNavDropdown">
                             <ul class="navbar-nav mx-auto ">
                                 <li class="nav-item  border-start border-end px-lg-4 px-2 py-2" id="first-nav">
@@ -138,8 +142,8 @@
                                 {% endif %}
                                 {% endif %}
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
-                                    <a class="nav-link" href="{% url 'index:about' %}"
-                                        alt="about this website">ABOUT US</a>
+                                    <a class="nav-link" href="{% url 'index:about' %}" alt="about this website">ABOUT
+                                        US</a>
                                 </li>
                                 <li class="nav-item border-end px-lg-4 px-2 py-2">
                                     <a class="nav-link" href="{% url 'index:contact' %}">CONTACT US</a>
@@ -247,12 +251,32 @@
 
             <div class="col-lg-4 col-md-6 col-12 py-md-5 py-3">
                 <h5 class="text-md-start text-center title fw-bold">CONTACT US</h5>
-                <h6>Admissions: 718-990-2000</h6>
-                <h6>Mail: <a class='text-decoration-none '
+                <h6>Admissions: <a href="tel:718-990-2000" class="text-decoration-none fw-semibold">718-990-2000</a>
+                </h6>
+                <h6>Mail: <a class='text-decoration-none'
                         href="mailto:administrator@stjohnedu.in">administrator@stjohnedu.in</a></h6>
-                <p>180, Chelekere Main Road Banaswadi Outer Ring <br> Road, Kalyan Nagar Post, Behind BTS Bus Depot,
-                    <br> Bengaluru, Karnataka 560043
-                </p>
+                <div>
+                    <address>
+
+                        <h6>Bengaluru Headquarter-</h6>
+                        <p>180, Chelekere Main Road Banaswadi Outer Ring <br> Road, Kalyan Nagar Post, Behind BTS Bus
+                            Depot,
+                            <br> Bengaluru, Karnataka 560043
+                        </p>
+                    </address>
+                </div>
+                <div>
+                    <address>
+                        <h6>Delhi Headquarter-</h6>
+                        <span>Contact: Mr. Aryan <a class='text-decoration-none fw-semibold' href="tel:011 43587498">011
+                                43587498</a></span>
+
+                        <p>3rd Floor, 251,<br> D MALL, Wazirpur Flyover, Netaji Subhash Place,<br> Pitam Pura, New
+                            Delhi, Delhi 110034
+                        </p>
+                    </address>
+
+                </div>
             </div>
 
             <div class="col-4 d-none d-lg-flex justify-content-center align-items-center">
@@ -263,7 +287,7 @@
 
             <div class="col-lg-4 col-md-6 col-12 py-md-5 py-3">
                 <h5 class="text-center title fw-bold">QUICK LINKS</h5>
-                <div class="d-flex justify-content-center mb-3 ">
+                <div class="d-flex flex-column justify-content-center align-items-center mb-3 ">
                     <!-- <a class="text-decoration-none  text-dark fw-semibold" href="{% url 'index:about' %}">About</a> -->
                     <a class="text-decoration-none  text-dark fw-semibold ps-lg-2 ps-md-2 ps-1"
                         href="{% url 'index:contact' %}">Contact us</a>
@@ -278,6 +302,12 @@
                         href="{% url 'index:courses' %}">Programs</a>
                     <a class="text-decoration-none text-dark  fw-semibold ps-lg-2 ps-md-2 ps-1"
                         href="{% url 'index:apply' %}">Apply Courses</a>
+                    <a class="text-decoration-none text-dark  fw-semibold ps-lg-2 ps-md-2 ps-1"
+                        href="{% url 'index:rti' %}">RTI</a>
+                    <a class="text-decoration-none text-dark  fw-semibold ps-lg-2 ps-md-2 ps-1"
+                        href="{% url 'blog:home' %}">Blogs
+                    <a class="text-decoration-none text-dark  fw-semibold ps-lg-2 ps-md-2 ps-1"
+                        href="{% url 'index:about' %}">About US</a>
                 </div>
                 <h5 class="text-center title fw-bold">CONNECT WITH US</h5>
                 <div class="social-links d-flex justify-content-center pt-2">

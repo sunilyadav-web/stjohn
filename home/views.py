@@ -133,6 +133,7 @@ def result(request):
             messages.error(
                 request, 'Please Enter Correct Enrollment Number !!')
             return render(request, 'home/result.html', context)
+            
 
         # getting Result for authenticated user
     if request.user.is_authenticated:
@@ -562,3 +563,14 @@ def paymentSuccess(request):
         messages.error(request,"You are not authrised!")
         return redirect('/')
     return render(request,'home/payment_success.html',context)
+
+
+
+def rti(request):
+    context={}
+    try:
+        notice = AddNotice.objects.last()
+        context['notice'] = notice
+    except Exception as e:
+        print("RTI Exception : ",e)
+    return render(request,'home/rti.html',context)

@@ -1,8 +1,8 @@
 {% extends './blog_base.html' %} {% load static %} {% block meta %}
 <meta name="description"
-    content="{{post.content | truncatewords:20}}" />
+    content="{{post.meta_description}}" />
 <meta name="keywords"
-    content="online education, st. john online courses and diplomas and degrees and certificates, health courses in Bengaluru, Engineering courses in Bengaluru, management courses Bengaluru,  certified courses in Bengaluru, health courses in Karnataka, management courses in Karnataka, cretified courses in Karnataka, engeenring courses in Karnataka, St. John international online autonomous university in Bengaluru, St. John international online autonomous university in Karnataka " />
+    content="{{post.meta_keyword}}" />
 <link rel="canonical" href="https://stjohnedu.in/blog/post/{{post.slug}}" />
 {% endblock meta %} 
 {% block title %} {{post.title }} {% endblock title %}
@@ -22,7 +22,7 @@
                     {{post.content | safe}}
                 </div>
                 <div class="footer mt-5 mb-3">
-                    <small class="text-muted">Posted At : {{post.created_at | date:'d-M-Y'}}</small>
+                    <small class="text-muted ">Posted At : {{post.created_at | date:'d-M-Y'}}</small> <small class="text-muted ms-3">Category : {{post.category}} </small>
                 </div>
             </div>
         </div>

@@ -36,7 +36,6 @@ with open(os.path.join(BASE_DIR,'secret_key.txt')) as f:
 DEBUG = False
 
 ALLOWED_HOSTS = ['www.stjohnedu.in','stjohnedu.in']
-# ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = []
 
 

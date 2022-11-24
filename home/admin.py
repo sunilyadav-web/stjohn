@@ -23,9 +23,8 @@ class AdmitCardAdmin(admin.ModelAdmin):
 admin.site.register(AdmitCard,AdmitCardAdmin)
 
 class CertificateAdmin(admin.ModelAdmin):
-    list_display=['enrollment_no','name','datetime']
+    list_display=['title','name','datetime']
 admin.site.register(Certificate, CertificateAdmin)
-    
 
 class IdCardAdmin(admin.ModelAdmin):
       list_display = ['enrollment_no','name','datetime']
