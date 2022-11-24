@@ -196,13 +196,13 @@ class AddNotice(models.Model):
     notice_date=models.DateTimeField(auto_created=True,auto_now=True)
 
 class Certificate(models.Model):
-    enrollment_no=models.CharField(max_length=40,unique=True)
+    title=models.CharField(max_length=40,unique=True)
     name=models.CharField(max_length=100)
     office_at=models.CharField(max_length=100)
     period_of=models.CharField(max_length=100)
     period_to=models.CharField(max_length=100)
     place=models.CharField(max_length=100)
-    date=models.CharField(max_length=100)
+    registration_date=models.DateField()
     center_id=models.CharField(max_length=100)
     file=models.FileField(blank=True,null=True)
     datetime=models.DateTimeField(auto_now=True,null=True, blank=True)
@@ -210,7 +210,17 @@ class Certificate(models.Model):
 
     class Meta:
         ordering=['-id']
+
+    def __str__(self):
+        return self.title+'  '+self.name
         
+    @property
+    def certificateFile(self):
+        try:
+            url=self.file.url
+        except:
+            url=None
+        return url
 
 class ResultHighlightControl(models.Model):
     display=models.BooleanField(default=False)
