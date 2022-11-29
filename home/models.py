@@ -62,20 +62,35 @@ class Course_desc(models.Model):
 class Profile(models.Model):
     enrollment_no = models.CharField(max_length=50,unique=True)
     name = models.CharField(max_length=50)
-    # image = models.ImageField(upload_to="Student/profile_image")
     father_name = models.CharField(max_length=50)
     course = models.CharField(max_length=50)
     specialization = models.CharField(max_length=50)
     academic_year = models.CharField(max_length=50) 
     year_of_passing = models.IntegerField()
     profile_pic = models.ImageField(upload_to='uploads/student_images/',blank=True)
+    certificate=models.FileField(upload_to='Result_Certificate',blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True,blank=True,null=True)
     updated_at = models.DateTimeField(auto_now=True,blank=True,null=True)
     
 
     def __str__(self):
         return self.name
-    
+
+    @property
+    def getCertificate(self):
+        try:
+            url=self.certificate.url
+        except:
+            url=None
+        return url
+
+    @property
+    def profileImage(self):
+        try:
+            url=self.profile_pic.url
+        except:
+            url=None
+        return url    
 class Semester(models.Model):
 
     REMARKS = (
@@ -181,13 +196,13 @@ class AddNotice(models.Model):
     notice_date=models.DateTimeField(auto_created=True,auto_now=True)
 
 class Certificate(models.Model):
-    enrollment_no=models.CharField(max_length=40,unique=True)
+    title=models.CharField(max_length=40,unique=True)
     name=models.CharField(max_length=100)
     office_at=models.CharField(max_length=100)
     period_of=models.CharField(max_length=100)
     period_to=models.CharField(max_length=100)
     place=models.CharField(max_length=100)
-    date=models.CharField(max_length=100)
+    registration_date=models.DateField()
     center_id=models.CharField(max_length=100)
     file=models.FileField(blank=True,null=True)
     datetime=models.DateTimeField(auto_now=True,null=True, blank=True)
@@ -195,7 +210,17 @@ class Certificate(models.Model):
 
     class Meta:
         ordering=['-id']
+
+    def __str__(self):
+        return self.title+'  '+self.name
         
+    @property
+    def certificateFile(self):
+        try:
+            url=self.file.url
+        except:
+            url=None
+        return url
 
 class ResultHighlightControl(models.Model):
     display=models.BooleanField(default=False)

@@ -1,0 +1,72 @@
+{% extends '../base.html' %}
+{% load static %}
+{% block meta %}
+<meta name="description" content="Know about St. John international online autonomous university rti" />
+<meta name="keywords"
+    content="online education,rti, st. john online courses and diplomas and degrees and certificates, health courses in Bengaluru, Engineering courses in Bengaluru, management courses Bengaluru,  certified courses in Bengaluru, health courses in Karnataka, management courses in Karnataka, cretified courses in Karnataka, engeenring courses in Karnataka, St. John international online autonomous university in Bengaluru, St. John international online autonomous university in Karnataka " />
+<link rel="canonical" href="https://stjohnedu.in/">
+<!-- ===========Swiper CDN Link=========== -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
+
+
+{% endblock meta %}
+{% block title %} St. John RTI {% endblock title %}
+
+{% block body %}
+<section class="py-5">
+    <div class="container">
+        <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-sm-7 col-12">
+                <h6>Right to information Act</h6>
+                <hr>
+                <h1>The Right to Information Act of 2005 is being implemented at universities and colleges.</h1>
+                <article>
+                    <p>
+                        The Parliament passed the Right to Information Act, 2005 (22 of 2005), and it became operative
+                        on June 15th, 2005. In order to encourage openness and accountability in how each public
+                        authority operates, this Act grants citizens the right to access information that is within the
+                        control of public authorities. To be considered a public authority for the purposes of this Act,
+                        a university or college must be established by law passed by the legislature of a state or by
+                        the federal government, or by notification from the relevant government, and it must also be
+                        owned, controlled, or substantially financed, directly or indirectly, by funds provided by the
+                        government.
+                        <br>
+                        While several aspects of this legislation took effect right away when it was passed (15 June),
+                    </p>
+                </article>
+            </div>
+            <div class="col-12 col-lg-7 my-3">
+                <h3 class='text-center title text-uppercase'>Know More</h3>
+                <form method="POST" action="{% url 'index:contact' %}">
+                    {% csrf_token %}
+                    <div class="mb-2">
+                        <label class="form-label" for="name">Name</label>
+                        <input class="form-control" type="text" name="name" id="name" required >
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" for="email">Email</label>
+                        <input class="form-control" type="email" name="email" id="" >
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" for="contact_no">Contact No.</label>
+                        <input class="form-control" type="tel" name="contact_no" id="" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" for="subject">Subject</label>
+                        <input class="form-control" type="text" name="subject" id="" required >
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label" for="message">Your Message</label>
+                        <textarea class="form-control" rows="5" name="message" cols="20" required
+                            style="margin-bottom: 20px;"></textarea>
+                    </div>
+                    <div>
+                        <input class="form-control" type="submit" class="btn-contact" value="Submit"
+                            style="background-color: darkblue; color: white; cursor: pointer;padding: 10px;">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock body %}
