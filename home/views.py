@@ -31,7 +31,7 @@ def index(request):
         if sd.display == True:
             caption = sd.caption
             link = sd.add_link
-            return render(request, 'error404.html', {'link': link, 'caption': caption})
+            return render(request, 'under_construction.html', {'link': link, 'caption': caption})
     except Exception as e:
         print('Index Exception :', e)
     return render(request, 'home/index.html', context)

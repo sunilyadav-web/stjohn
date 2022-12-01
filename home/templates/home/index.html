@@ -1,21 +1,20 @@
-{% extends '../base.html' %}
-{% load static %}
-{% block meta %}
+{% extends '../base.html' %} {% load static %} {% block meta %}
 <meta name="description"
   content="Are you looking for an online professional Degree, Diploma, course, and certificate? Just check out St. John international online autonomous university." />
 <meta name="keywords"
   content="online education, st. john online courses and diplomas and degrees and certificates, health courses in Bengaluru, Engineering courses in Bengaluru, management courses Bengaluru,  certified courses in Bengaluru, health courses in Karnataka, management courses in Karnataka, cretified courses in Karnataka, engeenring courses in Karnataka, St. John international online autonomous university in Bengaluru, St. John international online autonomous university in Karnataka " />
-<link rel="canonical" href="https://stjohnedu.in/">
+<link rel="canonical" href="https://stjohnedu.in/" />
 <!-- ===========Swiper CDN Link=========== -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css" />
 
- <!-- ============OPEN GRAPH================= -->
- <meta property="og:title" content="St. John international online autonomous university">
- <meta property="og:site_name" content="St. John International University">
- <meta property="og:url" content="https://stjohnedu.in/">
- <meta property="og:description" content="St. John university is an Autonomous body that is imparting Online Education, Distance Education, Regular & Evening college to empower people.">
- <meta property="og:type" content="article">
- <meta property="og:image" content="https://stjohnedu.in/static/logos/sji.png">
+<!-- ============OPEN GRAPH================= -->
+<meta property="og:title" content="St. John international online autonomous university" />
+<meta property="og:site_name" content="St. John International University" />
+<meta property="og:url" content="https://stjohnedu.in/" />
+<meta property="og:description"
+  content="St. John university is an Autonomous body that is imparting Online Education, Distance Education, Regular & Evening college to empower people." />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://stjohnedu.in/static/logos/sji.png" />
 
 <!-- ===========SCHEMA=============== -->
 <script type="application/ld+json">
@@ -31,40 +30,38 @@
       "contactType": "customer service",
       "contactOption": "HearingImpairedSupported",
       "areaServed": "IN",
-      "availableLanguage": ["en","Hindi","Kannada"]
+      "availableLanguage": ["en", "Hindi", "Kannada"]
     }
   }
-  </script>
+</script>
 
-
-  <!-- ============OPEN GRAPH================= -->
-<meta property="og:title" content="St. John international online autonomous university">
-<meta property="og:site_name" content="St. John International University">
-<meta property="og:url" content="https://stjohnedu.in/">
-<meta property="og:description" content="St. John university is an Autonomous body that is imparting Online Education, Distance Education, Regular & Evening college to empower people.">
-<meta property="og:type" content="article">
-<meta property="og:image" content="https://stjohnedu.in/static/logos/sji.png">
-
+<!-- ============OPEN GRAPH================= -->
+<meta property="og:title" content="St. John international online autonomous university" />
+<meta property="og:site_name" content="St. John International University" />
+<meta property="og:url" content="https://stjohnedu.in/" />
+<meta property="og:description"
+  content="St. John university is an Autonomous body that is imparting Online Education, Distance Education, Regular & Evening college to empower people." />
+<meta property="og:type" content="article" />
+<meta property="og:image" content="https://stjohnedu.in/static/logos/sji.png" />
 
 {% endblock meta %}
-{% block title %} St. John international online autonomous university - Apply Now {% endblock title %}
-
+{% block title %} St. John international online autonomous university - Apply Now 
+{% endblock title %} 
 {% block body %}
-
 
 <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="{% static 'images/stspring.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'images/stspring.jpg' %}" class="d-block w-100" alt="..." />
     </div>
     <div class="carousel-item">
-      <img src="{% static 'images/Alumni_Weekend17-192_360x240.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'images/Alumni_Weekend17-192_360x240.jpg' %}" class="d-block w-100" alt="..." />
     </div>
     <div class="carousel-item">
-      <img src="{% static 'images/DSC_5948.360x240_0.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'images/DSC_5948.360x240_0.jpg' %}" class="d-block w-100" alt="..." />
     </div>
     <div class="carousel-item">
-      <img src="{% static 'images/3.jpg' %}" class="d-block w-100" alt="...">
+      <img src="{% static 'images/3.jpg' %}" class="d-block w-100" alt="..." />
     </div>
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -78,52 +75,65 @@
 </div>
 
 <div class="container-fluid mt-3">
-
   <div class="row d-flex justify-content-center g-0" id="next-step">
     <div class="col-lg-5 c-12 bg-white box-shadow p-5">
       <h3 class="mb-4">Take the Next Step in "Online Education"</h3>
-      <div class="border border-dark "></div>
-      <p class="mt-4" style="font-size: large;">Take the next step in your journey. How Online Education will help you
-        to find better opportunities! In your career. And in this St. John's Professional Courses, Degrees, Diplomas and
-        Certificates will help you.</p>
+      <div class="border border-dark"></div>
+      <p class="mt-4" style="font-size: large">
+        Take the next step in your journey. How Online Education will help you
+        to find better opportunities! In your career. And in this St. John's
+        Professional Courses, Degrees, Diplomas and Certificates will help you.
+      </p>
       <div class="d-grid">
         <a href="{% url 'index:courses' %}" class="btn bg-primary text-white">Courses</a>
       </div>
     </div>
-    <div class="col-lg-5 c-12 bg-white box-shadow  p-5">
+    <div class="col-lg-5 c-12 bg-white box-shadow p-5">
       <h3 class="mb-4">St. John Admissions</h3>
-      <div class="border border-dark "></div>
-      <p class="mt-4 " style="font-size: large;">St. John's offers many professional Degrees, Diploma, Courses, and
-        Certificates. check which will help you to grow your career.</p>
+      <div class="border border-dark"></div>
+      <p class="mt-4" style="font-size: large">
+        St. John's offers many professional Degrees, Diploma, Courses, and
+        Certificates. check which will help you to grow your career.
+      </p>
       <div class="d-grid">
         <a href="{% url 'index:apply' %}" class="btn bg-primary text-white">Apply</a>
       </div>
     </div>
   </div>
-  <h3 class="text-center title mt-4" id="greeting">WELCOME TO ST. JOHN INTERNATIONAL ONLINE AUTONOMOUS UNIVERSITY</h3>
+  <h3 class="text-center title mt-4" id="greeting">
+    WELCOME TO ST. JOHN INTERNATIONAL ONLINE AUTONOMOUS UNIVERSITY
+  </h3>
   <div class="row d-flex justify-content-around my-3 g-0">
     <div class="col-lg-5 c-12 pt-2 home d-flex justify-content-center d-none d-lg-block" id="about-left">
-      <img class="rounded m-auto" src="{% static 'images/students.jpg' %}" alt="">
+      <img class="rounded m-auto" src="{% static 'images/students.jpg' %}" alt="" />
     </div>
     <div class="col-lg-6 col-11 d-flex align-items-center flex-column pt-3 pt-lg-5 justify-content-center"
       id="about-right">
-      <p>St. John university is an Autonomous body that is imparting Online Education, Distance Education, Regular & Evening college to empower people irrespective
-        of Age, Cast, Creed and Religion for those who have lost the opportunity at the right age due to Poverty, Social
-        Compulsion, and family conditions.</p>
-      <p>All the Courses offered by St. John university are Non-Conventional, Need Based and Tailor made model to suit
-        the needs of the People aimed at gainful employment based on the Prime Minister's "SKILL MISSION Programme". <a
-          href="{% url 'index:about' %}" class="text-decoration-none">Read More About St-john</a></p>
+      <p>
+        St. John university is an Autonomous body that is imparting Online
+        Education, Distance Education, Regular & Evening college to empower
+        people irrespective of Age, Cast, Creed and Religion for those who have
+        lost the opportunity at the right age due to Poverty, Social Compulsion,
+        and family conditions.
+      </p>
+      <p>
+        All the Courses offered by St. John university are Non-Conventional,
+        Need Based and Tailor made model to suit the needs of the People aimed
+        at gainful employment based on the Prime Minister's "SKILL MISSION
+        Programme".
+        <a href="{% url 'index:about' %}" class="text-decoration-none">Read More About St-john</a>
+      </p>
     </div>
   </div>
   <h2 class="text-center pt-3 title courses-title">It's Your Time to Shine</h2>
-  <p class="text-center title courses-title">At St. john, you have endless opportunities to discover your inspiration
-    with St. John
-    Courses.</p>
+  <p class="text-center title courses-title">
+    At St. john, you have endless opportunities to discover your inspiration
+    with St. John Courses.
+  </p>
   <div class="row d-flex justify-content-evenly align-items-center gy-3 px-3" id="courses">
-
-    <div class="course-card col-12 col-md-3 ">
+    <div class="course-card col-12 col-md-3">
       <div class="card w-100">
-        <img src="{% static 'images/health.jpg' %}" class="card-img-top" alt="...">
+        <img src="{% static 'images/health.jpg' %}" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title title">Health Course</h5>
           <a href="{% url 'index:health_science_courses' %}" class="btn btn-outline-dark">Know More</a>
@@ -132,7 +142,7 @@
     </div>
     <div class="course-card col-12 col-md-3">
       <div class="card w-100">
-        <img src="{% static 'images/engeenring.jpg' %}" class="card-img-top" alt="...">
+        <img src="{% static 'images/engeenring.jpg' %}" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">Engineering Courses</h5>
           <a href="{% url 'index:engineering_courses' %}" class="btn btn-outline-dark">Know More</a>
@@ -141,7 +151,7 @@
     </div>
     <div class="course-card col-12 col-md-3">
       <div class="card w-100">
-        <img src="{% static 'images/management .jpg' %}" class="card-img-top" alt="...">
+        <img src="{% static 'images/management .jpg' %}" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">Management Courses</h5>
           <a href="{% url 'index:management_courses' %}" class="btn btn-outline-dark">Know more</a>
@@ -150,7 +160,7 @@
     </div>
     <div class="course-card col-12 col-md-3">
       <div class="card w-100">
-        <img src="{% static 'images/certification.jpg' %}" class="card-img-top" alt="...">
+        <img src="{% static 'images/certification.jpg' %}" class="card-img-top" alt="..." />
         <div class="card-body">
           <h5 class="card-title">Certified Courses</h5>
           <a href="{% url 'index:certified_courses' %}" class="btn btn-outline-dark">Know More</a>
@@ -158,40 +168,46 @@
       </div>
     </div>
   </div>
-  <div class="bg-primary row my-5  d-flex justify-content-start shadow" id="news-event">
+  <div class="bg-primary row my-5 d-flex justify-content-start shadow" id="news-event">
     <div class="col-6">
-      <h5 class="text-center py-3 fs-3 "><a class="text-white text-decoration-none" href="#">Events</a></h5>
+      <h5 class="text-center py-3 fs-3">
+        <a class="text-white text-decoration-none" href="#">Events</a>
+      </h5>
     </div>
     <div class="col-6">
-      <h5 class="text-center py-3 fs-3 "><a class="text-white text-decoration-none" href="#">News</a></h5>
+      <h5 class="text-center py-3 fs-3">
+        <a class="text-white text-decoration-none" href="#">News</a>
+      </h5>
     </div>
   </div>
   <div class="row overflow-hidden d-flex justify-content-center gy-3">
-
     <div class="col-11 ps-3 col-lg-5 event">
       <h6 class="fs-4">Aug | 22 <small>2022</small></h6>
-      <a href="#" class=" fs-5 text-decoration-none">Alumni Volunteer Information Session - Regional Alumni Chapters</a>
-      <br>
+      <a href="#" class="fs-5 text-decoration-none">Alumni Volunteer Information Session - Regional Alumni Chapters</a>
+      <br />
       <small>Virtual</small>
     </div>
 
     <div class="col-11 ps-3 col-lg-5 event">
       <h6 class="fs-4">Sep | 1 <small>2022</small></h6>
-      <a href="#" class="fs-5 text-decorations-none">Fall Tobin CEO Seminar Series</a> <br>
+      <a href="#" class="fs-5 text-decorations-none">Fall Tobin CEO Seminar Series</a>
+      <br />
       <small>Virtual</small>
     </div>
     <div class="col-10">
       <h4 class="my-4 fs-3 text-start test-start">News</h4>
-      <hr>
+      <hr />
     </div>
     <div class="col-11 ps-3 col-lg-5 news">
       <a href="#" class="text-decoration-none fs-5">St. John’s Welcomes Return of Summer Concert</a>
-      <br> <span>August 16, 2022</span>
+      <br />
+      <span>August 16, 2022</span>
     </div>
     <div class="col-11 ps-3 col-lg-5 news">
       <a href="#" class="text-decoration-none fs-5">St. John’s Researcher Studying Sharks for Clues to Cure Alzheimer’s,
         Parkinson’s Diseases</a>
-      <br> <span>August 16, 2022</span>
+      <br />
+      <span>August 16, 2022</span>
     </div>
   </div>
 </div>
@@ -199,51 +215,47 @@
 <section class="py-5 overflow-hidden">
   <div class="container">
     <h2 class="title text-center my-3">Read Latest Blogs</h2>
-    <hr class="w-50 m-auto mb-3">
-    
-    <div class="row  d-flex justify-content-center gy-3 ">
+    <hr class="w-50 m-auto mb-3" />
+
+    <div class="row d-flex justify-content-center gy-3">
       {% for item in posts %}
 
       <div class="col-lg-3 col-md-5 col-sm-9">
-        <div class="card shadow-sm ">
-          <img src="{{item.imageURL}}" class="card-img-top blog-thumbnail " alt="...">
+        <div class="card shadow-sm">
+          <img src="{{item.imageURL}}" class="card-img-top blog-thumbnail" alt="..." />
           <div class="card-body">
-            <h6 class="card-title text-underline"><a href="{% url 'blog:post' item.slug %}"
-                class="stretched-link text-dark" target="_blank"> {{item.title | title|truncatewords:10}}</a></h6>
-
+            <h6 class="card-title text-underline">
+              <a href="{% url 'blog:post' item.slug %}" class="stretched-link text-dark" target="_blank">
+                {{item.title | title|truncatewords:10}}</a>
+            </h6>
           </div>
         </div>
       </div>
 
       {% endfor %}
-
     </div>
     <div class="swiper-scrollbar"></div>
   </div>
 </section>
 <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
 <script>
-
-
   const sr = ScrollReveal({
-    origin: 'top',
-    distance: '60px',
+    origin: "top",
+    distance: "60px",
     duration: 1500,
     delay: 400,
-  })
-  //sr.reveal('#head',{origin:'bottom'}) 
-  sr.reveal('.carousel', { delay: 500 })
-  sr.reveal('#next-step')
-  sr.reveal('#greeting', { delay: 600 })
-  sr.reveal('#about-left', { delay: 600, origin: 'left' })
-  sr.reveal('#about-right', { delay: 600, origin: 'right' })
-  sr.reveal('.courses-title', { delay: 600, origin: 'top' })
-  sr.reveal('#courses', { delay: 600, origin: 'bottom' })
-  sr.reveal('#news-event', { delay: 600, origin: 'top' })
-  sr.reveal('.event', { delay: 700, origin: 'left' })
-  sr.reveal('.news', { delay: 700, origin: 'right' })
-
- 
+  });
+  //sr.reveal('#head',{origin:'bottom'})
+  sr.reveal(".carousel", { delay: 500 });
+  sr.reveal("#next-step");
+  sr.reveal("#greeting", { delay: 600 });
+  sr.reveal("#about-left", { delay: 600, origin: "left" });
+  sr.reveal("#about-right", { delay: 600, origin: "right" });
+  sr.reveal(".courses-title", { delay: 600, origin: "top" });
+  sr.reveal("#courses", { delay: 600, origin: "bottom" });
+  sr.reveal("#news-event", { delay: 600, origin: "top" });
+  sr.reveal(".event", { delay: 700, origin: "left" });
+  sr.reveal(".news", { delay: 700, origin: "right" });
 </script>
 
 {% endblock body %}
