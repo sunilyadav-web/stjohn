@@ -60,12 +60,12 @@ class Course_desc(models.Model):
         return self.title
 
 class Profile(models.Model):
-    enrollment_no = models.CharField(max_length=50,unique=True)
-    name = models.CharField(max_length=50)
-    father_name = models.CharField(max_length=50)
-    course = models.CharField(max_length=50)
-    specialization = models.CharField(max_length=50)
-    academic_year = models.CharField(max_length=50) 
+    enrollment_no = models.CharField(max_length=40,unique=True)
+    name = models.CharField(max_length=40)
+    father_name = models.CharField(max_length=40)
+    course = models.CharField(max_length=40)
+    specialization = models.CharField(max_length=40)
+    academic_year = models.CharField(max_length=40) 
     year_of_passing = models.IntegerField()
     profile_pic = models.ImageField(upload_to='uploads/student_images/',blank=True)
     certificate=models.FileField(upload_to='Result_Certificate',blank=True, null=True)
