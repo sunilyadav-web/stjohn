@@ -140,21 +140,23 @@ class AdmitCard(models.Model):
 
 class IdCard(models.Model):
     enrollment_no=models.CharField(max_length=40,unique=True)
-    course_name=models.CharField(max_length=150 , default='')
-    image=models.ImageField(upload_to='idcard',blank=True)
     name=models.CharField(max_length=100)
-    fathers_name=models.CharField(max_length=100)
-    dob=models.CharField(max_length=100)
-    address=models.CharField(max_length=100)
-    issuing_year=models.CharField(max_length=100)
-    validity_year=models.CharField(max_length=100)
+    id_card=models.FileField(upload_to='id_cards',null=True,blank=True, verbose_name="Id Card PDF File")
     datetime=models.DateTimeField(auto_now=True, null=True , blank=True)
 
    
-
     class Meta:
         ordering=['-id']
 
+    @property
+    def idcardURL(self):
+        try:
+            url=self.id_card.url
+        except:
+            url=''
+        return url
+    def __str__(self):
+        return self.name
 
 class QuizQuestion(models.Model):
     options = (
