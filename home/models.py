@@ -110,32 +110,23 @@ class Semester(models.Model):
 
 class AdmitCard(models.Model):
     enrollment_no=models.CharField(max_length=40,unique=True)
-    image=models.ImageField(upload_to='admitcard',blank=True)
-    title=models.CharField(max_length=200)
-    date=models.CharField(max_length=200)
-    time=models.CharField(max_length=200)
-    reg_no=models.CharField(max_length=200)
     name=models.CharField(max_length=200)
-    paper=models.CharField(max_length=200)
-    exam_centre=models.CharField(max_length=200)
+    admit_card=models.FileField(upload_to="admitcard_pdf's",blank=True, verbose_name="Admit Card PDF")
     datetime=models.DateTimeField(auto_now=True, null=True , blank=True)
-    instruction=models.TextField(default="""Instructions to the Candidate
-1. This Admit Card must be presented for verification at the time of examination, along with at least one original (not photocopied or scanned copy) and valid (not expired) photo identification card (eg: College ID, Employer ID. Driving License, Passport, PAN card, Voter ID, Aadhaar-UID, etc).
-2. This Admit Card is valid only if the candidate's photograph and signature images are legibly printed. Print this on an A4 sized paper using a laser printer, preferably a colour photo printer.
-3. Candidates should occupy their allotted seats 25 minutes before the scheduled start of the examination.
-4. Candidates will not be allowed to enter examination hall 30 minutes after the commencement of the  examination.
-5. Candidates will not be allowed to leave the examination hall before the end of the examination
-6. Bring two (2) black ink ballpoint pens. Candidates have to answer in the Optical Response Sheet (ORS) by darkening the bubbles using only a black ink ballpoint pen. Since bubbles darkened by the black ink ballpoint pen cannot be erased, candidates should darken the bubbles in the ORS very carefully.
-7. Name of the candidate. Registration number. Examination centre and Signature of the candidate should be entered in the ORS using only a black ink ballpoint pen.
-8. Calculator is allowed in the examination hall. However, shanng of calculators is NOT ALLOWED. D not bring any Charts/Tables/Loose sheets to the examination hall
-9. Mobile phones or any other Electronic gadgets are NOT ALLOWED inside the examination hall. There may not be any facility for safe keeping of your gadget outside the hall, sot me be easier to leave it at your residence')
-""")
-   
-
+    
     class Meta:
         ordering=['-id']
+        
+    @property
+    def admitcardURL(self):
+        try:
+            url=self.admit_card.url
+        except:
+            url=''
+        return url
+
     def __str__(self):
-        return self.enrollment_no
+        return self.name
 
 
 class IdCard(models.Model):

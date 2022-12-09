@@ -28,7 +28,7 @@
 
 <div class="container px-0 overflow-hidden">
     <div class="row d-flex justify-content-center">
-        <div class="col-11 col-md-6 py-3 pt-4 ">
+        <div class="col-11 col-md-5 py-3 pt-4 ">
             <h2 class="text-center title text-uppercase">Id Card</h2>
             <form action="" method="post">
                 {% csrf_token %}
@@ -61,7 +61,7 @@
         </div> -->
         <div id="card" class="col-12 mt-4 overflow-hidden d-flex align-items-center justify-content-center">
             {% comment %} <div class="rcontainer">
-                <div class="padding"> 
+                <div class="padding">
                     <div class="font">
                         <div class="top">
                             <img src="{{idcard.image.url}}" alt="">
@@ -86,7 +86,7 @@
                                 <P>Enrollment No&nbsp;: {{idcard.enrollment_no}}</P>
                                 <P>Father Name &nbsp;&nbsp;&nbsp;: {{idcard.fathers_name}}</P>
                                 <p>DOB &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;:
-                                        {{idcard.dob}}
+                                    {{idcard.dob}}
                                 </p>
                                 <div class="Address">Address&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
                                     {{idcard.address}}</div>
@@ -100,18 +100,29 @@
                         </div>
                     </div>
                 </div>
-            </div>  {% endcomment %}
+            </div> {% endcomment %}
             <div class="student-info ">
-                <div class=" d-flex align-items-center justify-content-flex-start flex-column my-3">
+                <div class=" my-3">
+                    <div>
 
-                    <span><b>Name: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</b> {{idcard.name | title}}</span>
-                    <span><b>Enrollment No: </b> {{idcard.enrollment_no}}</span>
+                        <span><b>Name:</b> {{idcard.name | title}}</span>
+                    </div>
+                    <div>
+
+                        <span><b>Enrollment No: </b> {{idcard.enrollment_no}}</span>
+                    </div>
                 </div>
+                {% if idcard.idcardURL != '' %}
+                  
                 <div>
                     <embed src="{{idcard.idcardURL}}" width="auto" height="500px" />
                     
                 </div>
-                <a href="{{idcard.idcardURL}}" download="{{idcard.idcardURL}}" role="button" class="mt-2 btn bg-primary text-white" target="_blank">Download Idcard</a>
+                <a href="{{idcard.idcardURL}}" download="{{idcard.idcardURL}}" role="button"
+                class="mt-2 btn bg-primary text-white" target="_blank">Download Idcard</a>
+                {% else %}
+                <p class="text-danger">Your Idcard Not Generated Yet!!</p>
+                {% endif %}
             </div>
         </div>
     </div>

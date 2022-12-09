@@ -7,7 +7,7 @@
 
 <div class="container">
     <div class="row d-flex justify-content-center">
-        <div class="col-11 col-md-6 py-3 pt-4 ">
+        <div class="col-11 col-md-5 py-3 pt-4 ">
             <h2 class="text-center title text-uppercase">Admit Card</h2>
             <form action="" method="post">
                 {% csrf_token %}
@@ -34,11 +34,13 @@
                 </div>
             </div>
         </div>
-        <div class="mess text-center my-1 mt-2 d-block d-lg-none">
+        <!-- <div class="mess text-center my-1 mt-2 d-block d-lg-none">
             <span class="text-danger ">*For download Admit Card use Desktop Computer to get proper format*</span>
-        </div>
-        <div id="card" class="body overflow-auto">
-            <div class="m-auto" style="width:800px;">
+        </div> -->
+        <div class="col-12 mt-4 overflow-hidden d-flex align-items-center justify-content-center">
+           {% comment %}
+             
+           <!-- <div class="m-auto" style="width:800px;">
                 <div class="admit-card w ">
                     <div class="card-logo d-flex justify-content-center py-2 mb-1">
                         <img style="height:9vh;" class="img-responsive d-block text-center"
@@ -63,13 +65,32 @@
 
                     {{admitcard.instruction | safe}}
                 </div>
+            </div> -->{% endcomment %} 
+            <div class="student-info ">
+                <div class=" my-3">
+                    <div>
+                        <span><b>Name: </b> {{admitcard.name |title}}</span>
+                    </div>
+                    <div>
+                        <span><b>Enrollment No: </b> {{admitcard.enrollment_no}}</span>
+                    </div>
+                </div>
+                {% if admitcard.admitcardURL != '' %}
+                <div>
+                    <embed src="{{admitcard.admitcardURL}}" width="300px" height="500px" />
+                </div>
+                <a href="{{admitcard.admitcardURL}}" download="{{admitcard.admitcardURL}}" role="button"
+                    class="mt-3 btn bg-primary text-white" target="_blank">Download Idcard</a>
+                {% else %}
+                <p class="text-danger">Your AdmitCard Not Generated Yet!!</p>
+                {% endif %}
             </div>
         </div>
-        
 
-       
+
+
         {% endif %}
-        
+
 
 
     </div>
@@ -82,7 +103,7 @@
         document.body.innerHTML = AdmitcardHtml
         window.print()
         document.body.innerHTML = backup
-        
+
     }
 </script>
 {% endblock body %}
